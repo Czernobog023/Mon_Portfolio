@@ -1,0 +1,766 @@
+/* ==========================================
+   ANIMATIONS RÉTRO GAMING
+   Effets visuels années 80-90
+   ========================================== */
+
+/* ==========================================
+   ANIMATIONS GLOBALES
+   ========================================== */
+
+/* Animation scanlines */
+@keyframes scanlines {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(4px);
+  }
+}
+
+/* Animation de clignotement rétro */
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+.blink {
+  animation: blink 1s infinite;
+}
+
+/* Animation de pulsation */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Animation de flottement pour les particules */
+@keyframes float {
+  0% {
+    transform: translateY(0px) translateX(0px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(50px);
+    opacity: 0;
+  }
+}
+
+/* Animation de rotation */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==========================================
+   EFFET GLITCH CYBER
+   ========================================== */
+
+@keyframes glitch {
+  0%, 100% {
+    transform: translate(0);
+    filter: hue-rotate(0deg);
+  }
+  10% {
+    transform: translate(-2px, 2px);
+  }
+  20% {
+    transform: translate(-2px, -2px);
+  }
+  30% {
+    transform: translate(2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  50% {
+    transform: translate(2px, -2px);
+    filter: hue-rotate(180deg);
+  }
+  60% {
+    transform: translate(-2px, 2px);
+  }
+  70% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(-2px, -2px);
+  }
+  90% {
+    transform: translate(2px, 2px);
+  }
+}
+
+@keyframes glitch-shadow {
+  0% {
+    text-shadow: 
+      0.05em 0 0 #00ffff,
+      -0.05em -0.025em 0 #ff0080,
+      0.025em 0.05em 0 #39ff14;
+  }
+  15% {
+    text-shadow: 
+      0.05em 0 0 #00ffff,
+      -0.05em -0.025em 0 #ff0080,
+      0.025em 0.05em 0 #39ff14;
+  }
+  16% {
+    text-shadow: 
+      -0.05em -0.025em 0 #00ffff,
+      0.025em 0.025em 0 #ff0080,
+      -0.05em -0.05em 0 #39ff14;
+  }
+  49% {
+    text-shadow: 
+      -0.05em -0.025em 0 #00ffff,
+      0.025em 0.025em 0 #ff0080,
+      -0.05em -0.05em 0 #39ff14;
+  }
+  50% {
+    text-shadow: 
+      0.025em 0.05em 0 #00ffff,
+      0.05em 0 0 #ff0080,
+      0 -0.05em 0 #39ff14;
+  }
+  99% {
+    text-shadow: 
+      0.025em 0.05em 0 #00ffff,
+      0.05em 0 0 #ff0080,
+      0 -0.05em 0 #39ff14;
+  }
+  100% {
+    text-shadow: 
+      0.05em 0 0 #00ffff,
+      -0.05em -0.025em 0 #ff0080,
+      0.025em 0.05em 0 #39ff14;
+  }
+}
+
+.cyber-glitch {
+  position: relative;
+  animation: glitch 0.3s infinite;
+}
+
+.cyber-glitch::before,
+.cyber-glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.cyber-glitch::before {
+  animation: glitch-shadow 0.3s infinite;
+  color: #00ffff;
+  z-index: -1;
+}
+
+.cyber-glitch::after {
+  animation: glitch-shadow 0.3s infinite reverse;
+  color: #ff0080;
+  z-index: -2;
+}
+
+.cyber-glitch:hover {
+  animation-duration: 0.1s;
+}
+
+.cyber-glitch:hover::before,
+.cyber-glitch:hover::after {
+  animation-duration: 0.1s;
+}
+
+/* ==========================================
+   ANIMATION DE FRAPPE (TYPING EFFECT)
+   ========================================== */
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes cursor-blink {
+  0%, 50% {
+    border-color: #39ff14;
+  }
+  51%, 100% {
+    border-color: transparent;
+  }
+}
+
+.typing-text {
+  overflow: hidden;
+  border-right: 2px solid #39ff14;
+  white-space: nowrap;
+  margin: 0 auto;
+  animation: 
+    typing 3s steps(30, end),
+    cursor-blink 1s infinite;
+}
+
+/* Version alternative pour l'effet typing */
+.typing-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.typing-effect::after {
+  content: '|';
+  position: absolute;
+  right: -5px;
+  color: #39ff14;
+  animation: blink 1s infinite;
+}
+
+/* ==========================================
+   ANIMATIONS NÉON ET GLOW
+   ========================================== */
+
+@keyframes neon-glow {
+  0%, 100% {
+    text-shadow: 
+      0 0 5px currentColor,
+      0 0 10px currentColor,
+      0 0 15px currentColor,
+      0 0 20px currentColor;
+  }
+  50% {
+    text-shadow: 
+      0 0 10px currentColor,
+      0 0 20px currentColor,
+      0 0 30px currentColor,
+      0 0 40px currentColor;
+  }
+}
+
+@keyframes border-glow {
+  0%, 100% {
+    box-shadow: 
+      0 0 5px currentColor,
+      0 0 10px currentColor,
+      inset 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    box-shadow: 
+      0 0 10px currentColor,
+      0 0 20px currentColor,
+      0 0 30px currentColor,
+      inset 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.neon-glow {
+  animation: neon-glow 2s ease-in-out infinite alternate;
+}
+
+.border-glow {
+  animation: border-glow 2s ease-in-out infinite alternate;
+}
+
+/* Animation de pulsation pour les boutons */
+@keyframes button-pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(0, 255, 255, 0.7);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(0, 255, 255, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(0, 255, 255, 0);
+  }
+}
+
+.btn:hover {
+  animation: button-pulse 1s infinite;
+}
+
+/* ==========================================
+   ANIMATIONS D'ENTRÉE
+   ========================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Classes d'animation */
+.fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.8s ease-out forwards;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.8s ease-out forwards;
+}
+
+.slide-in-up {
+  animation: slideInUp 0.8s ease-out forwards;
+}
+
+.slide-in-down {
+  animation: slideInDown 0.8s ease-out forwards;
+}
+
+.zoom-in {
+  animation: zoomIn 0.8s ease-out forwards;
+}
+
+/* Animation avec délais */
+.animate-delay-1 {
+  animation-delay: 0.1s;
+}
+
+.animate-delay-2 {
+  animation-delay: 0.2s;
+}
+
+.animate-delay-3 {
+  animation-delay: 0.3s;
+}
+
+.animate-delay-4 {
+  animation-delay: 0.4s;
+}
+
+.animate-delay-5 {
+  animation-delay: 0.5s;
+}
+
+/* ==========================================
+   ANIMATIONS SPÉCIALES GAMING
+   ========================================== */
+
+/* Animation de défilement matrix */
+@keyframes matrix-rain {
+  0% {
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+.matrix-char {
+  position: absolute;
+  color: #39ff14;
+  font-family: 'VT323', monospace;
+  font-size: 14px;
+  animation: matrix-rain 3s linear infinite;
+  text-shadow: 0 0 5px #39ff14;
+}
+
+/* Animation de loading rétro */
+@keyframes loading-dots {
+  0%, 20% {
+    color: #39ff14;
+    text-shadow: 0 0 5px #39ff14;
+  }
+  40% {
+    color: #ff0080;
+    text-shadow: 0 0 5px #ff0080;
+  }
+  60% {
+    color: #00ffff;
+    text-shadow: 0 0 5px #00ffff;
+  }
+  80%, 100% {
+    color: #8a2be2;
+    text-shadow: 0 0 5px #8a2be2;
+  }
+}
+
+.loading-dots::after {
+  content: '...';
+  animation: loading-dots 1.5s infinite;
+}
+
+/* Animation de scan horizontal */
+@keyframes scan-line {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+.scan-line {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00ffff, transparent);
+  animation: scan-line 3s linear infinite;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* Animation de grille cyber */
+@keyframes grid-pulse {
+  0%, 100% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.grid-overlay {
+  animation: grid-pulse 4s ease-in-out infinite;
+}
+
+/* ==========================================
+   ANIMATIONS HOVER SPÉCIALES
+   ========================================== */
+
+/* Effet hover avec particules */
+@keyframes particle-explosion {
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, currentColor 1px, transparent 1px);
+  background-size: 10px 10px;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.3s ease;
+  z-index: -1;
+}
+
+.btn:hover::before {
+  transform: translate(-50%, -50%) scale(10);
+}
+
+/* Effet de vibration */
+@keyframes vibrate {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10% {
+    transform: translateX(-1px);
+  }
+  20% {
+    transform: translateX(1px);
+  }
+  30% {
+    transform: translateX(-1px);
+  }
+  40% {
+    transform: translateX(1px);
+  }
+  50% {
+    transform: translateX(-1px);
+  }
+  60% {
+    transform: translateX(1px);
+  }
+  70% {
+    transform: translateX(-1px);
+  }
+  80% {
+    transform: translateX(1px);
+  }
+  90% {
+    transform: translateX(-1px);
+  }
+}
+
+.vibrate:hover {
+  animation: vibrate 0.3s linear;
+}
+
+/* ==========================================
+   ANIMATIONS DE TRANSITION
+   ========================================== */
+
+/* Transition de page rétro */
+@keyframes page-transition {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.page-enter {
+  animation: page-transition 0.5s ease-out forwards;
+}
+
+/* Effet de dissolution */
+@keyframes dissolve {
+  0% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+  100% {
+    opacity: 0;
+    filter: blur(10px);
+  }
+}
+
+.dissolve-out {
+  animation: dissolve 0.5s ease-out forwards;
+}
+
+/* ==========================================
+   ANIMATIONS RESPONSIVE
+   ========================================== */
+
+/* Réduction des animations sur mobiles */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .cyber-glitch {
+    animation: none;
+  }
+  
+  .typing-text {
+    animation: none;
+    border-right: none;
+    white-space: normal;
+  }
+  
+  .scanlines,
+  .grid-overlay {
+    display: none;
+  }
+}
+
+/* Animations plus douces sur tablettes */
+@media (max-width: 768px) {
+  .cyber-glitch {
+    animation-duration: 0.5s;
+  }
+  
+  .neon-glow {
+    animation-duration: 3s;
+  }
+  
+  .particle {
+    animation-duration: 8s;
+  }
+}
+
+/* ==========================================
+   KEYFRAMES SUPPLÉMENTAIRES
+   ========================================== */
+
+/* Animation de progression */
+@keyframes progress-bar {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: var(--progress, 100%);
+  }
+}
+
+.progress-fill {
+  animation: progress-bar 2s ease-out forwards;
+}
+
+/* Animation de compteur */
+@keyframes counter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.counter-animation {
+  animation: counter 0.3s ease-out;
+}
+
+/* Animation de révélation de texte */
+@keyframes text-reveal {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.text-reveal {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.text-reveal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: var(--dark-bg);
+  animation: text-reveal 1s ease-out forwards;
+}
+
+/* Animation de clignotement d'erreur */
+@keyframes error-flash {
+  0%, 100% {
+    background-color: transparent;
+    border-color: var(--neon-cyan);
+  }
+  50% {
+    background-color: rgba(255, 0, 0, 0.2);
+    border-color: #ff0000;
+  }
+}
+
+.error-flash {
+  animation: error-flash 0.5s ease-in-out 3;
+}
+
+/* Animation de succès */
+@keyframes success-glow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(57, 255, 20, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(57, 255, 20, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(57, 255, 20, 0);
+  }
+}
+
+.success-glow {
+  animation: success-glow 1s ease-out;
+}

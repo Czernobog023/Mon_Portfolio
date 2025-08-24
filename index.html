@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rayan Maillard - Développeur Web | Portfolio Cyber Rétro</title>
+    <meta name="description" content="Rayan Maillard - Développeur web professionnel spécialisé dans la création de sites web modernes et performants. Portfolio style rétro gaming années 80-90.">
+    <meta name="keywords" content="développeur web, création site web, portfolio, rétro gaming, programmation, HTML, CSS, JavaScript">
+    
+    <!-- Google Fonts - Polices rétro gaming -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=VT323:wght@400&family=Press+Start+2P&family=Share+Tech+Mono:wght@400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    
+    <!-- CSS Principal -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Effets visuels rétro -->
+    <div class="scanlines"></div>
+    <div class="grid-overlay"></div>
+    
+    <!-- Header / Navigation -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-terminal"></i>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-name">RAYAN_MAILLARD</span>
+                    <span class="logo-ext">.EXE</span>
+                </div>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">
+                    <i class="fas fa-home"></i>
+                    <span>ACCUEIL</span>
+                </a></li>
+                <li><a href="#about" class="nav-link">
+                    <i class="fas fa-user-astronaut"></i>
+                    <span>À PROPOS</span>
+                </a></li>
+                <li><a href="projets.html" class="nav-link" target="_blank">
+                    <i class="fas fa-rocket"></i>
+                    <span>MES PROJETS</span>
+                </a></li>
+                <li><a href="services.html" class="nav-link" target="_blank">
+                    <i class="fas fa-cogs"></i>
+                    <span>SERVICES</span>
+                </a></li>
+                <li><a href="#contact" class="nav-link">
+                    <i class="fas fa-satellite-dish"></i>
+                    <span>CONTACT</span>
+                </a></li>
+            </ul>
+            
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        
+        <!-- Section Accueil / Hero -->
+        <section id="home" class="section hero-section active">
+            <div class="container">
+                <div class="hero-content">
+                    <!-- Terminal principal -->
+                    <div class="main-terminal">
+                        <div class="terminal-header">
+                            <div class="terminal-controls">
+                                <span class="control-btn close"></span>
+                                <span class="control-btn minimize"></span>
+                                <span class="control-btn maximize"></span>
+                            </div>
+                            <div class="terminal-title">
+                                <i class="fas fa-terminal"></i>
+                                rayan@portfolio:~$ ./developer.exe
+                            </div>
+                        </div>
+                        <div class="terminal-body">
+                            <div class="boot-sequence">
+                                <div class="boot-line">
+                                    <span class="prompt">SYSTEM BOOT</span>
+                                    <span class="status success">[OK]</span>
+                                </div>
+                                <div class="boot-line">
+                                    <span class="prompt">LOADING DEVELOPER PROFILE</span>
+                                    <span class="status success">[OK]</span>
+                                </div>
+                                <div class="boot-line">
+                                    <span class="prompt">INITIALIZING PORTFOLIO</span>
+                                    <span class="status success">[OK]</span>
+                                </div>
+                            </div>
+                            
+                            <div class="hero-main">
+                                <h1 class="hero-title cyber-glitch" data-text="RAYAN MAILLARD">
+                                    RAYAN MAILLARD
+                                </h1>
+                                <h2 class="hero-subtitle typing-text">
+                                    DÉVELOPPEUR WEB FULL-STACK
+                                </h2>
+                                <div class="hero-tagline">
+                                    <span class="bracket">[</span>
+                                    <span class="tagline-text">Créateur d'expériences digitales uniques</span>
+                                    <span class="bracket">]</span>
+                                </div>
+                                
+                                <div class="cta-buttons">
+                                    <a href="projets.html" target="_blank" class="btn btn-primary neon-btn">
+                                        <i class="fas fa-rocket"></i>
+                                        <span>VOIR MES PROJETS</span>
+                                        <div class="btn-glow"></div>
+                                    </a>
+                                    <a href="#contact" class="btn btn-secondary cyber-btn">
+                                        <i class="fas fa-satellite-dish"></i>
+                                        <span>ME CONTACTER</span>
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="cursor-line">
+                                <span class="prompt">root@portfolio:~$</span>
+                                <span class="cursor blink">█</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Stats gaming style -->
+                    <div class="hero-stats">
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <span class="stat-number" data-target="50000">0</span>
+                                    <span class="stat-label">LIGNES DE CODE</span>
+                                </div>
+                            </div>
+                            
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-project-diagram"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <span class="stat-number" data-target="25">0</span>
+                                    <span class="stat-label">PROJETS RÉALISÉS</span>
+                                </div>
+                            </div>
+                            
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <span class="stat-number" data-target="100">0</span>
+                                    <span class="stat-label">CLIENTS SATISFAITS</span>
+                                </div>
+                            </div>
+                            
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-coffee"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <span class="stat-number" data-target="9999">0</span>
+                                    <span class="stat-label">CAFÉS BUS</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Particules cyber -->
+            <div class="cyber-particles">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+            </div>
+        </section>
+
+        <!-- Section À Propos -->
+        <section id="about" class="section about-section">
+            <div class="container">
+                <h2 class="section-title cyber-title">
+                    <span class="title-icon"><i class="fas fa-user-astronaut"></i></span>
+                    <span class="title-text cyber-glitch" data-text="À PROPOS DE MOI">À PROPOS DE MOI</span>
+                    <span class="title-decoration"></span>
+                </h2>
+                
+                <div class="about-grid">
+                    <!-- Panel de code -->
+                    <div class="code-panel">
+                        <div class="panel-header">
+                            <div class="panel-controls">
+                                <span class="control-btn close"></span>
+                                <span class="control-btn minimize"></span>
+                                <span class="control-btn maximize"></span>
+                            </div>
+                            <div class="panel-title">
+                                <i class="fas fa-file-code"></i>
+                                developer_profile.js
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="code-editor">
+<pre><code><span class="code-comment">// Configuration développeur</span>
+<span class="code-keyword">const</span> <span class="code-variable">developer</span> <span class="code-operator">=</span> {
+  <span class="code-property">name</span><span class="code-operator">:</span> <span class="code-string">"Rayan Maillard"</span>,
+  <span class="code-property">email</span><span class="code-operator">:</span> <span class="code-string">"rayanmaillard023@gmail.com"</span>,
+  <span class="code-property">phone</span><span class="code-operator">:</span> <span class="code-string">"07 81 33 88 30"</span>,
+  <span class="code-property">profession</span><span class="code-operator">:</span> <span class="code-string">"Développeur Web Full-Stack"</span>,
+  <span class="code-property">location</span><span class="code-operator">:</span> <span class="code-string">"France"</span>,
+  <span class="code-property">specialities</span><span class="code-operator">:</span> [
+    <span class="code-string">"Sites web responsive"</span>,
+    <span class="code-string">"Applications web"</span>,
+    <span class="code-string">"E-commerce"</span>,
+    <span class="code-string">"Optimisation SEO"</span>
+  ],
+  <span class="code-property">motto</span><span class="code-operator">:</span> <span class="code-string">"Code with passion, debug with patience"</span>,
+  <span class="code-property">available</span><span class="code-operator">:</span> <span class="code-boolean">true</span>
+};
+
+<span class="code-comment">// Fonction d'initialisation</span>
+<span class="code-keyword">function</span> <span class="code-function">initDeveloper</span>() {
+  <span class="code-keyword">return</span> <span class="code-string">"Ready to create amazing websites!"</span>;
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Informations personnelles -->
+                    <div class="about-info">
+                        <div class="info-card">
+                            <div class="card-header">
+                                <i class="fas fa-user-circle"></i>
+                                <span>PROFIL DÉVELOPPEUR</span>
+                            </div>
+                            <div class="card-content">
+                                <p class="about-description">
+                                    Passionné par le développement web depuis plusieurs années, je me spécialise dans la création 
+                                    de sites web modernes, performants et adaptés aux besoins spécifiques de chaque client. 
+                                    Mon approche combine créativité technique et rigueur professionnelle pour livrer des solutions 
+                                    digitales qui dépassent les attentes.
+                                </p>
+                                
+                                <div class="skills-showcase">
+                                    <h3>Compétences principales</h3>
+                                    <div class="skills-tags">
+                                        <span class="skill-tag frontend">HTML5</span>
+                                        <span class="skill-tag frontend">CSS3</span>
+                                        <span class="skill-tag frontend">JavaScript</span>
+                                        <span class="skill-tag frontend">React</span>
+                                        <span class="skill-tag frontend">Vue.js</span>
+                                        <span class="skill-tag backend">Node.js</span>
+                                        <span class="skill-tag backend">PHP</span>
+                                        <span class="skill-tag backend">MySQL</span>
+                                        <span class="skill-tag tools">Git</span>
+                                        <span class="skill-tag tools">Responsive Design</span>
+                                        <span class="skill-tag tools">SEO</span>
+                                        <span class="skill-tag tools">UX/UI</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="achievements">
+                                    <h3>Certifications & Réalisations</h3>
+                                    <div class="achievement-list">
+                                        <div class="achievement-item">
+                                            <i class="fas fa-trophy"></i>
+                                            <span>Expert en développement Frontend</span>
+                                        </div>
+                                        <div class="achievement-item">
+                                            <i class="fas fa-server"></i>
+                                            <span>Maîtrise du développement Backend</span>
+                                        </div>
+                                        <div class="achievement-item">
+                                            <i class="fas fa-mobile-alt"></i>
+                                            <span>Spécialiste Responsive Design</span>
+                                        </div>
+                                        <div class="achievement-item">
+                                            <i class="fas fa-search"></i>
+                                            <span>Optimisation SEO avancée</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Section témoignages -->
+                <div class="testimonials-section">
+                    <h3 class="testimonials-title">
+                        <i class="fas fa-comments"></i>
+                        Ce que disent mes clients
+                    </h3>
+                    <div class="testimonials-grid">
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <div class="client-info">
+                                    <strong>Marie Dubois</strong>
+                                    <span>Directrice Marketing - TechCorp</span>
+                                </div>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <p class="testimonial-text">
+                                "Rayan a créé notre site vitrine avec un professionnalisme remarquable. 
+                                Le résultat dépasse nos attentes et notre taux de conversion a augmenté de 150% !"
+                            </p>
+                        </div>
+                        
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <div class="client-info">
+                                    <strong>Pierre Martin</strong>
+                                    <span>Fondateur - EcoShop</span>
+                                </div>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <p class="testimonial-text">
+                                "Application e-commerce parfaite ! Rayan a su comprendre nos besoins et livrer 
+                                dans les délais. Un développeur de confiance que je recommande vivement."
+                            </p>
+                        </div>
+                        
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <div class="client-info">
+                                    <strong>Sophie Laurent</strong>
+                                    <span>Artiste - Galerie Moderne</span>
+                                </div>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <p class="testimonial-text">
+                                "Site portfolio absolument magnifique ! Rayan a su mettre en valeur mon travail 
+                                artistique avec une approche créative et technique impressionnante."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Contact -->
+        <section id="contact" class="section contact-section">
+            <div class="container">
+                <h2 class="section-title cyber-title">
+                    <span class="title-icon"><i class="fas fa-satellite-dish"></i></span>
+                    <span class="title-text cyber-glitch" data-text="ÉTABLIR LA CONNEXION">ÉTABLIR LA CONNEXION</span>
+                    <span class="title-decoration"></span>
+                </h2>
+                
+                <div class="contact-grid">
+                    <!-- Informations de contact -->
+                    <div class="contact-info">
+                        <div class="contact-panel">
+                            <div class="panel-header">
+                                <div class="panel-controls">
+                                    <span class="control-btn close"></span>
+                                    <span class="control-btn minimize"></span>
+                                    <span class="control-btn maximize"></span>
+                                </div>
+                                <div class="panel-title">
+                                    <i class="fas fa-address-book"></i>
+                                    contact_info.exe
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="contact-methods">
+                                    <div class="contact-method">
+                                        <div class="method-icon">
+                                            <i class="fas fa-envelope"></i>
+                                        </div>
+                                        <div class="method-info">
+                                            <strong>Email</strong>
+                                            <a href="mailto:rayanmaillard023@gmail.com">rayanmaillard023@gmail.com</a>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="contact-method">
+                                        <div class="method-icon">
+                                            <i class="fas fa-phone"></i>
+                                        </div>
+                                        <div class="method-info">
+                                            <strong>Téléphone</strong>
+                                            <a href="tel:0781338830">07 81 33 88 30</a>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="contact-method">
+                                        <div class="method-icon">
+                                            <i class="fas fa-clock"></i>
+                                        </div>
+                                        <div class="method-info">
+                                            <strong>Disponibilité</strong>
+                                            <span>Lun - Ven : 9h - 18h<br>Sam : 10h - 16h</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="contact-method">
+                                        <div class="method-icon">
+                                            <i class="fas fa-rocket"></i>
+                                        </div>
+                                        <div class="method-info">
+                                            <strong>Temps de réponse</strong>
+                                            <span>< 24h garanti</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-cta">
+                                    <h3>Prêt à démarrer votre projet ?</h3>
+                                    <p>Contactez-moi dès maintenant pour discuter de vos besoins !</p>
+                                    <div class="cta-buttons">
+                                        <a href="mailto:rayanmaillard023@gmail.com" class="btn btn-primary neon-btn">
+                                            <i class="fas fa-envelope"></i>
+                                            <span>ENVOYER UN EMAIL</span>
+                                            <div class="btn-glow"></div>
+                                        </a>
+                                        <a href="tel:0781338830" class="btn btn-secondary cyber-btn">
+                                            <i class="fas fa-phone"></i>
+                                            <span>APPELER MAINTENANT</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Formulaire de contact -->
+                    <div class="contact-form-container">
+                        <div class="form-panel">
+                            <div class="panel-header">
+                                <div class="panel-controls">
+                                    <span class="control-btn close"></span>
+                                    <span class="control-btn minimize"></span>
+                                    <span class="control-btn maximize"></span>
+                                </div>
+                                <div class="panel-title">
+                                    <i class="fas fa-terminal"></i>
+                                    message_composer.exe
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <form class="contact-form" id="contactForm">
+                                    <div class="form-group">
+                                        <label for="name" class="form-label">
+                                            <i class="fas fa-user"></i>
+                                            Nom complet *
+                                        </label>
+                                        <input type="text" id="name" name="name" class="form-input" required>
+                                        <div class="input-border"></div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="email" class="form-label">
+                                            <i class="fas fa-envelope"></i>
+                                            Adresse email *
+                                        </label>
+                                        <input type="email" id="email" name="email" class="form-input" required>
+                                        <div class="input-border"></div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="phone" class="form-label">
+                                            <i class="fas fa-phone"></i>
+                                            Téléphone
+                                        </label>
+                                        <input type="tel" id="phone" name="phone" class="form-input">
+                                        <div class="input-border"></div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="project" class="form-label">
+                                            <i class="fas fa-project-diagram"></i>
+                                            Type de projet *
+                                        </label>
+                                        <select id="project" name="project" class="form-input" required>
+                                            <option value="">Sélectionnez votre projet</option>
+                                            <option value="site-vitrine">Site vitrine</option>
+                                            <option value="e-commerce">Boutique e-commerce</option>
+                                            <option value="application">Application web</option>
+                                            <option value="landing">Landing page</option>
+                                            <option value="refonte">Refonte de site</option>
+                                            <option value="autre">Autre projet</option>
+                                        </select>
+                                        <div class="input-border"></div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="message" class="form-label">
+                                            <i class="fas fa-comment-dots"></i>
+                                            Décrivez votre projet *
+                                        </label>
+                                        <textarea id="message" name="message" rows="5" class="form-input" required placeholder="Parlez-moi de votre projet, vos objectifs, votre budget approximatif..."></textarea>
+                                        <div class="input-border"></div>
+                                    </div>
+                                    
+                                    <button type="submit" class="btn btn-submit neon-btn">
+                                        <i class="fas fa-rocket"></i>
+                                        <span>LANCER LA MISSION</span>
+                                        <div class="btn-glow"></div>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <div class="footer-logo">
+                        <i class="fas fa-terminal"></i>
+                        <span>RAYAN_MAILLARD.EXE</span>
+                    </div>
+                    <p class="footer-text">
+                        Développeur web passionné créant des expériences digitales uniques
+                    </p>
+                </div>
+                
+                <div class="footer-links">
+                    <a href="projets.html" target="_blank">Mes Projets</a>
+                    <a href="services.html" target="_blank">Services</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                
+                <div class="footer-social">
+                    <a href="mailto:rayanmaillard023@gmail.com" class="social-link">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="tel:0781338830" class="social-link">
+                        <i class="fas fa-phone"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Rayan Maillard - Tous droits réservés</p>
+                <p class="footer-tagline">Coded with <i class="fas fa-heart"></i> and lots of <i class="fas fa-coffee"></i></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>

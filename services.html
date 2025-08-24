@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services & Tarifs - Rayan Maillard | Développeur Web Professionnel</title>
+    <meta name="description" content="Découvrez mes services de développement web : sites vitrines, e-commerce, applications web. Tarifs transparents et processus de collaboration détaillé.">
+    <meta name="keywords" content="services développement web, tarifs site web, création site internet, développeur freelance, devis web">
+    
+    <!-- Google Fonts - Polices rétro gaming -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=VT323:wght@400&family=Press+Start+2P&family=Share+Tech+Mono:wght@400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    
+    <!-- CSS Principal -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <style>
+        /* Styles spécifiques à la page services */
+        .services-page {
+            background: linear-gradient(135deg, rgba(138, 43, 226, 0.05) 0%, rgba(0, 255, 255, 0.05) 100%);
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-xxl);
+        }
+        
+        .service-card {
+            background: rgba(26, 26, 26, 0.9);
+            border: var(--border-width) solid var(--neon-purple);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+            height: fit-content;
+        }
+        
+        .service-card:hover {
+            border-color: var(--neon-cyan);
+            box-shadow: var(--glow-cyan);
+            transform: translateY(-10px);
+        }
+        
+        .service-card.featured {
+            border-color: var(--neon-pink);
+            box-shadow: var(--glow-pink);
+        }
+        
+        .service-card.featured::before {
+            content: 'POPULAIRE';
+            position: absolute;
+            top: -1px;
+            right: var(--spacing-lg);
+            background: var(--neon-pink);
+            color: var(--dark-bg);
+            padding: var(--spacing-xs) var(--spacing-md);
+            font-family: var(--font-pixel);
+            font-size: 0.7rem;
+            font-weight: bold;
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
+            z-index: 10;
+        }
+        
+        .service-header {
+            background: var(--dark-tertiary);
+            padding: var(--spacing-lg);
+            text-align: center;
+            border-bottom: 1px solid currentColor;
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: var(--neon-cyan);
+            text-shadow: var(--glow-cyan);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .service-card.featured .service-icon {
+            color: var(--neon-pink);
+            text-shadow: var(--glow-pink);
+        }
+        
+        .service-title {
+            font-family: var(--font-pixel);
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .service-subtitle {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .service-content {
+            padding: var(--spacing-lg);
+        }
+        
+        .service-price {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .price-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .price-value {
+            font-family: var(--font-pixel);
+            font-size: 2rem;
+            color: var(--neon-green);
+            text-shadow: var(--glow-green);
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .price-unit {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .service-features {
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .features-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .features-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        
+        .features-list li i {
+            color: var(--neon-green);
+            text-shadow: var(--glow-green);
+            margin-top: 2px;
+            width: 16px;
+            flex-shrink: 0;
+        }
+        
+        .service-cta {
+            text-align: center;
+        }
+        
+        .service-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            padding: var(--spacing-md) var(--spacing-lg);
+            border: var(--border-width) solid var(--neon-purple);
+            border-radius: var(--border-radius);
+            background: transparent;
+            color: var(--neon-purple);
+            text-decoration: none;
+            font-family: var(--font-secondary);
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-btn:hover {
+            background: rgba(138, 43, 226, 0.1);
+            box-shadow: var(--glow-purple);
+            transform: translateY(-2px);
+        }
+        
+        .service-card.featured .service-btn {
+            border-color: var(--neon-pink);
+            color: var(--neon-pink);
+        }
+        
+        .service-card.featured .service-btn:hover {
+            background: rgba(255, 0, 128, 0.1);
+            box-shadow: var(--glow-pink);
+        }
+        
+        .process-section {
+            margin: var(--spacing-xxl) 0;
+        }
+        
+        .process-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--neon-cyan), var(--neon-pink), var(--neon-green));
+            transform: translateX(-50%);
+        }
+        
+        .process-step {
+            position: relative;
+            margin-bottom: var(--spacing-xxl);
+            display: flex;
+            align-items: center;
+        }
+        
+        .process-step:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .step-content {
+            flex: 1;
+            background: rgba(26, 26, 26, 0.9);
+            border: 1px solid var(--neon-cyan);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            margin: 0 var(--spacing-lg);
+            transition: all 0.3s ease;
+        }
+        
+        .process-step:nth-child(even) .step-content {
+            border-color: var(--neon-pink);
+        }
+        
+        .process-step:nth-child(3) .step-content {
+            border-color: var(--neon-green);
+        }
+        
+        .process-step:nth-child(4) .step-content {
+            border-color: var(--neon-purple);
+        }
+        
+        .step-content:hover {
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            transform: scale(1.02);
+        }
+        
+        .step-number {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: var(--dark-bg);
+            border: 3px solid var(--neon-cyan);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-pixel);
+            font-size: 1.2rem;
+            color: var(--neon-cyan);
+            text-shadow: var(--glow-cyan);
+            z-index: 10;
+        }
+        
+        .process-step:nth-child(even) .step-number {
+            border-color: var(--neon-pink);
+            color: var(--neon-pink);
+            text-shadow: var(--glow-pink);
+        }
+        
+        .process-step:nth-child(3) .step-number {
+            border-color: var(--neon-green);
+            color: var(--neon-green);
+            text-shadow: var(--glow-green);
+        }
+        
+        .process-step:nth-child(4) .step-number {
+            border-color: var(--neon-purple);
+            color: var(--neon-purple);
+            text-shadow: var(--glow-purple);
+        }
+        
+        .step-title {
+            font-family: var(--font-secondary);
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .step-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .step-duration {
+            font-family: var(--font-code);
+            font-size: 0.9rem;
+            color: var(--neon-orange);
+            text-shadow: 0 0 5px var(--neon-orange);
+        }
+        
+        .guarantees-section {
+            background: rgba(26, 26, 26, 0.9);
+            border: var(--border-width) solid var(--neon-green);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-xxl);
+            margin: var(--spacing-xxl) 0;
+            text-align: center;
+        }
+        
+        .guarantees-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-xl);
+        }
+        
+        .guarantee-item {
+            text-align: center;
+        }
+        
+        .guarantee-icon {
+            font-size: 2.5rem;
+            color: var(--neon-green);
+            text-shadow: var(--glow-green);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .guarantee-title {
+            font-family: var(--font-secondary);
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .guarantee-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .faq-section {
+            margin: var(--spacing-xxl) 0;
+        }
+        
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: rgba(26, 26, 26, 0.9);
+            border: 1px solid var(--dark-quaternary);
+            border-radius: var(--border-radius);
+            margin-bottom: var(--spacing-md);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            border-color: var(--neon-cyan);
+        }
+        
+        .faq-question {
+            padding: var(--spacing-lg);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font-secondary);
+            color: var(--text-primary);
+            user-select: none;
+        }
+        
+        .faq-question:hover {
+            color: var(--neon-cyan);
+        }
+        
+        .faq-answer {
+            padding: 0 var(--spacing-lg) var(--spacing-lg);
+            color: var(--text-secondary);
+            line-height: 1.6;
+            display: none;
+        }
+        
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+        
+        .faq-item.active .faq-question {
+            color: var(--neon-cyan);
+        }
+        
+        .faq-toggle {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+        
+        @media screen and (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-lg);
+            }
+            
+            .process-timeline::before {
+                left: 30px;
+            }
+            
+            .process-step {
+                flex-direction: column !important;
+                padding-left: 80px;
+            }
+            
+            .step-number {
+                left: 30px;
+                transform: translateY(-50%);
+            }
+            
+            .step-content {
+                margin: var(--spacing-lg) 0 0 0;
+            }
+            
+            .guarantees-section {
+                padding: var(--spacing-lg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Effets visuels rétro -->
+    <div class="scanlines"></div>
+    <div class="grid-overlay"></div>
+    
+    <!-- Header simplifié pour la page services -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-name">SERVICES</span>
+                    <span class="logo-ext">.EXE</span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page des services -->
+    <main class="services-page">
+        <div class="container">
+            
+            <!-- Bouton retour -->
+            <a href="index.html" class="back-to-home">
+                <i class="fas fa-arrow-left"></i>
+                <span>Retour Accueil</span>
+            </a>
+            
+            <!-- Titre de la page -->
+            <div class="section-title cyber-title">
+                <span class="title-icon"><i class="fas fa-cogs"></i></span>
+                <span class="title-text cyber-glitch" data-text="MES SERVICES & TARIFS">MES SERVICES & TARIFS</span>
+                <span class="title-decoration"></span>
+            </div>
+            
+            <!-- Grille des services -->
+            <div class="services-grid">
+                
+                <!-- Service 1: Site Vitrine -->
+                <div class="service-card fade-in">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3 class="service-title">Site Vitrine</h3>
+                        <p class="service-subtitle">
+                            Parfait pour présenter votre activité, vos services et attirer de nouveaux clients
+                        </p>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-price">
+                            <div class="price-label">À partir de</div>
+                            <div class="price-value">€800</div>
+                            <div class="price-unit">Clés en main</div>
+                        </div>
+                        
+                        <div class="service-features">
+                            <ul class="features-list">
+                                <li><i class="fas fa-check"></i>Design responsive (mobile/tablette/desktop)</li>
+                                <li><i class="fas fa-check"></i>5 pages maximum</li>
+                                <li><i class="fas fa-check"></i>Optimisation SEO de base</li>
+                                <li><i class="fas fa-check"></i>Formulaire de contact</li>
+                                <li><i class="fas fa-check"></i>Galerie photos</li>
+                                <li><i class="fas fa-check"></i>Intégration réseaux sociaux</li>
+                                <li><i class="fas fa-check"></i>Hébergement 1 an inclus</li>
+                                <li><i class="fas fa-check"></i>Formation à la gestion</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-cta">
+                            <a href="index.html#contact" class="service-btn">
+                                <i class="fas fa-envelope"></i>
+                                <span>Demander un devis</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 2: E-commerce (Featured) -->
+                <div class="service-card featured fade-in animate-delay-1">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <h3 class="service-title">Boutique E-commerce</h3>
+                        <p class="service-subtitle">
+                            Solution complète pour vendre en ligne avec gestion des stocks et paiements sécurisés
+                        </p>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-price">
+                            <div class="price-label">À partir de</div>
+                            <div class="price-value">€2500</div>
+                            <div class="price-unit">Clés en main</div>
+                        </div>
+                        
+                        <div class="service-features">
+                            <ul class="features-list">
+                                <li><i class="fas fa-check"></i>Catalogue produits illimité</li>
+                                <li><i class="fas fa-check"></i>Gestion des stocks automatisée</li>
+                                <li><i class="fas fa-check"></i>Paiement sécurisé (Stripe/PayPal)</li>
+                                <li><i class="fas fa-check"></i>Panier et checkout optimisé</li>
+                                <li><i class="fas fa-check"></i>Comptes clients et commandes</li>
+                                <li><i class="fas fa-check"></i>Interface d'administration</li>
+                                <li><i class="fas fa-check"></i>Analytics et rapports</li>
+                                <li><i class="fas fa-check"></i>Formation complète incluse</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-cta">
+                            <a href="index.html#contact" class="service-btn">
+                                <i class="fas fa-envelope"></i>
+                                <span>Demander un devis</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 3: Application Web -->
+                <div class="service-card fade-in animate-delay-2">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3 class="service-title">Application Web</h3>
+                        <p class="service-subtitle">
+                            Applications sur mesure pour automatiser vos processus métier
+                        </p>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-price">
+                            <div class="price-label">À partir de</div>
+                            <div class="price-value">€4000</div>
+                            <div class="price-unit">Sur devis</div>
+                        </div>
+                        
+                        <div class="service-features">
+                            <ul class="features-list">
+                                <li><i class="fas fa-check"></i>Développement sur mesure</li>
+                                <li><i class="fas fa-check"></i>Interface utilisateur intuitive</li>
+                                <li><i class="fas fa-check"></i>Base de données sécurisée</li>
+                                <li><i class="fas fa-check"></i>API REST pour intégrations</li>
+                                <li><i class="fas fa-check"></i>Gestion des utilisateurs</li>
+                                <li><i class="fas fa-check"></i>Tableaux de bord analytics</li>
+                                <li><i class="fas fa-check"></i>Maintenance 6 mois incluse</li>
+                                <li><i class="fas fa-check"></i>Documentation technique</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-cta">
+                            <a href="index.html#contact" class="service-btn">
+                                <i class="fas fa-envelope"></i>
+                                <span>Demander un devis</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 4: Landing Page -->
+                <div class="service-card fade-in animate-delay-3">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3 class="service-title">Landing Page</h3>
+                        <p class="service-subtitle">
+                            Page haute conversion pour vos campagnes marketing et lancements produit
+                        </p>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-price">
+                            <div class="price-label">À partir de</div>
+                            <div class="price-value">€500</div>
+                            <div class="price-unit">Clés en main</div>
+                        </div>
+                        
+                        <div class="service-features">
+                            <ul class="features-list">
+                                <li><i class="fas fa-check"></i>Design orienté conversion</li>
+                                <li><i class="fas fa-check"></i>Page unique optimisée</li>
+                                <li><i class="fas fa-check"></i>Formulaires d'inscription</li>
+                                <li><i class="fas fa-check"></i>Intégration analytics</li>
+                                <li><i class="fas fa-check"></i>A/B testing setup</li>
+                                <li><i class="fas fa-check"></i>Animations et effets</li>
+                                <li><i class="fas fa-check"></i>Livraison rapide (1 semaine)</li>
+                                <li><i class="fas fa-check"></i>Support technique 3 mois</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-cta">
+                            <a href="index.html#contact" class="service-btn">
+                                <i class="fas fa-envelope"></i>
+                                <span>Demander un devis</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 5: Refonte/Optimisation -->
+                <div class="service-card fade-in animate-delay-4">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <h3 class="service-title">Refonte & Optimisation</h3>
+                        <p class="service-subtitle">
+                            Modernisation de votre site existant pour améliorer performances et conversions
+                        </p>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-price">
+                            <div class="price-label">À partir de</div>
+                            <div class="price-value">€1200</div>
+                            <div class="price-unit">Sur devis</div>
+                        </div>
+                        
+                        <div class="service-features">
+                            <ul class="features-list">
+                                <li><i class="fas fa-check"></i>Audit complet du site existant</li>
+                                <li><i class="fas fa-check"></i>Refonte graphique moderne</li>
+                                <li><i class="fas fa-check"></i>Optimisation des performances</li>
+                                <li><i class="fas fa-check"></i>Amélioration du SEO</li>
+                                <li><i class="fas fa-check"></i>Migration sécurisée des données</li>
+                                <li><i class="fas fa-check"></i>Tests de compatibilité</li>
+                                <li><i class="fas fa-check"></i>Formation aux nouveautés</li>
+                                <li><i class="fas fa-check"></i>Support post-migration</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-cta">
+                            <a href="index.html#contact" class="service-btn">
+                                <i class="fas fa-envelope"></i>
+                                <span>Demander un devis</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 6: Maintenance -->
+                <div class="service-card fade-in animate-delay-5">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3 class="service-title">Maintenance & Support</h3>
+                        <p class="service-subtitle">
+                            Gardez votre site à jour, sécurisé et performant avec un support technique dédié
+                        </p>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-price">
+                            <div class="price-label">À partir de</div>
+                            <div class="price-value">€150</div>
+                            <div class="price-unit">/ mois</div>
+                        </div>
+                        
+                        <div class="service-features">
+                            <ul class="features-list">
+                                <li><i class="fas fa-check"></i>Mises à jour sécurité</li>
+                                <li><i class="fas fa-check"></i>Sauvegardes automatiques</li>
+                                <li><i class="fas fa-check"></i>Monitoring de performance</li>
+                                <li><i class="fas fa-check"></i>Support technique prioritaire</li>
+                                <li><i class="fas fa-check"></i>Corrections de bugs</li>
+                                <li><i class="fas fa-check"></i>Rapports mensuels</li>
+                                <li><i class="fas fa-check"></i>Optimisations continues</li>
+                                <li><i class="fas fa-check"></i>Sans engagement</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-cta">
+                            <a href="index.html#contact" class="service-btn">
+                                <i class="fas fa-envelope"></i>
+                                <span>Demander un devis</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Section processus de collaboration -->
+            <section class="process-section">
+                <div class="section-title cyber-title">
+                    <span class="title-icon"><i class="fas fa-route"></i></span>
+                    <span class="title-text cyber-glitch" data-text="PROCESSUS DE COLLABORATION">PROCESSUS DE COLLABORATION</span>
+                    <span class="title-decoration"></span>
+                </div>
+                
+                <div class="process-timeline">
+                    <div class="process-step fade-in">
+                        <div class="step-number">01</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Analyse & Devis</h3>
+                            <p class="step-description">
+                                Nous échangeons sur vos besoins, objectifs et contraintes. J'analyse votre projet 
+                                et vous propose un devis détaillé avec délais et livrables précis.
+                            </p>
+                            <div class="step-duration">Durée : 1-2 jours</div>
+                        </div>
+                    </div>
+                    
+                    <div class="process-step fade-in animate-delay-1">
+                        <div class="step-number">02</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Conception & Validation</h3>
+                            <p class="step-description">
+                                Création de maquettes, wireframes et prototypes. Validation du design, 
+                                de l'ergonomie et des fonctionnalités avant le début du développement.
+                            </p>
+                            <div class="step-duration">Durée : 3-5 jours</div>
+                        </div>
+                    </div>
+                    
+                    <div class="process-step fade-in animate-delay-2">
+                        <div class="step-number">03</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Développement</h3>
+                            <p class="step-description">
+                                Développement du site/application selon les spécifications validées. 
+                                Points d'étape réguliers et accès à une version de démonstration.
+                            </p>
+                            <div class="step-duration">Durée : 1-8 semaines selon projet</div>
+                        </div>
+                    </div>
+                    
+                    <div class="process-step fade-in animate-delay-3">
+                        <div class="step-number">04</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Tests & Livraison</h3>
+                            <p class="step-description">
+                                Tests complets sur tous appareils, corrections finales, mise en ligne 
+                                et formation. Support technique inclus pendant la période de garantie.
+                            </p>
+                            <div class="step-duration">Durée : 2-3 jours</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Section garanties -->
+            <section class="guarantees-section">
+                <h2 class="cyber-glitch" data-text="MES GARANTIES QUALITÉ">MES GARANTIES QUALITÉ</h2>
+                <p style="color: var(--text-secondary); margin-top: var(--spacing-md);">
+                    Votre satisfaction est ma priorité. Je m'engage à vous livrer un travail de qualité professionnelle.
+                </p>
+                
+                <div class="guarantees-grid">
+                    <div class="guarantee-item">
+                        <div class="guarantee-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="guarantee-title">Satisfaction Garantie</h3>
+                        <p class="guarantee-description">
+                            Révisions illimitées jusqu'à validation finale. Votre satisfaction est ma priorité absolue.
+                        </p>
+                    </div>
+                    
+                    <div class="guarantee-item">
+                        <div class="guarantee-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3 class="guarantee-title">Délais Respectés</h3>
+                        <p class="guarantee-description">
+                            Engagement ferme sur les délais de livraison. Communication transparente tout au long du projet.
+                        </p>
+                    </div>
+                    
+                    <div class="guarantee-item">
+                        <div class="guarantee-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3 class="guarantee-title">100% Responsive</h3>
+                        <p class="guarantee-description">
+                            Sites parfaitement adaptés à tous les écrans : mobile, tablette et desktop garantis.
+                        </p>
+                    </div>
+                    
+                    <div class="guarantee-item">
+                        <div class="guarantee-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3 class="guarantee-title">Support Inclus</h3>
+                        <p class="guarantee-description">
+                            Support technique et corrections mineures inclus pendant la période de garantie.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Section FAQ -->
+            <section class="faq-section">
+                <div class="section-title cyber-title">
+                    <span class="title-icon"><i class="fas fa-question-circle"></i></span>
+                    <span class="title-text cyber-glitch" data-text="QUESTIONS FRÉQUENTES">QUESTIONS FRÉQUENTES</span>
+                    <span class="title-decoration"></span>
+                </div>
+                
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Quels sont vos délais de réalisation ?</span>
+                            <i class="fas fa-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Les délais varient selon la complexité du projet : 1-2 semaines pour une landing page, 
+                            3-5 semaines pour un site vitrine, 6-10 semaines pour un e-commerce. 
+                            Un planning précis est établi lors du devis.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Proposez-vous l'hébergement et la maintenance ?</span>
+                            <i class="fas fa-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Oui, je propose des solutions d'hébergement adaptées à vos besoins ainsi que des contrats 
+                            de maintenance pour garantir la sécurité et les performances de votre site.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Puis-je modifier le contenu de mon site moi-même ?</span>
+                            <i class="fas fa-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Absolument ! Tous mes sites incluent une interface d'administration intuitive. 
+                            Je vous forme à son utilisation et fournis une documentation complète.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Travaillez-vous avec des clients hors de France ?</span>
+                            <i class="fas fa-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Oui, je travaille avec des clients internationaux. La communication se fait principalement 
+                            par email et visioconférence. Les paiements peuvent s'effectuer en EUR ou USD.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Que se passe-t-il après la livraison ?</span>
+                            <i class="fas fa-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Après livraison, vous bénéficiez d'une période de garantie pour les corrections mineures. 
+                            Je reste disponible pour tout support technique ou évolution future de votre projet.
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Call to action final -->
+            <div class="text-center" style="margin-top: var(--spacing-xxl);">
+                <h2 class="cyber-glitch" data-text="PRÊT À DÉMARRER VOTRE PROJET ?">
+                    PRÊT À DÉMARRER VOTRE PROJET ?
+                </h2>
+                <p style="color: var(--text-secondary); margin: var(--spacing-lg) 0;">
+                    Discutons de vos besoins et obtenez un devis personnalisé sous 24h
+                </p>
+                <div class="cta-buttons">
+                    <a href="index.html#contact" class="btn btn-primary neon-btn">
+                        <i class="fas fa-envelope"></i>
+                        <span>Demander un Devis</span>
+                        <div class="btn-glow"></div>
+                    </a>
+                    <a href="tel:0781338830" class="btn btn-secondary cyber-btn">
+                        <i class="fas fa-phone"></i>
+                        <span>Appeler Maintenant</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script>
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                const isActive = faqItem.classList.contains('active');
+                
+                // Fermer toutes les autres FAQ
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Ouvrir/fermer la FAQ cliquée
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
