@@ -5,6 +5,7 @@ let deferredPrompt;
 let currentSection = 'dashboard';
 let workoutTimer = null;
 let workoutSeconds = 0;
+let userManager = null;
 
 // Initialize App
 document.addEventListener('DOMContentLoaded', () => {
@@ -23,8 +24,12 @@ function initializeApp() {
         console.log('App running in standalone mode');
     }
 
-    // Load saved data from localStorage
-    loadUserData();
+    // Initialize User Manager
+    if (typeof UserManager !== 'undefined') {
+        userManager = new UserManager();
+        const user = userManager.init();
+        console.log('User loaded:', user.name || 'New User');
+    }
     
     // Initialize charts if on progress page
     if (document.querySelector('#weight-chart')) {
@@ -463,20 +468,123 @@ async function clearCache() {
 
 // Reset App
 function resetApp() {
-    localStorage.clear();
-    if ('caches' in window) {
-        caches.keys().then(names => {
-            names.forEach(name => caches.delete(name));
-        });
+    if (userManager) {
+        userManager.reset();
+    } else {
+        localStorage.clear();
+        if ('caches' in window) {
+            caches.keys().then(names => {
+                names.forEach(name => caches.delete(name));
+            });
+        }
+        window.location.reload();
     }
-    window.location.reload();
 }
 
 // Edit Profile
 function editProfile() {
-    console.log('Edit profile');
-    // Implement profile editing logic
-    showNotification('Fonction d\'édition du profil en développement');
+    const modalHTML = `
+        <div id="editProfileModal" class="modal active">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeEditModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+                <h2>Modifier mon profil</h2>
+                
+                <form id="editProfileForm" style="padding: 20px 0;">
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 8px;">Nom</label>
+                        <input type="text" id="editName" value="${userManager.user.name}" 
+                               style="width: 100%; padding: 10px; background: var(--surface-light); 
+                                      border: 1px solid var(--surface-light); border-radius: 8px; color: white;">
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                        <div>
+                            <label style="display: block; margin-bottom: 8px;">Âge</label>
+                            <input type="number" id="editAge" value="${userManager.user.age}" 
+                                   style="width: 100%; padding: 10px; background: var(--surface-light); 
+                                          border: 1px solid var(--surface-light); border-radius: 8px; color: white;">
+                        </div>
+                        <div>
+                            <label style="display: block; margin-bottom: 8px;">Poids (kg)</label>
+                            <input type="number" id="editWeight" value="${userManager.user.weight}" 
+                                   style="width: 100%; padding: 10px; background: var(--surface-light); 
+                                          border: 1px solid var(--surface-light); border-radius: 8px; color: white;">
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 8px;">Taille (cm)</label>
+                        <input type="number" id="editHeight" value="${userManager.user.height}" 
+                               style="width: 100%; padding: 10px; background: var(--surface-light); 
+                                      border: 1px solid var(--surface-light); border-radius: 8px; color: white;">
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 8px;">Objectif</label>
+                        <select id="editGoal" style="width: 100%; padding: 10px; background: var(--surface-light); 
+                                                     border: 1px solid var(--surface-light); border-radius: 8px; color: white;">
+                            <option value="weight-loss" ${userManager.user.goal === 'weight-loss' ? 'selected' : ''}>Perte de poids</option>
+                            <option value="muscle-gain" ${userManager.user.goal === 'muscle-gain' ? 'selected' : ''}>Prise de muscle</option>
+                            <option value="endurance" ${userManager.user.goal === 'endurance' ? 'selected' : ''}>Endurance</option>
+                            <option value="general" ${userManager.user.goal === 'general' ? 'selected' : ''}>Forme générale</option>
+                        </select>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 8px;">Niveau</label>
+                        <select id="editLevel" style="width: 100%; padding: 10px; background: var(--surface-light); 
+                                                      border: 1px solid var(--surface-light); border-radius: 8px; color: white;">
+                            <option value="beginner" ${userManager.user.level === 'beginner' ? 'selected' : ''}>Débutant</option>
+                            <option value="intermediate" ${userManager.user.level === 'intermediate' ? 'selected' : ''}>Intermédiaire</option>
+                            <option value="advanced" ${userManager.user.level === 'advanced' ? 'selected' : ''}>Avancé</option>
+                        </select>
+                    </div>
+                    
+                    <div style="display: flex; gap: 15px;">
+                        <button type="button" onclick="closeEditModal()" 
+                                style="flex: 1; padding: 12px; background: var(--surface-light); 
+                                       color: white; border: none; border-radius: 8px; cursor: pointer;">
+                            Annuler
+                        </button>
+                        <button type="submit" 
+                                style="flex: 1; padding: 12px; background: var(--primary-color); 
+                                       color: white; border: none; border-radius: 8px; cursor: pointer;">
+                            Sauvegarder
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    `;
+    
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+    
+    document.getElementById('editProfileForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        saveProfile();
+    });
+}
+
+function closeEditModal() {
+    const modal = document.getElementById('editProfileModal');
+    if (modal) modal.remove();
+}
+
+function saveProfile() {
+    const updatedData = {
+        name: document.getElementById('editName').value,
+        age: document.getElementById('editAge').value,
+        weight: document.getElementById('editWeight').value,
+        height: document.getElementById('editHeight').value,
+        goal: document.getElementById('editGoal').value,
+        level: document.getElementById('editLevel').value
+    };
+    
+    userManager.updateProfile(updatedData);
+    closeEditModal();
+    showNotification('Profil mis à jour avec succès!');
 }
 
 // Add New Workout

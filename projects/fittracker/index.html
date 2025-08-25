@@ -635,10 +635,111 @@
     </div>
 
     <!-- Scripts -->
+    <!-- User Manager first -->
+    <script src="js/user-manager.js"></script>
+    <!-- Main App -->
     <script src="js/app.js"></script>
-    <script src="js/service-worker.js"></script>
     
     <!-- Chart.js for progress charts -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Activity Recording Functions -->
+    <script>
+        // Add new workout activity
+        function startWorkout() {
+            const workoutModal = `
+                <div id="workout-start-modal" class="modal active">
+                    <div class="modal-content">
+                        <h3>Enregistrer un entraînement</h3>
+                        <form id="workout-form" style="padding: 20px 0;">
+                            <div style="margin-bottom: 15px;">
+                                <label>Type d'entraînement</label>
+                                <select id="workout-type" style="width: 100%; padding: 10px; background: var(--surface-light); border: 1px solid var(--surface-light); border-radius: 8px; color: white;">
+                                    <option value="cardio">Cardio</option>
+                                    <option value="strength">Musculation</option>
+                                    <option value="yoga">Yoga</option>
+                                    <option value="cycling">Vélo</option>
+                                    <option value="swimming">Natation</option>
+                                </select>
+                            </div>
+                            <div style="margin-bottom: 15px;">
+                                <label>Nom de l'activité</label>
+                                <input type="text" id="workout-name" placeholder="Ex: Course matinale" required
+                                       style="width: 100%; padding: 10px; background: var(--surface-light); border: 1px solid var(--surface-light); border-radius: 8px; color: white;">
+                            </div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                                <div>
+                                    <label>Durée (min)</label>
+                                    <input type="number" id="workout-duration" placeholder="30" required
+                                           style="width: 100%; padding: 10px; background: var(--surface-light); border: 1px solid var(--surface-light); border-radius: 8px; color: white;">
+                                </div>
+                                <div>
+                                    <label>Calories</label>
+                                    <input type="number" id="workout-calories" placeholder="250"
+                                           style="width: 100%; padding: 10px; background: var(--surface-light); border: 1px solid var(--surface-light); border-radius: 8px; color: white;">
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 15px;">
+                                <label>Distance (km) - optionnel</label>
+                                <input type="number" step="0.1" id="workout-distance" placeholder="5.5"
+                                       style="width: 100%; padding: 10px; background: var(--surface-light); border: 1px solid var(--surface-light); border-radius: 8px; color: white;">
+                            </div>
+                            <div style="display: flex; gap: 15px;">
+                                <button type="button" onclick="closeWorkoutModal()"
+                                        style="flex: 1; padding: 12px; background: var(--surface-light); color: white; border: none; border-radius: 8px; cursor: pointer;">
+                                    Annuler
+                                </button>
+                                <button type="submit"
+                                        style="flex: 1; padding: 12px; background: var(--primary-color); color: white; border: none; border-radius: 8px; cursor: pointer;">
+                                    Enregistrer
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            `;
+            
+            document.body.insertAdjacentHTML('beforeend', workoutModal);
+            
+            document.getElementById('workout-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                saveWorkout();
+            });
+        }
+        
+        function closeWorkoutModal() {
+            const modal = document.getElementById('workout-start-modal');
+            if (modal) modal.remove();
+        }
+        
+        function saveWorkout() {
+            if (!userManager) {
+                alert('Veuillez d\'abord configurer votre profil');
+                return;
+            }
+            
+            const activity = {
+                type: document.getElementById('workout-type').value,
+                name: document.getElementById('workout-name').value,
+                duration: parseInt(document.getElementById('workout-duration').value),
+                calories: parseInt(document.getElementById('workout-calories').value) || 0,
+                distance: parseFloat(document.getElementById('workout-distance').value) || null
+            };
+            
+            userManager.addActivity(activity);
+            closeWorkoutModal();
+            showNotification('Entraînement enregistré! 💪');
+            
+            // Refresh the dashboard
+            if (typeof userManager.updateUI === 'function') {
+                userManager.updateUI();
+            }
+        }
+        
+        // Override the original startWorkout if needed
+        if (document.getElementById('start-workout')) {
+            document.getElementById('start-workout').onclick = startWorkout;
+        }
+    </script>
 </body>
 </html>
