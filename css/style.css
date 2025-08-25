@@ -90,7 +90,7 @@ body {
   );
   background-size: 100% 4px;
   pointer-events: none;
-  z-index: 1000;
+  z-index: -1;
   animation: scanlines 0.1s linear infinite;
 }
 
@@ -106,7 +106,7 @@ body {
     linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
   background-size: 50px 50px;
   pointer-events: none;
-  z-index: 1;
+  z-index: -1;
   opacity: 0.3;
 }
 
@@ -242,8 +242,7 @@ body {
 .main-content {
   margin-top: 80px;
   min-height: calc(100vh - 80px);
-   position: relative; /* Nécessaire pour que z-index fonctionne */
-  z-index: 10;        /* Soulève le contenu au-dessus des calques 1 et 0 */
+   
 }
 
 .container {
