@@ -1,0 +1,13 @@
+2025-08-25 22:56:43,567 INFO RPC interface 'supervisor' initialized
+2025-08-25 22:56:43,567 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2025-08-25 22:56:43,569 INFO daemonizing the supervisord process
+2025-08-25 22:56:43,570 INFO supervisord started with pid 3627
+2025-08-25 22:56:44,574 INFO spawned: 'portfolio-server' with pid 3630
+2025-08-25 22:56:44,686 WARN exited: portfolio-server (exit status 1; not expected)
+2025-08-25 22:56:45,689 INFO spawned: 'portfolio-server' with pid 3632
+2025-08-25 22:56:45,809 WARN exited: portfolio-server (exit status 1; not expected)
+2025-08-25 22:56:47,813 INFO spawned: 'portfolio-server' with pid 3635
+2025-08-25 22:56:47,926 WARN exited: portfolio-server (exit status 1; not expected)
+2025-08-25 22:56:50,933 INFO spawned: 'portfolio-server' with pid 3639
+2025-08-25 22:56:51,048 WARN exited: portfolio-server (exit status 1; not expected)
+2025-08-25 22:56:52,050 INFO gave up: portfolio-server entered FATAL state, too many start retries too quickly

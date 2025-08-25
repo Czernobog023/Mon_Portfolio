@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitTracker - Test Installation Mobile</title>
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #6200EA 0%, #3700B3 100%);
+            color: white;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .container {
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .emoji {
+            font-size: 4rem;
+            margin: 20px 0;
+        }
+        .info-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .status {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .status:last-child {
+            border-bottom: none;
+        }
+        .status-label {
+            font-weight: 500;
+        }
+        .status-value {
+            font-weight: 700;
+        }
+        .status-value.yes {
+            color: #4CAF50;
+        }
+        .status-value.no {
+            color: #f44336;
+        }
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: white;
+            color: #6200EA;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 10px;
+            transition: transform 0.3s;
+        }
+        .btn:hover {
+            transform: scale(1.05);
+        }
+        .install-btn {
+            background: #4CAF50;
+            color: white;
+            display: none;
+        }
+        .install-btn.show {
+            display: inline-block;
+        }
+        .instructions {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            text-align: left;
+        }
+        .instructions h3 {
+            margin-bottom: 15px;
+        }
+        .instructions ol {
+            margin-left: 20px;
+        }
+        .instructions li {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+        .highlight {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2px 8px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="emoji">💪</div>
+        <h1>FitTracker PWA</h1>
+        <p>Application de Fitness Progressive Web App</p>
+        
+        <div class="info-box">
+            <h2>📱 État de l'Installation</h2>
+            <div class="status">
+                <span class="status-label">PWA Support:</span>
+                <span class="status-value" id="pwa-support">Vérification...</span>
+            </div>
+            <div class="status">
+                <span class="status-label">Service Worker:</span>
+                <span class="status-value" id="sw-status">Vérification...</span>
+            </div>
+            <div class="status">
+                <span class="status-label">Manifest:</span>
+                <span class="status-value" id="manifest-status">Vérification...</span>
+            </div>
+            <div class="status">
+                <span class="status-label">HTTPS:</span>
+                <span class="status-value" id="https-status">Vérification...</span>
+            </div>
+            <div class="status">
+                <span class="status-label">Installation:</span>
+                <span class="status-value" id="install-status">Non installée</span>
+            </div>
+        </div>
+
+        <button class="btn install-btn" id="installBtn">
+            📥 Installer l'Application
+        </button>
+
+        <a href="index.html" class="btn">
+            🚀 Lancer FitTracker
+        </a>
+
+        <div class="instructions">
+            <h3>📲 Comment installer sur votre téléphone :</h3>
+            
+            <h4>Sur Android (Chrome) :</h4>
+            <ol>
+                <li>Ouvrez cette page dans <span class="highlight">Chrome</span></li>
+                <li>Appuyez sur le menu <span class="highlight">⋮</span> (3 points)</li>
+                <li>Sélectionnez <span class="highlight">"Ajouter à l'écran d'accueil"</span></li>
+                <li>Confirmez l'installation</li>
+                <li>L'app apparaîtra sur votre écran d'accueil!</li>
+            </ol>
+            
+            <h4>Sur iPhone (Safari) :</h4>
+            <ol>
+                <li>Ouvrez cette page dans <span class="highlight">Safari</span></li>
+                <li>Appuyez sur <span class="highlight">Partager</span> ⬆️</li>
+                <li>Faites défiler et appuyez sur <span class="highlight">"Sur l'écran d'accueil"</span></li>
+                <li>Appuyez sur <span class="highlight">"Ajouter"</span></li>
+                <li>L'app apparaîtra sur votre écran d'accueil!</li>
+            </ol>
+            
+            <h4>Sur Desktop (Chrome/Edge) :</h4>
+            <ol>
+                <li>Cliquez sur l'icône <span class="highlight">➕</span> dans la barre d'adresse</li>
+                <li>Ou utilisez le bouton <span class="highlight">"Installer"</span> ci-dessus</li>
+            </ol>
+        </div>
+
+        <div class="info-box">
+            <h3>✨ Fonctionnalités PWA :</h3>
+            <p>✅ Installation sur l'écran d'accueil</p>
+            <p>✅ Mode plein écran</p>
+            <p>✅ Fonctionnement hors-ligne</p>
+            <p>✅ Notifications push</p>
+            <p>✅ Mise à jour automatique</p>
+            <p>✅ Performance native</p>
+        </div>
+    </div>
+
+    <script>
+        // Check PWA capabilities
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check PWA support
+            const pwaSupport = document.getElementById('pwa-support');
+            if ('serviceWorker' in navigator && 'manifest' in document.createElement('link')) {
+                pwaSupport.textContent = '✅ Supporté';
+                pwaSupport.classList.add('yes');
+            } else {
+                pwaSupport.textContent = '❌ Non supporté';
+                pwaSupport.classList.add('no');
+            }
+
+            // Check Service Worker
+            const swStatus = document.getElementById('sw-status');
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => {
+                        swStatus.textContent = '✅ Actif';
+                        swStatus.classList.add('yes');
+                        console.log('Service Worker registered:', reg);
+                    })
+                    .catch(err => {
+                        swStatus.textContent = '❌ Erreur';
+                        swStatus.classList.add('no');
+                        console.error('Service Worker registration failed:', err);
+                    });
+            } else {
+                swStatus.textContent = '❌ Non supporté';
+                swStatus.classList.add('no');
+            }
+
+            // Check Manifest
+            const manifestStatus = document.getElementById('manifest-status');
+            const manifestLink = document.createElement('link');
+            manifestLink.rel = 'manifest';
+            manifestLink.href = 'manifest.json';
+            document.head.appendChild(manifestLink);
+            
+            fetch('manifest.json')
+                .then(response => {
+                    if (response.ok) {
+                        manifestStatus.textContent = '✅ Trouvé';
+                        manifestStatus.classList.add('yes');
+                    } else {
+                        manifestStatus.textContent = '❌ Non trouvé';
+                        manifestStatus.classList.add('no');
+                    }
+                })
+                .catch(() => {
+                    manifestStatus.textContent = '❌ Erreur';
+                    manifestStatus.classList.add('no');
+                });
+
+            // Check HTTPS
+            const httpsStatus = document.getElementById('https-status');
+            if (location.protocol === 'https:' || location.hostname === 'localhost') {
+                httpsStatus.textContent = '✅ Sécurisé';
+                httpsStatus.classList.add('yes');
+            } else {
+                httpsStatus.textContent = '⚠️ HTTP (localhost OK)';
+                httpsStatus.classList.add('yes');
+            }
+
+            // Check if already installed
+            if (window.matchMedia('(display-mode: standalone)').matches) {
+                document.getElementById('install-status').textContent = '✅ Installée';
+                document.getElementById('install-status').classList.add('yes');
+            }
+
+            // Install button
+            let deferredPrompt;
+            const installBtn = document.getElementById('installBtn');
+
+            window.addEventListener('beforeinstallprompt', (e) => {
+                e.preventDefault();
+                deferredPrompt = e;
+                installBtn.classList.add('show');
+                
+                const installStatus = document.getElementById('install-status');
+                installStatus.textContent = '🔵 Prête à installer';
+            });
+
+            installBtn.addEventListener('click', async () => {
+                if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    const { outcome } = await deferredPrompt.userChoice;
+                    
+                    const installStatus = document.getElementById('install-status');
+                    if (outcome === 'accepted') {
+                        installStatus.textContent = '✅ Installation...';
+                        installStatus.classList.add('yes');
+                    } else {
+                        installStatus.textContent = '❌ Installation annulée';
+                        installStatus.classList.add('no');
+                    }
+                    
+                    deferredPrompt = null;
+                    installBtn.classList.remove('show');
+                }
+            });
+
+            window.addEventListener('appinstalled', () => {
+                const installStatus = document.getElementById('install-status');
+                installStatus.textContent = '✅ Installée avec succès!';
+                installStatus.classList.add('yes');
+                installBtn.classList.remove('show');
+            });
+        });
+    </script>
+</body>
+</html>
