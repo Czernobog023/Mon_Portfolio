@@ -242,6 +242,8 @@ body {
 .main-content {
   margin-top: 80px;
   min-height: calc(100vh - 80px);
+   position: relative; /* Nécessaire pour que z-index fonctionne */
+  z-index: 10;        /* Soulève le contenu au-dessus des calques 1 et 0 */
 }
 
 .container {
