@@ -736,3 +736,24 @@
     background-size: 25px 25px;
   }
 }
+
+
+
+/* AJOUTEZ CECI À VOTRE FICHIER CSS RESPONSIVE */
+
+/* Style du menu quand il est actif/ouvert */
+.nav-menu.active {
+    right: 0; /* Fait glisser le menu depuis la droite */
+    transition: 0.3s ease-in-out;
+}
+
+/* Style de l'icône hamburger quand elle est active (se transforme en croix) */
+.hamburger.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
