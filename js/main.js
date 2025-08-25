@@ -758,3 +758,22 @@ window.portfolioApp = {
     toggleMobileMenu: () => portfolio.navigation.toggleMobileMenu(),
     isMobile: isMobile
 };
+
+
+// =======================================================
+// SCRIPT POUR LE MENU HAMBURGER
+// =======================================================
+const hamburger = document.querySelector('.hamburger');
+const navMenu = document.querySelector('.nav-menu');
+
+hamburger.addEventListener('click', () => {
+    // Active/désactive le menu et l'icône
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+});
+
+// Ferme le menu quand on clique sur un lien
+document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    navMenu.classList.remove('active');
+}));
