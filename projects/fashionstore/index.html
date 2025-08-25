@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fashion Store - Boutique en ligne de mode tendance. Découvrez nos collections de vêtements, chaussures et accessoires pour homme et femme.">
+    <meta name="keywords" content="mode, fashion, vêtements, boutique en ligne, tendance, shopping">
+    
+    <title>Fashion Store - Boutique Mode & Tendances</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <span class="promo-text">
+                    <i class="fas fa-truck"></i> Livraison gratuite à partir de 50€
+                </span>
+                <div class="top-bar-right">
+                    <a href="#" class="top-link"><i class="fas fa-map-marker-alt"></i> Nos boutiques</a>
+                    <a href="#" class="top-link"><i class="fas fa-headset"></i> Service client</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                
+                <div class="logo">
+                    <h1>Fashion<span>Store</span></h1>
+                </div>
+                
+                <nav class="main-nav" id="mainNav">
+                    <ul>
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link">Femme <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown-menu mega-menu">
+                                <div class="mega-menu-content">
+                                    <div class="menu-column">
+                                        <h3>Vêtements</h3>
+                                        <ul>
+                                            <li><a href="#">Robes</a></li>
+                                            <li><a href="#">Tops & T-shirts</a></li>
+                                            <li><a href="#">Pantalons</a></li>
+                                            <li><a href="#">Jupes</a></li>
+                                            <li><a href="#">Vestes & Manteaux</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="menu-column">
+                                        <h3>Chaussures</h3>
+                                        <ul>
+                                            <li><a href="#">Baskets</a></li>
+                                            <li><a href="#">Bottes</a></li>
+                                            <li><a href="#">Escarpins</a></li>
+                                            <li><a href="#">Sandales</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="menu-column">
+                                        <h3>Accessoires</h3>
+                                        <ul>
+                                            <li><a href="#">Sacs</a></li>
+                                            <li><a href="#">Bijoux</a></li>
+                                            <li><a href="#">Écharpes</a></li>
+                                            <li><a href="#">Ceintures</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link">Homme <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown-menu mega-menu">
+                                <div class="mega-menu-content">
+                                    <div class="menu-column">
+                                        <h3>Vêtements</h3>
+                                        <ul>
+                                            <li><a href="#">T-shirts & Polos</a></li>
+                                            <li><a href="#">Chemises</a></li>
+                                            <li><a href="#">Pantalons</a></li>
+                                            <li><a href="#">Jeans</a></li>
+                                            <li><a href="#">Vestes</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="menu-column">
+                                        <h3>Chaussures</h3>
+                                        <ul>
+                                            <li><a href="#">Baskets</a></li>
+                                            <li><a href="#">Chaussures ville</a></li>
+                                            <li><a href="#">Boots</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#nouveautes" class="nav-link">Nouveautés</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#promotions" class="nav-link sale">Promotions</a>
+                        </li>
+                    </ul>
+                </nav>
+                
+                <div class="header-actions">
+                    <button class="action-btn search-btn" id="searchBtn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <button class="action-btn" id="accountBtn">
+                        <i class="fas fa-user"></i>
+                    </button>
+                    <button class="action-btn" id="wishlistBtn">
+                        <i class="fas fa-heart"></i>
+                        <span class="badge" id="wishlistCount">0</span>
+                    </button>
+                    <button class="action-btn cart-btn" id="cartBtn">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="badge" id="cartCount">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Search Bar -->
+        <div class="search-bar" id="searchBar">
+            <div class="container">
+                <form class="search-form">
+                    <input type="search" placeholder="Rechercher un produit, une marque..." id="searchInput">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-slider">
+            <div class="hero-slide active">
+                <div class="hero-content">
+                    <span class="hero-subtitle">Nouvelle Collection</span>
+                    <h2 class="hero-title">Printemps-Été 2024</h2>
+                    <p class="hero-description">Découvrez les dernières tendances de la saison</p>
+                    <a href="#collection" class="btn btn-primary">Découvrir</a>
+                </div>
+                <div class="hero-image">
+                    <div class="placeholder-hero">
+                        <i class="fas fa-tshirt"></i>
+                        <span>Collection Printemps-Été</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="container">
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-image">
+                        <div class="placeholder-category">
+                            <i class="fas fa-female"></i>
+                        </div>
+                    </div>
+                    <div class="category-content">
+                        <h3>Femme</h3>
+                        <a href="#" class="category-link">Voir la collection <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-image">
+                        <div class="placeholder-category">
+                            <i class="fas fa-male"></i>
+                        </div>
+                    </div>
+                    <div class="category-content">
+                        <h3>Homme</h3>
+                        <a href="#" class="category-link">Voir la collection <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-image">
+                        <div class="placeholder-category">
+                            <i class="fas fa-shoe-prints"></i>
+                        </div>
+                    </div>
+                    <div class="category-content">
+                        <h3>Chaussures</h3>
+                        <a href="#" class="category-link">Voir la collection <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-image">
+                        <div class="placeholder-category">
+                            <i class="fas fa-shopping-bag"></i>
+                        </div>
+                    </div>
+                    <div class="category-content">
+                        <h3>Accessoires</h3>
+                        <a href="#" class="category-link">Voir la collection <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section id="nouveautes" class="featured-products">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nouveautés</h2>
+                <p class="section-subtitle">Les dernières tendances de la saison</p>
+            </div>
+            
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-badge new">Nouveau</div>
+                    <div class="product-image">
+                        <div class="placeholder-product">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        <div class="product-overlay">
+                            <button class="quick-view" data-product-id="1">
+                                <i class="fas fa-eye"></i> Aperçu rapide
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">T-shirt Premium Coton Bio</h3>
+                        <div class="product-price">
+                            <span class="price">29,99€</span>
+                        </div>
+                        <div class="product-colors">
+                            <span class="color" style="background: #000;"></span>
+                            <span class="color" style="background: #fff;"></span>
+                            <span class="color" style="background: #e74c3c;"></span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-add-cart" data-product-id="1">
+                                <i class="fas fa-shopping-cart"></i> Ajouter au panier
+                            </button>
+                            <button class="btn-wishlist" data-product-id="1">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-badge sale">-30%</div>
+                    <div class="product-image">
+                        <div class="placeholder-product">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        <div class="product-overlay">
+                            <button class="quick-view" data-product-id="2">
+                                <i class="fas fa-eye"></i> Aperçu rapide
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Robe Élégante Soirée</h3>
+                        <div class="product-price">
+                            <span class="price">69,99€</span>
+                            <span class="old-price">99,99€</span>
+                        </div>
+                        <div class="product-colors">
+                            <span class="color" style="background: #2c3e50;"></span>
+                            <span class="color" style="background: #8e44ad;"></span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-add-cart" data-product-id="2">
+                                <i class="fas fa-shopping-cart"></i> Ajouter au panier
+                            </button>
+                            <button class="btn-wishlist" data-product-id="2">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-badge new">Nouveau</div>
+                    <div class="product-image">
+                        <div class="placeholder-product">
+                            <i class="fas fa-shoe-prints"></i>
+                        </div>
+                        <div class="product-overlay">
+                            <button class="quick-view" data-product-id="3">
+                                <i class="fas fa-eye"></i> Aperçu rapide
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Baskets Sport Confort</h3>
+                        <div class="product-price">
+                            <span class="price">89,99€</span>
+                        </div>
+                        <div class="product-colors">
+                            <span class="color" style="background: #fff;"></span>
+                            <span class="color" style="background: #3498db;"></span>
+                            <span class="color" style="background: #000;"></span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-add-cart" data-product-id="3">
+                                <i class="fas fa-shopping-cart"></i> Ajouter au panier
+                            </button>
+                            <button class="btn-wishlist" data-product-id="3">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="placeholder-product">
+                            <i class="fas fa-shopping-bag"></i>
+                        </div>
+                        <div class="product-overlay">
+                            <button class="quick-view" data-product-id="4">
+                                <i class="fas fa-eye"></i> Aperçu rapide
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Sac à Main Cuir Véritable</h3>
+                        <div class="product-price">
+                            <span class="price">149,99€</span>
+                        </div>
+                        <div class="product-colors">
+                            <span class="color" style="background: #8b4513;"></span>
+                            <span class="color" style="background: #000;"></span>
+                            <span class="color" style="background: #d4af37;"></span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-add-cart" data-product-id="4">
+                                <i class="fas fa-shopping-cart"></i> Ajouter au panier
+                            </button>
+                            <button class="btn-wishlist" data-product-id="4">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="product-card">
+                    <div class="product-badge sale">-20%</div>
+                    <div class="product-image">
+                        <div class="placeholder-product">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        <div class="product-overlay">
+                            <button class="quick-view" data-product-id="5">
+                                <i class="fas fa-eye"></i> Aperçu rapide
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Chemise Élégante Business</h3>
+                        <div class="product-price">
+                            <span class="price">39,99€</span>
+                            <span class="old-price">49,99€</span>
+                        </div>
+                        <div class="product-colors">
+                            <span class="color" style="background: #fff;"></span>
+                            <span class="color" style="background: #87ceeb;"></span>
+                            <span class="color" style="background: #f0f0f0;"></span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-add-cart" data-product-id="5">
+                                <i class="fas fa-shopping-cart"></i> Ajouter au panier
+                            </button>
+                            <button class="btn-wishlist" data-product-id="5">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="product-card">
+                    <div class="product-badge new">Nouveau</div>
+                    <div class="product-image">
+                        <div class="placeholder-product">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        <div class="product-overlay">
+                            <button class="quick-view" data-product-id="6">
+                                <i class="fas fa-eye"></i> Aperçu rapide
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Jeans Slim Stretch</h3>
+                        <div class="product-price">
+                            <span class="price">59,99€</span>
+                        </div>
+                        <div class="product-colors">
+                            <span class="color" style="background: #1e3a8a;"></span>
+                            <span class="color" style="background: #000;"></span>
+                            <span class="color" style="background: #4a5568;"></span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-add-cart" data-product-id="6">
+                                <i class="fas fa-shopping-cart"></i> Ajouter au panier
+                            </button>
+                            <button class="btn-wishlist" data-product-id="6">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 7 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="placeholder-product">
+                            <i class="fas fa-gem"></i>
+                        </div>
+                        <div class="product-overlay">
+                            <button class="quick-view" data-product-id="7">
+                                <i class="fas fa-eye"></i> Aperçu rapide
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Montre Classique Élégante</h3>
+                        <div class="product-price">
+                            <span class="price">199,99€</span>
+                        </div>
+                        <div class="product-colors">
+                            <span class="color" style="background: #ffd700;"></span>
+                            <span class="color" style="background: #c0c0c0;"></span>
+                            <span class="color" style="background: #cd7f32;"></span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-add-cart" data-product-id="7">
+                                <i class="fas fa-shopping-cart"></i> Ajouter au panier
+                            </button>
+                            <button class="btn-wishlist" data-product-id="7">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 8 -->
+                <div class="product-card">
+                    <div class="product-badge sale">-15%</div>
+                    <div class="product-image">
+                        <div class="placeholder-product">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        <div class="product-overlay">
+                            <button class="quick-view" data-product-id="8">
+                                <i class="fas fa-eye"></i> Aperçu rapide
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Pull Cachemire Luxe</h3>
+                        <div class="product-price">
+                            <span class="price">84,99€</span>
+                            <span class="old-price">99,99€</span>
+                        </div>
+                        <div class="product-colors">
+                            <span class="color" style="background: #d2691e;"></span>
+                            <span class="color" style="background: #2f4f4f;"></span>
+                            <span class="color" style="background: #f5f5dc;"></span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-add-cart" data-product-id="8">
+                                <i class="fas fa-shopping-cart"></i> Ajouter au panier
+                            </button>
+                            <button class="btn-wishlist" data-product-id="8">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <button class="btn btn-outline">Voir tous les produits</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promo Banner -->
+    <section class="promo-banner">
+        <div class="container">
+            <div class="promo-content">
+                <h2 class="promo-title">Soldes d'Été</h2>
+                <p class="promo-subtitle">Jusqu'à -50% sur une sélection d'articles</p>
+                <div class="countdown" id="countdown">
+                    <div class="countdown-item">
+                        <span class="countdown-value" id="days">00</span>
+                        <span class="countdown-label">Jours</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-value" id="hours">00</span>
+                        <span class="countdown-label">Heures</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-value" id="minutes">00</span>
+                        <span class="countdown-label">Minutes</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-value" id="seconds">00</span>
+                        <span class="countdown-label">Secondes</span>
+                    </div>
+                </div>
+                <a href="#promotions" class="btn btn-white">Découvrir les offres</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature">
+                    <i class="fas fa-truck"></i>
+                    <h3>Livraison Gratuite</h3>
+                    <p>À partir de 50€ d'achat</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-undo"></i>
+                    <h3>Retours Gratuits</h3>
+                    <p>Sous 30 jours</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-lock"></i>
+                    <h3>Paiement Sécurisé</h3>
+                    <p>100% sécurisé</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-headset"></i>
+                    <h3>Support 24/7</h3>
+                    <p>Service client disponible</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Inscrivez-vous à notre Newsletter</h2>
+                <p>Recevez en exclusivité nos offres et nouveautés</p>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" placeholder="Votre adresse email" required>
+                    <button type="submit" class="btn btn-primary">S'inscrire</button>
+                </form>
+                <small>En vous inscrivant, vous acceptez notre politique de confidentialité</small>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Fashion Store</h3>
+                    <p>Votre destination mode pour un style unique et tendance.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Liens Utiles</h4>
+                    <ul>
+                        <li><a href="#">À propos</a></li>
+                        <li><a href="#">Nos boutiques</a></li>
+                        <li><a href="#">Guide des tailles</a></li>
+                        <li><a href="#">Programme fidélité</a></li>
+                        <li><a href="#">Carte cadeau</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Service Client</h4>
+                    <ul>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Livraison</a></li>
+                        <li><a href="#">Retours & Échanges</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Suivi de commande</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Mon Compte</h4>
+                    <ul>
+                        <li><a href="#">Se connecter</a></li>
+                        <li><a href="#">Créer un compte</a></li>
+                        <li><a href="#">Mes commandes</a></li>
+                        <li><a href="#">Ma liste de souhaits</a></li>
+                        <li><a href="#">Mes adresses</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="payment-methods">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-paypal"></i>
+                    <i class="fab fa-cc-apple-pay"></i>
+                </div>
+                <p>&copy; 2024 Fashion Store. Tous droits réservés. | Créé par <a href="#">Rayan Maillard</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Mon Panier (<span id="cartItemCount">0</span>)</h3>
+            <button class="close-cart" id="closeCart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p class="empty-cart">Votre panier est vide</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">0,00€</span>
+            </div>
+            <button class="btn btn-primary btn-block">Commander</button>
+            <button class="btn btn-outline btn-block">Voir le panier</button>
+        </div>
+    </div>
+
+    <!-- Quick View Modal -->
+    <div class="modal" id="quickViewModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="quick-view-content">
+                <div class="product-images">
+                    <div class="main-image">
+                        <div class="placeholder-product-large">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-details">
+                    <h2 id="modalProductTitle">Nom du produit</h2>
+                    <div class="product-price">
+                        <span class="price" id="modalProductPrice">0,00€</span>
+                    </div>
+                    <div class="product-description">
+                        <p>Description détaillée du produit avec ses caractéristiques principales.</p>
+                    </div>
+                    <div class="product-options">
+                        <div class="size-selector">
+                            <label>Taille:</label>
+                            <div class="sizes">
+                                <button class="size-btn">XS</button>
+                                <button class="size-btn">S</button>
+                                <button class="size-btn active">M</button>
+                                <button class="size-btn">L</button>
+                                <button class="size-btn">XL</button>
+                            </div>
+                        </div>
+                        <div class="quantity-selector">
+                            <label>Quantité:</label>
+                            <div class="quantity-controls">
+                                <button class="qty-btn minus">-</button>
+                                <input type="number" value="1" min="1" id="modalQuantity">
+                                <button class="qty-btn plus">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-actions">
+                        <button class="btn btn-primary btn-add-cart">
+                            <i class="fas fa-shopping-cart"></i> Ajouter au panier
+                        </button>
+                        <button class="btn btn-outline btn-wishlist">
+                            <i class="fas fa-heart"></i> Ajouter aux favoris
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
+</body>
+</html>

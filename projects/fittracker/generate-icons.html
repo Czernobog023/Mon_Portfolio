@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Generate FitTracker Icons</title>
+</head>
+<body>
+    <h1>FitTracker Icon Generator</h1>
+    <canvas id="canvas"></canvas>
+    <div id="links"></div>
+    
+    <script>
+        // Icon sizes needed for PWA
+        const sizes = [48, 72, 96, 128, 144, 152, 180, 192, 384, 512];
+        
+        function createIcon(size) {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = size;
+            canvas.height = size;
+            
+            // Background gradient
+            const gradient = ctx.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, '#6200EA');
+            gradient.addColorStop(1, '#3700B3');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, size, size);
+            
+            // Heart icon
+            ctx.fillStyle = 'white';
+            ctx.font = `${size * 0.5}px FontAwesome`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('♥', size/2, size/2);
+            
+            // Create download link
+            canvas.toBlob(blob => {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `icon-${size}.png`;
+                a.textContent = `Download ${size}x${size}`;
+                a.style.display = 'block';
+                a.style.margin = '10px';
+                document.getElementById('links').appendChild(a);
+            });
+        }
+        
+        // Generate all icons
+        sizes.forEach(size => createIcon(size));
+        
+        // Display main canvas
+        const mainCanvas = document.getElementById('canvas');
+        const ctx = mainCanvas.getContext('2d');
+        mainCanvas.width = 512;
+        mainCanvas.height = 512;
+        
+        // Draw main icon
+        const gradient = ctx.createLinearGradient(0, 0, 512, 512);
+        gradient.addColorStop(0, '#6200EA');
+        gradient.addColorStop(1, '#3700B3');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, 512, 512);
+        
+        // Heart symbol
+        ctx.fillStyle = 'white';
+        ctx.font = 'bold 280px Arial';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('♥', 256, 256);
+    </script>
+    
+    <p>Note: In production, create proper PNG icons using a design tool or online icon generator.</p>
+</body>
+</html>
