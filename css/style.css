@@ -60,7 +60,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+ /* scroll-behavior: smooth;*/
   font-size: 16px;
 }
 
