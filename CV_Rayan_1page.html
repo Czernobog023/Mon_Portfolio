@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>CV - Rayan Maillard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        @page {
+            size: A4;
+            margin: 10mm;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            font-size: 11px;
+            line-height: 1.4;
+            color: #333;
+            max-width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            padding: 15px;
+            background: white;
+        }
+        
+        /* Header */
+        header {
+            border-bottom: 2px solid #6200ea;
+            padding-bottom: 8px;
+            margin-bottom: 12px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            font-size: 24px;
+            margin-bottom: 2px;
+            font-weight: bold;
+        }
+        
+        .subtitle {
+            color: #6200ea;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .contact {
+            font-size: 10px;
+            color: #555;
+        }
+        
+        .contact span {
+            margin-right: 12px;
+        }
+        
+        /* Sections */
+        .section {
+            margin-bottom: 12px;
+        }
+        
+        h2 {
+            color: #2c3e50;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 6px;
+            padding-bottom: 2px;
+            border-bottom: 1px solid #e0e0e0;
+            text-transform: uppercase;
+        }
+        
+        /* Two columns layout */
+        .two-columns {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .left-column {
+            flex: 1.5;
+        }
+        
+        .right-column {
+            flex: 1;
+        }
+        
+        /* Profil */
+        .profil {
+            text-align: justify;
+            font-size: 10px;
+            margin-bottom: 10px;
+        }
+        
+        /* Projects */
+        .project {
+            margin-bottom: 10px;
+        }
+        
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+        
+        .project-title {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 11px;
+        }
+        
+        .project-tech {
+            font-size: 9px;
+            color: #6200ea;
+        }
+        
+        .project-desc {
+            font-size: 10px;
+            margin-top: 2px;
+        }
+        
+        .project ul {
+            margin: 2px 0 0 15px;
+            padding: 0;
+        }
+        
+        .project li {
+            font-size: 9px;
+            margin: 1px 0;
+        }
+        
+        /* Skills */
+        .skills-group {
+            margin-bottom: 8px;
+        }
+        
+        .skills-title {
+            font-weight: bold;
+            font-size: 10px;
+            color: #2c3e50;
+            margin-bottom: 3px;
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+        
+        .skill {
+            background: #f0f0f0;
+            color: #333;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 9px;
+            border: 1px solid #ddd;
+        }
+        
+        .skill.primary {
+            background: #6200ea;
+            color: white;
+            border-color: #6200ea;
+        }
+        
+        /* Services */
+        .services {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .service {
+            flex: 1;
+            text-align: center;
+            padding: 5px;
+            background: #f8f9fa;
+            border-radius: 3px;
+        }
+        
+        .service-name {
+            font-size: 9px;
+            font-weight: bold;
+        }
+        
+        .service-price {
+            color: #6200ea;
+            font-weight: bold;
+            font-size: 11px;
+        }
+        
+        /* Formation */
+        .formation-item {
+            font-size: 10px;
+            margin-bottom: 5px;
+        }
+        
+        /* Footer */
+        footer {
+            margin-top: 10px;
+            padding-top: 8px;
+            border-top: 1px solid #e0e0e0;
+            text-align: center;
+            font-size: 9px;
+            color: #666;
+        }
+        
+        /* Print optimizations */
+        @media print {
+            body {
+                padding: 0;
+                font-size: 10px;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>RAYAN MAILLARD</h1>
+        <div class="subtitle">Développeur Web Full-Stack Autodidacte</div>
+        <div class="contact">
+            <span>📧 rayanmaillard023@gmail.com</span>
+            <span>📱 07.81.33.88.30</span>
+            <span>🎂 26 ans (23/03/1998)</span>
+            <span>📍 France</span>
+            <span>💼 czernobog023.github.io/Mon_Portfolio</span>
+        </div>
+    </header>
+
+    <div class="profil">
+        <strong>Profil :</strong> Développeur web full-stack passionné et autodidacte, spécialisé dans la création d'applications web modernes. 
+        Fort d'une capacité d'adaptation rapide et d'une approche pragmatique, je transforme les idées en solutions digitales concrètes et performantes.
+    </div>
+
+    <div class="two-columns">
+        <div class="left-column">
+            <section class="section">
+                <h2>Projets Réalisés</h2>
+                
+                <div class="project">
+                    <div class="project-header">
+                        <span class="project-title">FitTracker PWA</span>
+                        <span class="project-tech">JS | PWA | LocalStorage</span>
+                    </div>
+                    <ul>
+                        <li>Application fitness installable, mode hors-ligne complet</li>
+                        <li>Carnet musculation : 36+ exercices, tracking détaillé</li>
+                        <li>Gestion utilisateur complète, records personnels auto</li>
+                    </ul>
+                </div>
+
+                <div class="project">
+                    <div class="project-header">
+                        <span class="project-title">Restaurant Le Gourmet</span>
+                        <span class="project-tech">HTML5 | CSS3 | Animations</span>
+                    </div>
+                    <ul>
+                        <li>Site moderne pour restaurant gastronomique</li>
+                        <li>Système de réservation en ligne intégré</li>
+                        <li>Menu interactif avec filtres, galerie optimisée</li>
+                    </ul>
+                </div>
+
+                <div class="project">
+                    <div class="project-header">
+                        <span class="project-title">Fashion Store</span>
+                        <span class="project-tech">JS | API REST | E-commerce</span>
+                    </div>
+                    <ul>
+                        <li>Boutique complète avec catalogue produits</li>
+                        <li>Panier persistant, filtres avancés</li>
+                        <li>Interface checkout multi-étapes</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Formation & Expérience</h2>
+                <div class="formation-item">
+                    <strong>Autodidacte en Développement Web</strong> (2020 - Présent)<br>
+                    • freeCodeCamp, MDN Docs, projets personnels<br>
+                    • Participation active communautés développeurs<br>
+                    • Veille technologique permanente
+                </div>
+            </section>
+        </div>
+
+        <div class="right-column">
+            <section class="section">
+                <h2>Compétences</h2>
+                
+                <div class="skills-group">
+                    <div class="skills-title">Frontend</div>
+                    <div class="skill-tags">
+                        <span class="skill primary">HTML5</span>
+                        <span class="skill primary">CSS3</span>
+                        <span class="skill primary">JavaScript</span>
+                        <span class="skill">React</span>
+                        <span class="skill">PWA</span>
+                    </div>
+                </div>
+
+                <div class="skills-group">
+                    <div class="skills-title">Backend</div>
+                    <div class="skill-tags">
+                        <span class="skill">Node.js</span>
+                        <span class="skill">MongoDB</span>
+                        <span class="skill">API REST</span>
+                    </div>
+                </div>
+
+                <div class="skills-group">
+                    <div class="skills-title">Outils</div>
+                    <div class="skill-tags">
+                        <span class="skill primary">Git/GitHub</span>
+                        <span class="skill">VS Code</span>
+                        <span class="skill">Responsive</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Services & Tarifs</h2>
+                <div class="services">
+                    <div class="service">
+                        <div class="service-name">Site Vitrine</div>
+                        <div class="service-price">499€</div>
+                    </div>
+                    <div class="service">
+                        <div class="service-name">E-commerce</div>
+                        <div class="service-price">1299€</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Langues</h2>
+                <div style="font-size: 10px;">
+                    • <strong>Français</strong> : Natif<br>
+                    • <strong>Anglais</strong> : Technique
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Soft Skills</h2>
+                <div style="font-size: 10px;">
+                    • Autodidacte motivé<br>
+                    • Résolution de problèmes<br>
+                    • Adaptabilité rapide<br>
+                    • Travail rigoureux
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <footer>
+        <strong>Disponible immédiatement</strong> pour missions freelance ou CDI • Portfolio complet sur GitHub
+    </footer>
+</body>
+</html>
