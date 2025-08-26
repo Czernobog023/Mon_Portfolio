@@ -1,0 +1,482 @@
+/* ===== Gym Notebook Styles ===== */
+
+/* Session Card */
+.session-card {
+    background: var(--surface);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 24px;
+    border: 2px solid transparent;
+    transition: var(--transition);
+}
+
+.session-card.active {
+    border-color: var(--primary-color);
+    background: linear-gradient(135deg, var(--surface) 0%, rgba(98, 0, 234, 0.05) 100%);
+}
+
+.session-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.session-header h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.session-timer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--primary-color);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+/* Session Stats */
+.session-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.stat-mini {
+    text-align: center;
+    padding: 12px;
+    background: var(--surface-light);
+    border-radius: 12px;
+}
+
+.stat-mini .stat-label {
+    display: block;
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+}
+
+.stat-mini .stat-value {
+    display: block;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* Exercises List */
+.exercises-list {
+    margin-bottom: 20px;
+}
+
+.exercise-item {
+    background: var(--surface-light);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 12px;
+}
+
+.exercise-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.exercise-name {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 16px;
+}
+
+.exercise-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.exercise-actions button {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: var(--surface);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.exercise-actions button:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Sets Table */
+.sets-table {
+    width: 100%;
+    margin-top: 12px;
+}
+
+.sets-table-header {
+    display: grid;
+    grid-template-columns: 40px 1fr 1fr 1fr 60px;
+    gap: 8px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 8px;
+}
+
+.sets-table-header span {
+    font-size: 12px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.set-row {
+    display: grid;
+    grid-template-columns: 40px 1fr 1fr 1fr 60px;
+    gap: 8px;
+    padding: 8px 0;
+    align-items: center;
+}
+
+.set-number {
+    text-align: center;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.set-input {
+    background: var(--surface);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 8px;
+    color: var(--text-primary);
+    text-align: center;
+    font-size: 14px;
+    transition: var(--transition);
+}
+
+.set-input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+.set-checkbox {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.set-checkbox:checked {
+    accent-color: var(--success-color);
+}
+
+.add-set-btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    background: var(--surface);
+    border: 2px dashed rgba(98, 0, 234, 0.3);
+    border-radius: 8px;
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.add-set-btn:hover {
+    background: rgba(98, 0, 234, 0.1);
+    border-color: var(--primary-color);
+}
+
+/* Session Actions */
+.session-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.btn-primary, .btn-secondary, .btn-success {
+    padding: 14px 24px;
+    border-radius: 12px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: white;
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: var(--surface-light);
+    color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+    background: var(--surface);
+}
+
+.btn-success {
+    background: var(--success-color);
+    color: white;
+}
+
+.btn-success:hover {
+    background: #45a049;
+}
+
+/* Recent Sessions */
+.recent-sessions {
+    margin-top: 32px;
+}
+
+.sessions-list {
+    display: grid;
+    gap: 16px;
+}
+
+.session-history-item {
+    background: var(--surface);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.session-history-item:hover {
+    background: var(--surface-light);
+    transform: translateX(4px);
+}
+
+.session-info {
+    flex: 1;
+}
+
+.session-date {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+}
+
+.session-title {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.session-summary {
+    display: flex;
+    gap: 16px;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.session-summary span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Personal Records */
+.personal-records {
+    margin-top: 32px;
+}
+
+.records-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.record-card {
+    background: linear-gradient(135deg, var(--surface) 0%, rgba(98, 0, 234, 0.1) 100%);
+    border-radius: 12px;
+    padding: 16px;
+    border: 1px solid rgba(98, 0, 234, 0.2);
+}
+
+.record-exercise {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+.record-stats {
+    display: grid;
+    gap: 8px;
+}
+
+.record-stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+}
+
+.record-label {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.record-value {
+    font-weight: 700;
+    color: var(--primary-color);
+    font-size: 14px;
+}
+
+/* Exercise Selection Modal */
+.exercise-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.exercise-modal-content {
+    background: var(--surface);
+    border-radius: 20px;
+    max-width: 600px;
+    width: 100%;
+    max-height: 80vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.exercise-modal-header {
+    padding: 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.exercise-modal-header h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.exercise-categories {
+    display: flex;
+    gap: 8px;
+    padding: 16px 24px;
+    overflow-x: auto;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.category-btn {
+    padding: 8px 16px;
+    background: var(--surface-light);
+    border: none;
+    border-radius: 20px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: var(--transition);
+}
+
+.category-btn.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+.exercise-modal-body {
+    padding: 24px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.exercise-select-list {
+    display: grid;
+    gap: 8px;
+}
+
+.exercise-select-item {
+    padding: 12px 16px;
+    background: var(--surface-light);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.exercise-select-item:hover {
+    background: rgba(98, 0, 234, 0.1);
+    transform: translateX(4px);
+}
+
+.exercise-select-name {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.exercise-select-muscle {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.exercise-select-equipment {
+    font-size: 11px;
+    color: var(--text-secondary);
+    background: var(--surface);
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .session-stats {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+    }
+    
+    .sets-table-header,
+    .set-row {
+        grid-template-columns: 30px 1fr 1fr 1fr 40px;
+        gap: 4px;
+    }
+    
+    .records-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .exercise-categories {
+        padding: 12px 16px;
+    }
+    
+    .nav-item span {
+        font-size: 10px;
+    }
+}

@@ -19,6 +19,7 @@
     
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css?v=2">
+    <link rel="stylesheet" href="css/gym-notebook.css">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -351,6 +352,84 @@
                 </div>
             </section>
 
+            <!-- Gym Notebook Section (Carnet de Musculation) -->
+            <section id="gym-notebook" class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <i class="fas fa-book"></i> Carnet de Musculation
+                    </h2>
+                    <button class="add-btn" id="start-gym-session">
+                        <i class="fas fa-plus"></i> Nouvelle Séance
+                    </button>
+                </div>
+
+                <!-- Current Session -->
+                <div id="current-gym-session" style="display: none;">
+                    <div class="session-card active">
+                        <div class="session-header">
+                            <h3 id="session-name">Séance en cours</h3>
+                            <div class="session-timer">
+                                <i class="fas fa-clock"></i>
+                                <span id="session-timer">00:00</span>
+                            </div>
+                        </div>
+                        
+                        <div class="session-stats">
+                            <div class="stat-mini">
+                                <span class="stat-label">Exercices</span>
+                                <span class="stat-value" id="session-exercises">0</span>
+                            </div>
+                            <div class="stat-mini">
+                                <span class="stat-label">Séries</span>
+                                <span class="stat-value" id="session-sets">0</span>
+                            </div>
+                            <div class="stat-mini">
+                                <span class="stat-label">Volume</span>
+                                <span class="stat-value" id="session-volume">0 kg</span>
+                            </div>
+                        </div>
+
+                        <!-- Exercise List -->
+                        <div id="session-exercises-list" class="exercises-list">
+                            <!-- Exercises will be added here dynamically -->
+                        </div>
+
+                        <!-- Add Exercise Button -->
+                        <button class="btn-primary" id="add-exercise-to-session">
+                            <i class="fas fa-plus"></i> Ajouter un exercice
+                        </button>
+
+                        <!-- Session Actions -->
+                        <div class="session-actions">
+                            <button class="btn-secondary" id="pause-session">
+                                <i class="fas fa-pause"></i> Pause
+                            </button>
+                            <button class="btn-success" id="finish-session">
+                                <i class="fas fa-check"></i> Terminer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Sessions -->
+                <div class="recent-sessions">
+                    <h3 class="subsection-title">Séances Récentes</h3>
+                    <div id="recent-sessions-list" class="sessions-list">
+                        <!-- Will be populated dynamically -->
+                    </div>
+                </div>
+
+                <!-- Personal Records -->
+                <div class="personal-records">
+                    <h3 class="subsection-title">
+                        <i class="fas fa-trophy"></i> Records Personnels
+                    </h3>
+                    <div id="personal-records-list" class="records-grid">
+                        <!-- Will be populated dynamically -->
+                    </div>
+                </div>
+            </section>
+
             <!-- Progress Section -->
             <section id="progress" class="content-section">
                 <div class="section-header">
@@ -538,6 +617,10 @@
                 <i class="fas fa-dumbbell"></i>
                 <span>Entraînement</span>
             </button>
+            <button class="nav-item" data-section="gym-notebook">
+                <i class="fas fa-book"></i>
+                <span>Carnet</span>
+            </button>
             <button class="nav-item workout-fab" id="quick-start">
                 <i class="fas fa-play"></i>
             </button>
@@ -602,8 +685,12 @@
     <!-- Scripts -->
     <!-- User Manager first -->
     <script src="js/user-manager.js?v=2"></script>
+    <!-- Workout Tracker -->
+    <script src="js/workout-tracker.js"></script>
     <!-- Main App -->
     <script src="js/app.js?v=2"></script>
+    <!-- Gym Notebook UI -->
+    <script src="js/gym-notebook-ui.js"></script>
     <!-- Initialization Fix to ensure empty state -->
     <script src="js/init-fix.js?v=2"></script>
     
