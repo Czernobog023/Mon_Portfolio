@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Rayan Maillard - Visualisation & Téléchargement</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Space+Mono:wght@400&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Space Mono', monospace;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto 30px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            color: white;
+            font-size: 36px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            color: rgba(255,255,255,0.9);
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+        
+        .actions {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            background: white;
+            color: #667eea;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        
+        .btn-primary {
+            background: #00ff00;
+            color: #1a1a2e;
+        }
+        
+        .btn-secondary {
+            background: #1a1a2e;
+            color: #00ff00;
+        }
+        
+        .cv-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .cv-frame {
+            width: 100%;
+            height: 1200px;
+            border: none;
+        }
+        
+        .info-box {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px auto;
+            max-width: 900px;
+            color: white;
+        }
+        
+        .info-box h2 {
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 15px;
+            color: #00ff00;
+        }
+        
+        .info-list {
+            list-style: none;
+            line-height: 1.8;
+        }
+        
+        .info-list li {
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .info-list li:before {
+            content: "▶";
+            position: absolute;
+            left: 0;
+            color: #00ff00;
+        }
+        
+        .format-badges {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .badge {
+            background: rgba(0,255,0,0.2);
+            color: #00ff00;
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 1px solid #00ff00;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 24px;
+            }
+            
+            .cv-frame {
+                height: 600px;
+            }
+            
+            .actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+        
+        /* Print specific styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .header-container,
+            .actions,
+            .info-box {
+                display: none;
+            }
+            
+            .cv-container {
+                box-shadow: none;
+                border-radius: 0;
+                max-width: 100%;
+            }
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 50px;
+            color: white;
+            font-size: 18px;
+        }
+        
+        .icon {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-container">
+        <h1>📄 CV RAYAN MAILLARD</h1>
+        <p class="subtitle">Développeur Web Full-Stack Autodidacte</p>
+        
+        <div class="format-badges">
+            <span class="badge">Format A4</span>
+            <span class="badge">PDF Ready</span>
+            <span class="badge">Optimisé Malt</span>
+        </div>
+    </div>
+
+    <div class="actions">
+        <button class="btn btn-primary" onclick="downloadPDF()">
+            <span class="icon">📥</span> Télécharger PDF
+        </button>
+        <button class="btn btn-secondary" onclick="printCV()">
+            <span class="icon">🖨️</span> Imprimer
+        </button>
+        <button class="btn" onclick="viewFullscreen()">
+            <span class="icon">🔍</span> Plein Écran
+        </button>
+        <a href="/cv-rayan-maillard.html" target="_blank" class="btn">
+            <span class="icon">🔗</span> Ouvrir Original
+        </a>
+    </div>
+
+    <div class="info-box">
+        <h2>💡 Instructions pour Malt</h2>
+        <ul class="info-list">
+            <li>Cliquez sur "Télécharger PDF" pour obtenir le CV au format PDF</li>
+            <li>Le CV est optimisé pour une lecture sur écran et impression</li>
+            <li>Format A4 standard compatible avec tous les systèmes</li>
+            <li>Design sobre et professionnel adapté aux plateformes freelance</li>
+            <li>Mettez en avant vos projets concrets dans votre profil Malt</li>
+        </ul>
+    </div>
+
+    <div class="cv-container">
+        <div class="loading" id="loading">Chargement du CV...</div>
+        <iframe 
+            id="cv-frame"
+            class="cv-frame" 
+            src="/cv-rayan-maillard.html"
+            style="display: none;"
+            onload="document.getElementById('loading').style.display='none'; this.style.display='block';">
+        </iframe>
+    </div>
+
+    <div class="info-box">
+        <h2>✨ Points Forts du CV</h2>
+        <ul class="info-list">
+            <li><strong>Profil autodidacte valorisé</strong> : Met en avant votre autonomie et capacité d'apprentissage</li>
+            <li><strong>3 projets concrets</strong> : FitTracker PWA, Le Gourmet, Fashion Store</li>
+            <li><strong>Compétences techniques détaillées</strong> : Frontend, Backend, PWA, Git</li>
+            <li><strong>Tarifs compétitifs</strong> : 499€ site vitrine, 1299€ e-commerce</li>
+            <li><strong>Design rétro-moderne</strong> : Style sobre avec touches de couleur violette</li>
+        </ul>
+    </div>
+
+    <script>
+        function downloadPDF() {
+            // Open CV in new window for printing
+            const printWindow = window.open('/cv-rayan-maillard.html', '_blank');
+            printWindow.onload = function() {
+                setTimeout(() => {
+                    printWindow.print();
+                    // Note for user
+                    alert('💡 Astuce: Dans la boîte de dialogue d\'impression, choisissez "Enregistrer en PDF" comme imprimante pour sauvegarder le CV en PDF.');
+                }, 500);
+            };
+        }
+        
+        function printCV() {
+            const iframe = document.getElementById('cv-frame');
+            iframe.contentWindow.print();
+        }
+        
+        function viewFullscreen() {
+            const iframe = document.getElementById('cv-frame');
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+            } else if (iframe.mozRequestFullScreen) {
+                iframe.mozRequestFullScreen();
+            } else if (iframe.webkitRequestFullscreen) {
+                iframe.webkitRequestFullscreen();
+            } else if (iframe.msRequestFullscreen) {
+                iframe.msRequestFullscreen();
+            }
+        }
+        
+        // Add keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === 'p') {
+                e.preventDefault();
+                printCV();
+            }
+            if (e.ctrlKey && e.key === 's') {
+                e.preventDefault();
+                downloadPDF();
+            }
+        });
+    </script>
+</body>
+</html>

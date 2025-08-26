@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Rayan Maillard - Développeur Web Full-Stack</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: #ffffff;
+        }
+        
+        .container {
+            max-width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            background: white;
+            padding: 30mm 25mm;
+        }
+        
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #6200ea;
+        }
+        
+        .header-left {
+            flex: 1;
+        }
+        
+        .name {
+            font-size: 42px;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 8px;
+            letter-spacing: -1px;
+        }
+        
+        .title {
+            font-size: 20px;
+            font-weight: 400;
+            color: #6200ea;
+            margin-bottom: 5px;
+            font-family: 'Space Mono', monospace;
+        }
+        
+        .tagline {
+            font-size: 14px;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        
+        .contact {
+            text-align: right;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 8px;
+            color: #2c3e50;
+        }
+        
+        .contact-item a {
+            color: #2c3e50;
+            text-decoration: none;
+        }
+        
+        .contact-item a:hover {
+            color: #6200ea;
+        }
+        
+        /* Sections */
+        .section {
+            margin-bottom: 25px;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e0e0e0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Space Mono', monospace;
+        }
+        
+        /* About */
+        .about-text {
+            color: #34495e;
+            line-height: 1.7;
+            text-align: justify;
+        }
+        
+        /* Experience & Projects */
+        .experience-item, .project-item {
+            margin-bottom: 20px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .experience-item:before, .project-item:before {
+            content: "▶";
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: #6200ea;
+            font-size: 12px;
+        }
+        
+        .exp-header, .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 8px;
+        }
+        
+        .exp-title, .project-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .exp-company {
+            color: #6200ea;
+            font-weight: 500;
+        }
+        
+        .exp-date, .project-tech {
+            font-size: 12px;
+            color: #7f8c8d;
+            font-family: 'Space Mono', monospace;
+        }
+        
+        .exp-description, .project-description {
+            color: #34495e;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+        
+        .achievements {
+            list-style: none;
+            padding-left: 15px;
+        }
+        
+        .achievements li {
+            font-size: 13px;
+            color: #34495e;
+            margin-bottom: 5px;
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        .achievements li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #6200ea;
+        }
+        
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .skill-category {
+            margin-bottom: 15px;
+        }
+        
+        .skill-category-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        
+        .skill-tag {
+            background: #f4f4f4;
+            color: #2c3e50;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            border: 1px solid #e0e0e0;
+            font-family: 'Space Mono', monospace;
+        }
+        
+        .skill-tag.primary {
+            background: #6200ea;
+            color: white;
+            border-color: #6200ea;
+        }
+        
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .service-card {
+            text-align: center;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .service-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .service-price {
+            font-size: 16px;
+            color: #6200ea;
+            font-weight: 700;
+            font-family: 'Space Mono', monospace;
+        }
+        
+        /* Footer */
+        .footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e0e0e0;
+            text-align: center;
+            font-size: 11px;
+            color: #7f8c8d;
+        }
+        
+        .footer-links {
+            margin-top: 10px;
+        }
+        
+        .footer-links a {
+            color: #6200ea;
+            text-decoration: none;
+            margin: 0 10punkte;
+        }
+        
+        /* Print styles */
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            
+            .container {
+                padding: 15mm 20mm;
+                max-width: 100%;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+        
+        /* Retro touches */
+        .retro-badge {
+            display: inline-block;
+            background: #1a1a2e;
+            color: #00ff00;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-family: 'Space Mono', monospace;
+            font-size: 10px;
+            margin-left: 10px;
+        }
+        
+        @page {
+            size: A4;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-left">
+                <h1 class="name">RAYAN MAILLARD</h1>
+                <div class="title">Développeur Web Full-Stack</div>
+                <div class="tagline">Autodidacte passionné • Créateur d'expériences web modernes</div>
+            </div>
+            <div class="contact">
+                <div class="contact-item">
+                    📧 <a href="mailto:rayanmaillard023@gmail.com">rayanmaillard023@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    📱 07 81 33 88 30
+                </div>
+                <div class="contact-item">
+                    🎂 26 ans (23/03/1998)
+                </div>
+                <div class="contact-item">
+                    🌍 France
+                </div>
+                <div class="contact-item">
+                    💼 <a href="https://czernobog023.github.io/Mon_Portfolio/">Portfolio en ligne</a>
+                </div>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title">Profil Professionnel</h2>
+            <p class="about-text">
+                Développeur web full-stack autodidacte avec une forte passion pour la création d'applications web modernes et performantes. 
+                Spécialisé dans le développement d'interfaces utilisateur intuitives et d'architectures backend robustes. 
+                Mon parcours autodidacte m'a permis de développer une grande autonomie, une capacité d'adaptation rapide aux nouvelles technologies 
+                et une approche pragmatique de la résolution de problèmes. Actuellement disponible pour des missions de développement web.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Projets Réalisés <span class="retro-badge">PORTFOLIO</span></h2>
+            
+            <div class="project-item">
+                <div class="project-header">
+                    <div>
+                        <span class="project-title">FitTracker PWA</span>
+                        <span class="exp-company">- Application Mobile Progressive</span>
+                    </div>
+                    <span class="project-tech">PWA | JavaScript | LocalStorage</span>
+                </div>
+                <p class="project-description">
+                    Application de fitness installable sur mobile avec mode hors-ligne complet.
+                </p>
+                <ul class="achievements">
+                    <li>Système de gestion utilisateur complet avec profils personnalisés</li>
+                    <li>Carnet de musculation avec suivi détaillé (séries/reps/poids)</li>
+                    <li>Base de données de 36+ exercices catégorisés</li>
+                    <li>Service Worker pour fonctionnement 100% hors-ligne</li>
+                    <li>Interface responsive optimisée mobile</li>
+                </ul>
+            </div>
+
+            <div class="project-item">
+                <div class="project-header">
+                    <div>
+                        <span class="project-title">Le Gourmet</span>
+                        <span class="exp-company">- Site Web Restaurant</span>
+                    </div>
+                    <span class="project-tech">HTML5 | CSS3 | JavaScript | Animations</span>
+                </div>
+                <p class="project-description">
+                    Site vitrine moderne pour restaurant gastronomique avec réservation en ligne.
+                </p>
+                <ul class="achievements">
+                    <li>Design élégant avec animations fluides</li>
+                    <li>Système de réservation intégré</li>
+                    <li>Menu interactif avec filtres par catégorie</li>
+                    <li>Galerie photos optimisée</li>
+                </ul>
+            </div>
+
+            <div class="project-item">
+                <div class="project-header">
+                    <div>
+                        <span class="project-title">Fashion Store</span>
+                        <span class="exp-company">- E-commerce</span>
+                    </div>
+                    <span class="project-tech">JavaScript | API REST | Panier | Paiement</span>
+                </div>
+                <p class="project-description">
+                    Boutique en ligne complète avec gestion du panier et processus de commande.
+                </p>
+                <ul class="achievements">
+                    <li>Catalogue produits avec filtres avancés</li>
+                    <li>Panier persistant avec localStorage</li>
+                    <li>Interface de paiement sécurisée</li>
+                    <li>Design responsive mobile-first</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Compétences Techniques</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <div class="skill-category-title">Frontend</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag primary">HTML5</span>
+                        <span class="skill-tag primary">CSS3</span>
+                        <span class="skill-tag primary">JavaScript ES6+</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Responsive Design</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-category-title">Backend</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Express</span>
+                        <span class="skill-tag">API REST</span>
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">SQL</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-category-title">Outils & Méthodologies</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag primary">Git/GitHub</span>
+                        <span class="skill-tag">VS Code</span>
+                        <span class="skill-tag">PWA</span>
+                        <span class="skill-tag">Service Workers</span>
+                        <span class="skill-tag">SEO</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-category-title">Soft Skills</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Autodidacte</span>
+                        <span class="skill-tag">Autonome</span>
+                        <span class="skill-tag">Rigoureux</span>
+                        <span class="skill-tag">Créatif</span>
+                        <span class="skill-tag">Adaptable</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Services & Tarifs</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-name">Site Vitrine</div>
+                    <div class="service-price">499€</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-name">E-commerce</div>
+                    <div class="service-price">1299€</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-name">Application Web</div>
+                    <div class="service-price">Sur devis</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Formation & Apprentissage</h2>
+            <div class="experience-item">
+                <div class="exp-header">
+                    <div>
+                        <span class="exp-title">Formation Autodidacte en Développement Web</span>
+                    </div>
+                    <span class="exp-date">2020 - Présent</span>
+                </div>
+                <ul class="achievements">
+                    <li>Apprentissage continu via plateformes en ligne (freeCodeCamp, MDN, YouTube)</li>
+                    <li>Réalisation de projets personnels pour pratiquer les nouvelles technologies</li>
+                    <li>Participation à des communautés de développeurs</li>
+                    <li>Veille technologique permanente</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Langues & Centres d'Intérêt</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <div class="skill-category-title">Langues</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag primary">Français (Natif)</span>
+                        <span class="skill-tag">Anglais (Technique)</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-category-title">Intérêts</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Technologies Web</span>
+                        <span class="skill-tag">UI/UX Design</span>
+                        <span class="skill-tag">Gaming</span>
+                        <span class="skill-tag">Fitness</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="footer">
+            <p>CV généré le <span id="current-date"></span> • Disponible immédiatement pour missions freelance ou CDI</p>
+            <div class="footer-links">
+                <a href="https://czernobog023.github.io/Mon_Portfolio/">Portfolio</a> •
+                <a href="https://github.com/Czernobog023">GitHub</a> •
+                <a href="mailto:rayanmaillard023@gmail.com">Email</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Set current date
+        const currentDate = new Date().toLocaleDateString('fr-FR');
+        document.getElementById('current-date').textContent = currentDate;
+        
+        // Auto print dialog for PDF generation
+        if (window.location.search.includes('print=true')) {
+            window.print();
+        }
+    </script>
+</body>
+</html>
