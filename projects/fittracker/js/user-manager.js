@@ -2,6 +2,7 @@
 
 class UserManager {
     constructor() {
+        this.initialized = false;
         this.storageKey = 'fittracker_user_profile';
         this.workoutsKey = 'fittracker_workouts';
         this.activitiesKey = 'fittracker_activities';
@@ -36,13 +37,29 @@ class UserManager {
 
     // Initialiser ou récupérer l'utilisateur
     init() {
+        // Éviter les initialisations multiples
+        if (this.initialized) {
+            console.log('UserManager already initialized');
+            return this.user;
+        }
+        
         const savedUser = localStorage.getItem(this.storageKey);
         if (savedUser) {
-            this.user = JSON.parse(savedUser);
+            try {
+                this.user = JSON.parse(savedUser);
+                console.log('User loaded from storage:', this.user.name);
+            } catch (e) {
+                console.error('Error parsing saved user:', e);
+                this.user = { ...this.defaultUser };
+                this.showWelcomeModal();
+            }
         } else {
+            console.log('No saved user found, showing welcome modal');
             this.user = { ...this.defaultUser };
             this.showWelcomeModal();
         }
+        
+        this.initialized = true;
         
         // Charger les activités et workouts
         this.loadActivities();
@@ -61,6 +78,12 @@ class UserManager {
 
     // Afficher le modal de bienvenue pour nouveau utilisateur
     showWelcomeModal() {
+        // Vérifier si un modal existe déjà
+        if (document.getElementById('welcomeModal')) {
+            console.log('Welcome modal already exists, skipping...');
+            return;
+        }
+        
         const modalHTML = `
             <div id="welcomeModal" class="modal active">
                 <div class="modal-content welcome-modal">
@@ -157,7 +180,7 @@ class UserManager {
         
         // Skip button
         skipBtn?.addEventListener('click', () => {
-            this.closeWelcomeModal();
+            this.skipWelcome();
         });
     }
 
@@ -180,6 +203,19 @@ class UserManager {
         this.showNotification(`Bienvenue ${this.user.name}! 🎉`);
     }
 
+    skipWelcome() {
+        // Sauvegarder un profil minimal pour éviter que le modal réapparaisse
+        this.user.name = 'Utilisateur';
+        this.user.createdAt = new Date().toISOString();
+        // Marquer que l'utilisateur a bien été créé (même vide)
+        this.save();
+        this.closeWelcomeModal();
+        this.updateUI();
+        
+        // Notification
+        this.showNotification('Bienvenue sur FitTracker! Vous pouvez configurer votre profil à tout moment.');
+    }
+    
     closeWelcomeModal() {
         const modal = document.getElementById('welcomeModal');
         if (modal) {

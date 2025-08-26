@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fix FitTracker Loop</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 600px;
+        }
+        h1 { color: #333; }
+        .problem {
+            background: #ffebee;
+            color: #c62828;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .solution {
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s;
+        }
+        .btn:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+        .btn-danger {
+            background: #f44336;
+        }
+        .btn-danger:hover {
+            background: #d32f2f;
+        }
+        .code {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            text-align: left;
+            margin: 20px 0;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Fix Boucle FitTracker</h1>
+        
+        <div class="problem">
+            <h2>❌ Problème Détecté</h2>
+            <p>Le modal de bienvenue se répète en boucle car le profil n'est pas sauvegardé correctement.</p>
+        </div>
+        
+        <div class="solution">
+            <h2>✅ Solution</h2>
+            <p>Nous allons créer un profil minimal et recharger l'application correctement.</p>
+        </div>
+        
+        <h2>Option 1 : Fix Automatique</h2>
+        <button class="btn" onclick="fixAndReload()">
+            🚀 Réparer et Lancer FitTracker
+        </button>
+        
+        <h2>Option 2 : Créer Profil Test</h2>
+        <button class="btn" onclick="createTestProfile()">
+            👤 Créer Profil "Test User"
+        </button>
+        
+        <h2>Option 3 : Reset Complet</h2>
+        <button class="btn btn-danger" onclick="fullReset()">
+            🗑️ Effacer Tout et Recommencer
+        </button>
+        
+        <div id="result"></div>
+        
+        <div class="code">
+            <h3>État actuel du localStorage :</h3>
+            <pre id="storage-state"></pre>
+        </div>
+    </div>
+    
+    <script>
+        // Afficher l'état actuel
+        function showCurrentState() {
+            const user = localStorage.getItem('fittracker_user_profile');
+            const state = document.getElementById('storage-state');
+            
+            if (user) {
+                try {
+                    const parsed = JSON.parse(user);
+                    state.textContent = `Profil trouvé : ${parsed.name || 'Sans nom'}\n` +
+                                       `Créé le : ${parsed.createdAt || 'Non défini'}\n` +
+                                       `Avatar : ${parsed.avatar || '👤'}`;
+                } catch (e) {
+                    state.textContent = 'Profil corrompu : ' + e.message;
+                }
+            } else {
+                state.textContent = 'Aucun profil trouvé (état vierge)';
+            }
+        }
+        
+        function fixAndReload() {
+            // Créer un profil minimal si nécessaire
+            const existingUser = localStorage.getItem('fittracker_user_profile');
+            
+            if (!existingUser || existingUser === '{}') {
+                const minimalProfile = {
+                    name: 'Utilisateur',
+                    age: '',
+                    weight: '',
+                    height: '',
+                    goal: 'general',
+                    level: 'beginner',
+                    avatar: '👤',
+                    createdAt: new Date().toISOString(),
+                    stats: {
+                        totalWorkouts: 0,
+                        totalCalories: 0,
+                        totalTime: 0,
+                        currentStreak: 0,
+                        bestStreak: 0,
+                        lastWorkout: null
+                    },
+                    preferences: {
+                        notifications: true,
+                        reminders: true,
+                        theme: 'dark',
+                        units: 'metric'
+                    }
+                };
+                
+                localStorage.setItem('fittracker_user_profile', JSON.stringify(minimalProfile));
+                document.getElementById('result').innerHTML = 
+                    '<p style="color: green;">✅ Profil minimal créé!</p>';
+            }
+            
+            // Clear any existing modals
+            if (window.opener) {
+                window.opener.location.reload();
+                window.close();
+            } else {
+                setTimeout(() => {
+                    window.location.href = '/projects/fittracker/index.html?fixed=' + Date.now();
+                }, 1000);
+            }
+        }
+        
+        function createTestProfile() {
+            const testProfile = {
+                name: 'Test User',
+                age: '25',
+                weight: '70',
+                height: '175',
+                goal: 'general',
+                level: 'beginner',
+                avatar: '💪',
+                createdAt: new Date().toISOString(),
+                stats: {
+                    totalWorkouts: 0,
+                    totalCalories: 0,
+                    totalTime: 0,
+                    currentStreak: 0,
+                    bestStreak: 0,
+                    lastWorkout: null
+                },
+                preferences: {
+                    notifications: true,
+                    reminders: true,
+                    theme: 'dark',
+                    units: 'metric'
+                }
+            };
+            
+            localStorage.setItem('fittracker_user_profile', JSON.stringify(testProfile));
+            
+            // Clear activities
+            localStorage.removeItem('fittracker_activities');
+            localStorage.removeItem('fittracker_workouts');
+            
+            document.getElementById('result').innerHTML = 
+                '<p style="color: green;">✅ Profil test créé! Redirection...</p>';
+            
+            setTimeout(() => {
+                window.location.href = '/projects/fittracker/index.html?profile=test&t=' + Date.now();
+            }, 1500);
+        }
+        
+        function fullReset() {
+            if (confirm('Êtes-vous sûr de vouloir tout effacer?')) {
+                localStorage.removeItem('fittracker_user_profile');
+                localStorage.removeItem('fittracker_activities');
+                localStorage.removeItem('fittracker_workouts');
+                
+                document.getElementById('result').innerHTML = 
+                    '<p style="color: orange;">⚠️ Tout effacé! Création d\'un nouveau profil...</p>';
+                
+                setTimeout(() => {
+                    fixAndReload();
+                }, 1000);
+            }
+        }
+        
+        // Afficher l'état au chargement
+        showCurrentState();
+        
+        // Rafraîchir l'état toutes les 2 secondes
+        setInterval(showCurrentState, 2000);
+    </script>
+</body>
+</html>
