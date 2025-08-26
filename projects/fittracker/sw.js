@@ -1,6 +1,6 @@
 // Service Worker for FitTracker PWA
 
-const CACHE_NAME = 'fittracker-v1.0.0';
+const CACHE_NAME = 'fittracker-v2.0.0'; // Version updated to force cache refresh
 const urlsToCache = [
   './',
   './index.html',

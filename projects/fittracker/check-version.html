@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Version Check</title>
+    <style>
+        body {
+            font-family: monospace;
+            padding: 20px;
+            background: #1a1a2e;
+            color: white;
+        }
+        .good { color: #4caf50; }
+        .bad { color: #f44336; }
+        .info { 
+            background: #333; 
+            padding: 20px; 
+            border-radius: 10px; 
+            margin: 10px 0;
+        }
+        iframe { 
+            width: 100%; 
+            height: 600px; 
+            border: 2px solid #667eea;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 Vérification de Version FitTracker</h1>
+    
+    <div class="info">
+        <h2>Ce que vous devriez voir si tout est à jour :</h2>
+        <ul>
+            <li class="good">✅ Nom : "Utilisateur" (PAS "Jean Dupont")</li>
+            <li class="good">✅ Stats : Tous à 0</li>
+            <li class="good">✅ Activités : "Aucune activité enregistrée"</li>
+            <li class="good">✅ Info profil : "Non renseigné"</li>
+        </ul>
+    </div>
+    
+    <div class="info">
+        <h2>Test en temps réel :</h2>
+        <p>L'iframe ci-dessous charge FitTracker. Après 2 secondes, je vais vérifier le contenu.</p>
+        <div id="test-result"></div>
+    </div>
+    
+    <iframe id="fittracker" src="/projects/fittracker/index.html?check=true&t=<?php echo time(); ?>"></iframe>
+    
+    <script>
+        setTimeout(() => {
+            try {
+                const iframe = document.getElementById('fittracker');
+                const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                
+                // Check profile name
+                const profileName = iframeDoc.querySelector('.profile-name');
+                const profileText = profileName ? profileName.textContent : 'NOT FOUND';
+                
+                // Check first stat value
+                const statValue = iframeDoc.querySelector('.stat-value');
+                const statText = statValue ? statValue.textContent : 'NOT FOUND';
+                
+                // Check activity list
+                const activityList = iframeDoc.querySelector('.activity-list');
+                const hasActivities = activityList ? activityList.querySelector('.activity-item') : false;
+                
+                let result = '<h3>Résultats du test :</h3>';
+                
+                // Profile name check
+                if (profileText === 'Utilisateur') {
+                    result += '<p class="good">✅ Nom correct : "Utilisateur"</p>';
+                } else if (profileText === 'Jean Dupont') {
+                    result += '<p class="bad">❌ PROBLÈME : Toujours "Jean Dupont" - CACHE NON VIDÉ!</p>';
+                    result += '<p>➡️ Solution : Utilisez Ctrl+Shift+R ou videz le cache du navigateur</p>';
+                } else {
+                    result += '<p>⚠️ Nom trouvé : "' + profileText + '"</p>';
+                }
+                
+                // Stats check
+                if (statText === '0') {
+                    result += '<p class="good">✅ Stats à zéro</p>';
+                } else {
+                    result += '<p class="bad">❌ Stats non zéro : ' + statText + '</p>';
+                }
+                
+                // Activities check
+                if (!hasActivities) {
+                    result += '<p class="good">✅ Pas d\'activités pré-remplies</p>';
+                } else {
+                    result += '<p class="bad">❌ Des activités sont présentes</p>';
+                }
+                
+                document.getElementById('test-result').innerHTML = result;
+                
+                // Log to console
+                console.log('Profile Name:', profileText);
+                console.log('First Stat:', statText);
+                console.log('Has Activities:', hasActivities);
+                
+            } catch (e) {
+                document.getElementById('test-result').innerHTML = 
+                    '<p class="bad">❌ Erreur : Impossible de lire l\'iframe (problème de cross-origin ou cache)</p>' +
+                    '<p>Essayez d\'ouvrir directement : <a href="/projects/fittracker/force-reload.html" style="color: #667eea;">Force Reload Page</a></p>';
+            }
+        }, 2000);
+    </script>
+</body>
+</html>
