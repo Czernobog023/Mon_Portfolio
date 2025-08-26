@@ -48,6 +48,14 @@ class UserManager {
         this.loadActivities();
         this.loadWorkouts();
         
+        // Mettre à jour l'interface avec les données utilisateur
+        // Attendre que le DOM soit prêt
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => this.updateUI());
+        } else {
+            this.updateUI();
+        }
+        
         return this.user;
     }
 

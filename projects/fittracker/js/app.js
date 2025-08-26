@@ -29,6 +29,10 @@ function initializeApp() {
         userManager = new UserManager();
         const user = userManager.init();
         console.log('User loaded:', user.name || 'New User');
+        // Force UI update after DOM is ready
+        userManager.updateUI();
+    } else {
+        console.error('UserManager not found! Make sure user-manager.js is loaded.');
     }
     
     // Initialize charts if on progress page

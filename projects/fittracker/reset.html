@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset FitTracker</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 500px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .status {
+            padding: 20px;
+            background: #f0f0f0;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-family: monospace;
+        }
+        .btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s;
+        }
+        .btn:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+        .success {
+            color: #4caf50;
+            font-weight: bold;
+        }
+        .warning {
+            color: #ff9800;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔄 Reset FitTracker</h1>
+        <p>Cette page va effacer TOUTES les données de FitTracker pour simuler un nouvel utilisateur.</p>
+        
+        <div class="status" id="status">
+            <p>État actuel : <span id="current-status">Vérification...</span></p>
+        </div>
+        
+        <button class="btn" onclick="resetAndRedirect()">
+            🗑️ Effacer et Ouvrir FitTracker
+        </button>
+        
+        <p class="warning" style="margin-top: 30px; font-size: 14px;">
+            ⚠️ Cette action est irréversible
+        </p>
+    </div>
+    
+    <script>
+        // Check current status
+        function checkStatus() {
+            const user = localStorage.getItem('fittracker_user_profile');
+            const activities = localStorage.getItem('fittracker_activities');
+            const workouts = localStorage.getItem('fittracker_workouts');
+            
+            let status = '';
+            if (user || activities || workouts) {
+                const userData = user ? JSON.parse(user) : null;
+                status = `Des données existent pour: ${userData?.name || 'Utilisateur'}`;
+                document.getElementById('current-status').innerHTML = `<span style="color: #ff9800">${status}</span>`;
+            } else {
+                status = 'Aucune donnée (état vierge)';
+                document.getElementById('current-status').innerHTML = `<span class="success">${status}</span>`;
+            }
+        }
+        
+        // Reset and redirect
+        function resetAndRedirect() {
+            // Clear all FitTracker data
+            localStorage.removeItem('fittracker_user_profile');
+            localStorage.removeItem('fittracker_activities');
+            localStorage.removeItem('fittracker_workouts');
+            
+            // Show success message
+            document.getElementById('status').innerHTML = `
+                <p class="success">✅ Toutes les données ont été effacées!</p>
+                <p>Redirection vers FitTracker...</p>
+            `;
+            
+            // Redirect after 1 second
+            setTimeout(() => {
+                window.location.href = '/projects/fittracker/index.html';
+            }, 1000);
+        }
+        
+        // Check status on load
+        checkStatus();
+    </script>
+</body>
+</html>
