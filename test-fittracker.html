@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test FitTracker</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #1a1a2e;
+            color: #fff;
+        }
+        .test-container {
+            background: #16213e;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #6200ea;
+            margin-bottom: 30px;
+        }
+        .btn {
+            background: #6200ea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+            transition: all 0.3s;
+        }
+        .btn:hover {
+            background: #7c4dff;
+            transform: translateY(-2px);
+        }
+        .btn-danger {
+            background: #e91e63;
+        }
+        .btn-danger:hover {
+            background: #f44336;
+        }
+        .btn-success {
+            background: #4caf50;
+        }
+        .btn-success:hover {
+            background: #66bb6a;
+        }
+        .status {
+            margin: 20px 0;
+            padding: 15px;
+            background: #0f3460;
+            border-radius: 6px;
+            border-left: 4px solid #6200ea;
+        }
+        .iframe-container {
+            width: 100%;
+            height: 600px;
+            border: 2px solid #6200ea;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        pre {
+            background: #0f3460;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 Test FitTracker PWA - État Vierge</h1>
+        
+        <div class="status">
+            <h3>📊 État actuel du localStorage</h3>
+            <pre id="storage-status">Chargement...</pre>
+        </div>
+        
+        <div>
+            <h3>🔧 Actions de test</h3>
+            <button class="btn btn-danger" onclick="clearAllData()">🗑️ Effacer toutes les données (Nouvel Utilisateur)</button>
+            <button class="btn" onclick="checkStorage()">🔍 Vérifier le localStorage</button>
+            <button class="btn btn-success" onclick="openFitTracker()">🚀 Ouvrir FitTracker</button>
+            <button class="btn" onclick="testWelcomeModal()">👋 Effacer & Tester Modal de Bienvenue</button>
+        </div>
+        
+        <div class="iframe-container" id="fittracker-frame" style="display: none;">
+            <iframe id="fittracker-iframe"></iframe>
+        </div>
+    </div>
+    
+    <script>
+        // Check storage on load
+        window.onload = () => {
+            checkStorage();
+        };
+        
+        function checkStorage() {
+            const storage = {
+                user: localStorage.getItem('fittracker_user_profile'),
+                activities: localStorage.getItem('fittracker_activities'),
+                workouts: localStorage.getItem('fittracker_workouts')
+            };
+            
+            let status = 'États du localStorage pour FitTracker:\n\n';
+            
+            if (storage.user) {
+                const user = JSON.parse(storage.user);
+                status += `✅ Profil utilisateur trouvé:\n`;
+                status += `   - Nom: ${user.name || 'Non défini'}\n`;
+                status += `   - Âge: ${user.age || 'Non défini'}\n`;
+                status += `   - Poids: ${user.weight || 'Non défini'} kg\n`;
+                status += `   - Taille: ${user.height || 'Non défini'} cm\n`;
+                status += `   - Objectif: ${user.goal || 'Non défini'}\n`;
+                status += `   - Niveau: ${user.level || 'Non défini'}\n`;
+                status += `   - Avatar: ${user.avatar || '👤'}\n`;
+                status += `   - Total entraînements: ${user.stats?.totalWorkouts || 0}\n`;
+                status += `   - Total calories: ${user.stats?.totalCalories || 0}\n`;
+            } else {
+                status += '❌ Aucun profil utilisateur (nouveau utilisateur)\n';
+            }
+            
+            if (storage.activities) {
+                const activities = JSON.parse(storage.activities);
+                status += `\n✅ Activités: ${activities.length} enregistrée(s)\n`;
+                if (activities.length > 0) {
+                    status += '   Dernières activités:\n';
+                    activities.slice(0, 3).forEach(act => {
+                        status += `   - ${act.name} (${act.type}) - ${act.duration}min\n`;
+                    });
+                }
+            } else {
+                status += '\n❌ Aucune activité enregistrée\n';
+            }
+            
+            if (storage.workouts) {
+                const workouts = JSON.parse(storage.workouts);
+                status += `\n✅ Workouts personnalisés: ${workouts.length}\n`;
+            } else {
+                status += '\n❌ Aucun workout personnalisé\n';
+            }
+            
+            document.getElementById('storage-status').textContent = status;
+        }
+        
+        function clearAllData() {
+            if (confirm('⚠️ Êtes-vous sûr de vouloir effacer toutes les données FitTracker?\n\nCeci simulera un nouvel utilisateur.')) {
+                localStorage.removeItem('fittracker_user_profile');
+                localStorage.removeItem('fittracker_activities');
+                localStorage.removeItem('fittracker_workouts');
+                alert('✅ Toutes les données ont été effacées!\n\nLorsque vous ouvrirez FitTracker, le modal de bienvenue devrait apparaître.');
+                checkStorage();
+            }
+        }
+        
+        function openFitTracker() {
+            const frame = document.getElementById('fittracker-frame');
+            const iframe = document.getElementById('fittracker-iframe');
+            frame.style.display = 'block';
+            iframe.src = '/projects/fittracker/index.html';
+            
+            // Scroll to frame
+            frame.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function testWelcomeModal() {
+            // Clear data first
+            localStorage.removeItem('fittracker_user_profile');
+            localStorage.removeItem('fittracker_activities');
+            localStorage.removeItem('fittracker_workouts');
+            
+            // Open FitTracker
+            openFitTracker();
+            
+            alert('📝 Les données ont été effacées.\n\nFitTracker devrait maintenant afficher le modal de bienvenue pour un nouveau utilisateur.');
+        }
+    </script>
+</body>
+</html>

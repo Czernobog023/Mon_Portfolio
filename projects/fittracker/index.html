@@ -18,7 +18,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=2">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -86,7 +86,7 @@
                             <i class="fas fa-fire"></i>
                         </div>
                         <div class="stat-content">
-                            <span class="stat-value">1,234</span>
+                            <span class="stat-value">0</span>
                             <span class="stat-label">Calories brûlées</span>
                         </div>
                         <div class="stat-progress">
@@ -99,7 +99,7 @@
                             <i class="fas fa-dumbbell"></i>
                         </div>
                         <div class="stat-content">
-                            <span class="stat-value">5</span>
+                            <span class="stat-value">0</span>
                             <span class="stat-label">Entraînements cette semaine</span>
                         </div>
                         <div class="stat-progress">
@@ -112,7 +112,7 @@
                             <i class="fas fa-clock"></i>
                         </div>
                         <div class="stat-content">
-                            <span class="stat-value">4h 32m</span>
+                            <span class="stat-value">0m</span>
                             <span class="stat-label">Temps total</span>
                         </div>
                         <div class="stat-progress">
@@ -125,7 +125,7 @@
                             <i class="fas fa-trophy"></i>
                         </div>
                         <div class="stat-content">
-                            <span class="stat-value">3/5</span>
+                            <span class="stat-value">0/5</span>
                             <span class="stat-label">Objectifs atteints</span>
                         </div>
                         <div class="stat-progress">
@@ -153,46 +153,11 @@
                 <div class="recent-activities">
                     <h3 class="subsection-title">Activités récentes</h3>
                     <div class="activity-list">
-                        <div class="activity-item">
-                            <div class="activity-icon cardio">
-                                <i class="fas fa-running"></i>
-                            </div>
-                            <div class="activity-content">
-                                <h4 class="activity-title">Course à pied</h4>
-                                <span class="activity-date">Aujourd'hui - 07:30</span>
-                            </div>
-                            <div class="activity-stats">
-                                <span class="stat">5.2 km</span>
-                                <span class="stat">28 min</span>
-                            </div>
-                        </div>
-                        
-                        <div class="activity-item">
-                            <div class="activity-icon strength">
-                                <i class="fas fa-dumbbell"></i>
-                            </div>
-                            <div class="activity-content">
-                                <h4 class="activity-title">Musculation - Haut du corps</h4>
-                                <span class="activity-date">Hier - 18:00</span>
-                            </div>
-                            <div class="activity-stats">
-                                <span class="stat">45 min</span>
-                                <span class="stat">280 kcal</span>
-                            </div>
-                        </div>
-                        
-                        <div class="activity-item">
-                            <div class="activity-icon yoga">
-                                <i class="fas fa-spa"></i>
-                            </div>
-                            <div class="activity-content">
-                                <h4 class="activity-title">Yoga matinal</h4>
-                                <span class="activity-date">Lundi - 06:45</span>
-                            </div>
-                            <div class="activity-stats">
-                                <span class="stat">30 min</span>
-                                <span class="stat">90 kcal</span>
-                            </div>
+                        <!-- Activities will be loaded here by UserManager -->
+                        <div style="text-align: center; padding: 40px; color: var(--text-secondary);">
+                            <i class="fas fa-dumbbell" style="font-size: 48px; opacity: 0.3; margin-bottom: 20px;"></i>
+                            <p>Aucune activité enregistrée</p>
+                            <p style="font-size: 14px; margin-top: 10px;">Commencez votre premier entraînement!</p>
                         </div>
                     </div>
                 </div>
@@ -461,20 +426,20 @@
                     <div class="profile-avatar">
                         <i class="fas fa-user-circle"></i>
                     </div>
-                    <h3 class="profile-name">Jean Dupont</h3>
-                    <span class="profile-level">Niveau Intermédiaire</span>
+                    <h3 class="profile-name">Utilisateur</h3>
+                    <span class="profile-level">Niveau Débutant</span>
                     
                     <div class="profile-stats">
                         <div class="profile-stat">
-                            <span class="stat-value">45</span>
+                            <span class="stat-value">0</span>
                             <span class="stat-label">Entraînements</span>
                         </div>
                         <div class="profile-stat">
-                            <span class="stat-value">12,450</span>
+                            <span class="stat-value">0</span>
                             <span class="stat-label">Calories brûlées</span>
                         </div>
                         <div class="profile-stat">
-                            <span class="stat-value">32h</span>
+                            <span class="stat-value">0h</span>
                             <span class="stat-label">Temps total</span>
                         </div>
                     </div>
@@ -484,19 +449,19 @@
                 <div class="user-info">
                     <div class="info-item">
                         <span class="info-label">Âge</span>
-                        <span class="info-value">28 ans</span>
+                        <span class="info-value">Non renseigné</span>
                     </div>
                     <div class="info-item">
                         <span class="info-label">Poids</span>
-                        <span class="info-value">75 kg</span>
+                        <span class="info-value">Non renseigné</span>
                     </div>
                     <div class="info-item">
                         <span class="info-label">Taille</span>
-                        <span class="info-value">180 cm</span>
+                        <span class="info-value">Non renseigné</span>
                     </div>
                     <div class="info-item">
                         <span class="info-label">Objectif</span>
-                        <span class="info-value">Prise de muscle</span>
+                        <span class="info-value">Forme générale</span>
                     </div>
                 </div>
             </section>
@@ -635,10 +600,113 @@
     </div>
 
     <!-- Scripts -->
-    <script src="js/app.js"></script>
-    <script src="js/service-worker.js"></script>
+    <!-- User Manager first -->
+    <script src="js/user-manager.js?v=2"></script>
+    <!-- Main App -->
+    <script src="js/app.js?v=2"></script>
+    <!-- Initialization Fix to ensure empty state -->
+    <script src="js/init-fix.js?v=2"></script>
     
     <!-- Chart.js for progress charts -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Activity Recording Functions -->
+    <script>
+        // Add new workout activity
+        function startWorkout() {
+            const workoutModal = `
+                <div id="workout-start-modal" class="modal active">
+                    <div class="modal-content">
+                        <h3>Enregistrer un entraînement</h3>
+                        <form id="workout-form" style="padding: 20px 0;">
+                            <div style="margin-bottom: 15px;">
+                                <label>Type d'entraînement</label>
+                                <select id="workout-type" style="width: 100%; padding: 10px; background: var(--surface-light); border: 1px solid var(--surface-light); border-radius: 8px; color: white;">
+                                    <option value="cardio">Cardio</option>
+                                    <option value="strength">Musculation</option>
+                                    <option value="yoga">Yoga</option>
+                                    <option value="cycling">Vélo</option>
+                                    <option value="swimming">Natation</option>
+                                </select>
+                            </div>
+                            <div style="margin-bottom: 15px;">
+                                <label>Nom de l'activité</label>
+                                <input type="text" id="workout-name" placeholder="Ex: Course matinale" required
+                                       style="width: 100%; padding: 10px; background: var(--surface-light); border: 1px solid var(--surface-light); border-radius: 8px; color: white;">
+                            </div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                                <div>
+                                    <label>Durée (min)</label>
+                                    <input type="number" id="workout-duration" placeholder="30" required
+                                           style="width: 100%; padding: 10px; background: var(--surface-light); border: 1px solid var(--surface-light); border-radius: 8px; color: white;">
+                                </div>
+                                <div>
+                                    <label>Calories</label>
+                                    <input type="number" id="workout-calories" placeholder="250"
+                                           style="width: 100%; padding: 10px; background: var(--surface-light); border: 1px solid var(--surface-light); border-radius: 8px; color: white;">
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 15px;">
+                                <label>Distance (km) - optionnel</label>
+                                <input type="number" step="0.1" id="workout-distance" placeholder="5.5"
+                                       style="width: 100%; padding: 10px; background: var(--surface-light); border: 1px solid var(--surface-light); border-radius: 8px; color: white;">
+                            </div>
+                            <div style="display: flex; gap: 15px;">
+                                <button type="button" onclick="closeWorkoutModal()"
+                                        style="flex: 1; padding: 12px; background: var(--surface-light); color: white; border: none; border-radius: 8px; cursor: pointer;">
+                                    Annuler
+                                </button>
+                                <button type="submit"
+                                        style="flex: 1; padding: 12px; background: var(--primary-color); color: white; border: none; border-radius: 8px; cursor: pointer;">
+                                    Enregistrer
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            `;
+            
+            document.body.insertAdjacentHTML('beforeend', workoutModal);
+            
+            document.getElementById('workout-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                saveWorkout();
+            });
+        }
+        
+        function closeWorkoutModal() {
+            const modal = document.getElementById('workout-start-modal');
+            if (modal) modal.remove();
+        }
+        
+        function saveWorkout() {
+            if (!userManager) {
+                alert('Veuillez d\'abord configurer votre profil');
+                return;
+            }
+            
+            const activity = {
+                type: document.getElementById('workout-type').value,
+                name: document.getElementById('workout-name').value,
+                duration: parseInt(document.getElementById('workout-duration').value),
+                calories: parseInt(document.getElementById('workout-calories').value) || 0,
+                distance: parseFloat(document.getElementById('workout-distance').value) || null
+            };
+            
+            userManager.addActivity(activity);
+            closeWorkoutModal();
+            showNotification('Entraînement enregistré! 💪');
+            
+            // Refresh the dashboard
+            if (typeof userManager.updateUI === 'function') {
+                userManager.updateUI();
+            }
+        }
+        
+        // Override the original startWorkout if needed
+        if (document.getElementById('start-workout')) {
+            document.getElementById('start-workout').onclick = startWorkout;
+        }
+    </script>
 </body>
 </html>

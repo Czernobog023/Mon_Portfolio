@@ -1,0 +1,159 @@
+/* iOS Specific Fixes for Neon Effects */
+
+/* Detect iOS devices */
+@supports (-webkit-touch-callout: none) {
+    /* iOS specific styles */
+    
+    /* Fix pour les effets néon trop lumineux sur iOS */
+    .hero-title,
+    .neon-text,
+    .retro-title {
+        /* Réduire l'intensité du glow sur iOS */
+        text-shadow: 
+            0 0 5px rgba(0, 255, 255, 0.5),
+            0 0 10px rgba(0, 255, 255, 0.3),
+            0 0 15px rgba(0, 255, 255, 0.2) !important;
+    }
+    
+    /* Fix pour les boutons néon */
+    .neon-btn,
+    .nav-link,
+    .cta-button {
+        text-shadow: 
+            0 0 3px rgba(0, 255, 255, 0.4),
+            0 0 6px rgba(0, 255, 255, 0.2) !important;
+        
+        box-shadow: 
+            0 0 10px rgba(0, 255, 255, 0.3),
+            inset 0 0 10px rgba(0, 255, 255, 0.1) !important;
+    }
+    
+    /* Réduire l'animation glow sur iOS */
+    @keyframes neon-pulse-ios {
+        0%, 100% {
+            text-shadow: 
+                0 0 5px rgba(0, 255, 255, 0.5),
+                0 0 10px rgba(0, 255, 255, 0.3);
+        }
+        50% {
+            text-shadow: 
+                0 0 8px rgba(0, 255, 255, 0.6),
+                0 0 15px rgba(0, 255, 255, 0.4);
+        }
+    }
+    
+    .hero-title {
+        animation: neon-pulse-ios 2s infinite !important;
+    }
+    
+    /* Fix pour le contraste du texte sur iOS */
+    .hero-subtitle,
+    .section-subtitle,
+    p {
+        opacity: 0.95 !important;
+        font-weight: 400 !important;
+    }
+    
+    /* Améliorer la lisibilité des cartes */
+    .service-card,
+    .project-card,
+    .skill-card {
+        background: rgba(22, 33, 62, 0.98) !important;
+        backdrop-filter: blur(5px) !important;
+        -webkit-backdrop-filter: blur(5px) !important;
+    }
+    
+    /* Fix pour les gradients trop lumineux */
+    .gradient-text {
+        background: linear-gradient(135deg, 
+            rgba(0, 255, 255, 0.8) 0%, 
+            rgba(255, 0, 255, 0.8) 100%) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+    }
+}
+
+/* Media query spécifique pour iPhone */
+@media screen and (max-width: 414px) and (-webkit-min-device-pixel-ratio: 2) {
+    /* Ajustements supplémentaires pour iPhone */
+    .hero-title {
+        font-size: 2.5rem !important;
+        letter-spacing: 2px !important;
+    }
+    
+    .neon-text {
+        font-size: 1.8rem !important;
+    }
+    
+    /* Réduire davantage les effets sur petits écrans iOS */
+    .glitch-effect {
+        animation: none !important;
+    }
+}
+
+/* Fix pour Safari spécifiquement */
+@media not all and (min-resolution:.001dpcm) {
+    @supports (-webkit-appearance:none) {
+        .neon-text,
+        .hero-title {
+            text-shadow: 
+                0 0 3px rgba(0, 255, 255, 0.6),
+                0 0 8px rgba(0, 255, 255, 0.3) !important;
+        }
+        
+        /* Améliorer le rendu des polices */
+        * {
+            -webkit-font-smoothing: antialiased !important;
+            -moz-osx-font-smoothing: grayscale !important;
+        }
+    }
+}
+
+/* Dark mode adjustments for iOS */
+@media (prefers-color-scheme: dark) {
+    @supports (-webkit-touch-callout: none) {
+        body {
+            background-color: #0a0a0f !important;
+        }
+        
+        .neon-text,
+        .hero-title {
+            color: rgba(255, 255, 255, 0.95) !important;
+        }
+    }
+}
+
+/* Accessibility improvements for iOS */
+@media (prefers-reduced-motion: reduce) {
+    @supports (-webkit-touch-callout: none) {
+        * {
+            animation: none !important;
+            transition: none !important;
+        }
+    }
+}
+
+/* Fix pour le blur excessif sur iOS */
+.blur-effect,
+.glassmorphism {
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+}
+
+/* Optimisation des performances pour iOS */
+@supports (-webkit-touch-callout: none) {
+    /* Utiliser hardware acceleration */
+    .animated,
+    .neon-text,
+    .hero-title {
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
+        will-change: transform;
+    }
+    
+    /* Réduire la complexité des animations */
+    .complex-animation {
+        animation-duration: 2s !important;
+        animation-iteration-count: 1 !important;
+    }
+}

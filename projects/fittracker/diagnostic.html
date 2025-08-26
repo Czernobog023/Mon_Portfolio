@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnostic FitTracker</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background: #1a1a2e;
+            color: #fff;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #6200ea;
+            border-bottom: 2px solid #6200ea;
+            padding-bottom: 10px;
+        }
+        .section {
+            background: #16213e;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border-left: 4px solid #6200ea;
+        }
+        .status-ok {
+            color: #4caf50;
+        }
+        .status-error {
+            color: #f44336;
+        }
+        .status-warning {
+            color: #ff9800;
+        }
+        pre {
+            background: #0f3460;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        button {
+            background: #6200ea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #7c4dff;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        iframe {
+            width: 100%;
+            height: 800px;
+            border: 2px solid #6200ea;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔬 Diagnostic Complet FitTracker</h1>
+    
+    <div class="section">
+        <h2>1️⃣ État du LocalStorage</h2>
+        <div id="storage-status"></div>
+        <button onclick="checkStorage()">🔄 Rafraîchir</button>
+        <button onclick="clearStorage()">🗑️ Effacer Tout</button>
+    </div>
+    
+    <div class="section">
+        <h2>2️⃣ État des Scripts</h2>
+        <div id="scripts-status"></div>
+        <button onclick="checkScripts()">🔄 Vérifier Scripts</button>
+    </div>
+    
+    <div class="section">
+        <h2>3️⃣ État du DOM</h2>
+        <div id="dom-status"></div>
+        <button onclick="checkDOM()">🔄 Analyser DOM</button>
+    </div>
+    
+    <div class="section">
+        <h2>4️⃣ Test Direct</h2>
+        <button onclick="testInIframe()">📱 Tester dans iFrame</button>
+        <button onclick="testInNewWindow()">🪟 Tester dans Nouvelle Fenêtre</button>
+        <button onclick="injectFix()">💉 Injecter Fix Direct</button>
+        <div id="iframe-container"></div>
+    </div>
+    
+    <div class="section">
+        <h2>5️⃣ Console de Débogage</h2>
+        <pre id="console-output"></pre>
+    </div>
+    
+    <script>
+        const log = (msg, type = 'info') => {
+            const output = document.getElementById('console-output');
+            const time = new Date().toLocaleTimeString();
+            const colorClass = type === 'error' ? 'status-error' : 
+                              type === 'warning' ? 'status-warning' : 
+                              type === 'success' ? 'status-ok' : '';
+            output.innerHTML += `<span class="${colorClass}">[${time}] ${msg}</span>\n`;
+            console.log(msg);
+        };
+
+        function checkStorage() {
+            const status = document.getElementById('storage-status');
+            const keys = ['fittracker_user_profile', 'fittracker_activities', 'fittracker_workouts'];
+            let html = '<h3>LocalStorage Content:</h3>';
+            
+            keys.forEach(key => {
+                const value = localStorage.getItem(key);
+                if (value) {
+                    try {
+                        const parsed = JSON.parse(value);
+                        html += `<div class="status-warning">⚠️ ${key} exists:</div>`;
+                        html += `<pre>${JSON.stringify(parsed, null, 2).substring(0, 500)}...</pre>`;
+                        log(`Found ${key} with data`, 'warning');
+                    } catch (e) {
+                        html += `<div class="status-error">❌ ${key} corrupted</div>`;
+                        log(`${key} is corrupted`, 'error');
+                    }
+                } else {
+                    html += `<div class="status-ok">✅ ${key} is empty (good for new user)</div>`;
+                    log(`${key} is empty`, 'success');
+                }
+            });
+            
+            status.innerHTML = html;
+        }
+
+        function clearStorage() {
+            localStorage.removeItem('fittracker_user_profile');
+            localStorage.removeItem('fittracker_activities');
+            localStorage.removeItem('fittracker_workouts');
+            log('All FitTracker data cleared!', 'success');
+            checkStorage();
+        }
+
+        function checkScripts() {
+            const status = document.getElementById('scripts-status');
+            let html = '<h3>Scripts Status:</h3>';
+            
+            // Check if scripts are loaded
+            const checks = [
+                { name: 'UserManager class', test: () => typeof UserManager !== 'undefined' },
+                { name: 'userManager instance', test: () => typeof window.userManager !== 'undefined' },
+                { name: 'Chart.js', test: () => typeof Chart !== 'undefined' },
+                { name: 'App initialized', test: () => typeof initializeApp !== 'undefined' },
+                { name: 'Force Update function', test: () => typeof window.forceUpdateFitTracker !== 'undefined' }
+            ];
+            
+            checks.forEach(check => {
+                try {
+                    const result = check.test();
+                    if (result) {
+                        html += `<div class="status-ok">✅ ${check.name} loaded</div>`;
+                        log(`${check.name} is loaded`, 'success');
+                    } else {
+                        html += `<div class="status-error">❌ ${check.name} NOT loaded</div>`;
+                        log(`${check.name} is NOT loaded`, 'error');
+                    }
+                } catch (e) {
+                    html += `<div class="status-error">❌ ${check.name} error: ${e.message}</div>`;
+                    log(`${check.name} error: ${e.message}`, 'error');
+                }
+            });
+            
+            status.innerHTML = html;
+        }
+
+        function checkDOM() {
+            const status = document.getElementById('dom-status');
+            let html = '<h3>DOM Elements in FitTracker:</h3>';
+            
+            // We'll check this in the iframe
+            const iframe = document.createElement('iframe');
+            iframe.src = '/projects/fittracker/index.html';
+            iframe.style.display = 'none';
+            document.body.appendChild(iframe);
+            
+            iframe.onload = () => {
+                const doc = iframe.contentDocument;
+                
+                const elements = [
+                    { selector: '.profile-name', desc: 'Profile Name' },
+                    { selector: '.profile-level', desc: 'Profile Level' },
+                    { selector: '.stat-value', desc: 'Stat Values' },
+                    { selector: '.activity-list', desc: 'Activity List' },
+                    { selector: '.info-value', desc: 'Info Values' }
+                ];
+                
+                elements.forEach(el => {
+                    const found = doc.querySelectorAll(el.selector);
+                    if (found.length > 0) {
+                        html += `<div class="status-ok">✅ Found ${found.length} ${el.desc}</div>`;
+                        if (el.selector === '.profile-name' && found[0]) {
+                            const text = found[0].textContent;
+                            const statusClass = text === 'Utilisateur' ? 'status-ok' : 'status-warning';
+                            html += `<div class="${statusClass}">   Content: "${text}"</div>`;
+                        }
+                        if (el.selector === '.stat-value' && found[0]) {
+                            html += `<div>   First value: "${found[0].textContent}"</div>`;
+                        }
+                    } else {
+                        html += `<div class="status-error">❌ ${el.desc} NOT found</div>`;
+                    }
+                });
+                
+                status.innerHTML = html;
+                document.body.removeChild(iframe);
+            };
+        }
+
+        function testInIframe() {
+            const container = document.getElementById('iframe-container');
+            container.innerHTML = '<h3>FitTracker in iFrame:</h3><iframe src="/projects/fittracker/index.html"></iframe>';
+            log('FitTracker loaded in iframe', 'info');
+        }
+
+        function testInNewWindow() {
+            window.open('/projects/fittracker/index.html', '_blank');
+            log('FitTracker opened in new window', 'info');
+        }
+
+        function injectFix() {
+            // This will inject a fix directly into the current page
+            const script = document.createElement('script');
+            script.textContent = `
+                console.log('🔧 Injecting direct fix...');
+                
+                // Clear all data
+                localStorage.removeItem('fittracker_user_profile');
+                localStorage.removeItem('fittracker_activities');
+                localStorage.removeItem('fittracker_workouts');
+                
+                // Open FitTracker with forced empty state
+                window.location.href = '/projects/fittracker/index.html';
+            `;
+            document.head.appendChild(script);
+            log('Fix injected, redirecting...', 'success');
+        }
+
+        // Auto-run checks on load
+        window.onload = () => {
+            checkStorage();
+            checkScripts();
+            log('Diagnostic page loaded', 'info');
+        };
+    </script>
+</body>
+</html>
