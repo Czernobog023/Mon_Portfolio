@@ -311,242 +311,118 @@
             <div class="container">
                 <h2 class="section-title cyber-title">
                     <span class="title-icon"><i class="fas fa-user-astronaut"></i></span>
-                    <span class="title-text cyber-glitch" data-text="PROFIL DÉVELOPPEUR">PROFIL DÉVELOPPEUR</span>
+                    <span class="title-text cyber-glitch" data-text="À PROPOS DE MOI">À PROPOS DE MOI</span>
                     <span class="title-decoration"></span>
                 </h2>
                 
-                <!-- Terminal About Interface -->
-                <div class="about-terminal-container">
-                    <div class="about-terminal">
-                        <div class="terminal-header">
-                            <div class="terminal-controls">
-                                <span class="terminal-btn close"></span>
-                                <span class="terminal-btn minimize"></span>
-                                <span class="terminal-btn maximize"></span>
+                <div class="about-grid">
+                    <!-- Panel de code -->
+                    <div class="code-panel">
+                        <div class="panel-header">
+                            <div class="panel-controls">
+                                <span class="control-btn close"></span>
+                                <span class="control-btn minimize"></span>
+                                <span class="control-btn maximize"></span>
                             </div>
-                            <div class="terminal-title">
-                                <i class="fas fa-terminal"></i>
-                                SYSTEM_PROFILE.exe - Developer Information Panel
-                            </div>
-                            <div class="terminal-status">
-                                <span class="status-indicator active"></span>
-                                CONNECTED
+                            <div class="panel-title">
+                                <i class="fas fa-file-code"></i>
+                                developer_profile.js
                             </div>
                         </div>
-                        
-                        <div class="terminal-body">
-                            <!-- Developer Profile Section -->
-                            <div class="profile-section">
-                                <div class="terminal-prompt">
-                                    <span class="prompt-symbol">$</span>
-                                    <span class="prompt-command">cat /dev/profile/rayan_maillard.json</span>
-                                </div>
-                                
-                                <div class="profile-output">
-                                    <div class="profile-grid">
-                                        <div class="profile-main">
-                                            <div class="profile-header">
-                                                <div class="profile-avatar">
-                                                    <i class="fas fa-user-astronaut"></i>
-                                                </div>
-                                                <div class="profile-info">
-                                                    <h3 class="profile-name">RAYAN MAILLARD</h3>
-                                                    <p class="profile-title">Développeur Web Full-Stack</p>
-                                                    <div class="profile-status">
-                                                        <span class="status-badge available">● DISPONIBLE</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="profile-description">
-                                                <div class="section-header">
-                                                    <i class="fas fa-info-circle"></i>
-                                                    <span>PRÉSENTATION</span>
-                                                </div>
-                                                <p>
-                                                    Développeur passionné avec <strong>5 ans d'expérience militaire</strong> (2021-2026) 
-                                                    qui m'ont apporté <span class="highlight">discipline</span>, 
-                                                    <span class="highlight">rigueur</span> et <span class="highlight">leadership</span>.
-                                                    Spécialisé dans la création de solutions web innovantes, 
-                                                    je combine expertise technique et approche stratégique pour 
-                                                    développer des applications performantes et user-friendly.
-                                                </p>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="profile-stats">
-                                            <div class="section-header">
-                                                <i class="fas fa-chart-bar"></i>
-                                                <span>STATISTIQUES</span>
-                                            </div>
-                                            <div class="stats-grid">
-                                                <div class="stat-item">
-                                                    <div class="stat-value" data-target="50">0</div>
-                                                    <div class="stat-label">Projets Réalisés</div>
-                                                </div>
-                                                <div class="stat-item">
-                                                    <div class="stat-value" data-target="98">0</div>
-                                                    <div class="stat-label">Satisfaction Client (%)</div>
-                                                </div>
-                                                <div class="stat-item">
-                                                    <div class="stat-value" data-target="24">0</div>
-                                                    <div class="stat-label">Support 24h/7j</div>
-                                                </div>
-                                                <div class="stat-item">
-                                                    <div class="stat-value" data-target="5">0</div>
-                                                    <div class="stat-label">Ans d'Expérience Militaire</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                        <div class="panel-body">
+                            <div class="code-editor">
+<pre><code><span class="code-comment">// Configuration développeur</span>
+<span class="code-keyword">const</span> <span class="code-variable">developer</span> <span class="code-operator">=</span> {
+  <span class="code-property">name</span><span class="code-operator">:</span> <span class="code-string">"Rayan Maillard"</span>,
+  <span class="code-property">email</span><span class="code-operator">:</span> <span class="code-string">"rayanmaillard023@gmail.com"</span>,
+  <span class="code-property">phone</span><span class="code-operator">:</span> <span class="code-string">"07 81 33 88 30"</span>,
+  <span class="code-property">profession</span><span class="code-operator">:</span> <span class="code-string">"Développeur Web Full-Stack"</span>,
+  <span class="code-property">location</span><span class="code-operator">:</span> <span class="code-string">"France"</span>,
+  <span class="code-property">military_service</span><span class="code-operator">:</span> <span class="code-string">"2021-2026 (5 ans)"</span>,
+  <span class="code-property">specialities</span><span class="code-operator">:</span> [
+    <span class="code-string">"Sites web responsive"</span>,
+    <span class="code-string">"Applications web"</span>,
+    <span class="code-string">"E-commerce"</span>,
+    <span class="code-string">"Optimisation SEO"</span>
+  ],
+  <span class="code-property">motto</span><span class="code-operator">:</span> <span class="code-string">"Code with passion, debug with patience"</span>,
+  <span class="code-property">available</span><span class="code-operator">:</span> <span class="code-boolean">true</span>
+};
+
+<span class="code-comment">// Fonction d'initialisation</span>
+<span class="code-keyword">function</span> <span class="code-function">initDeveloper</span>() {
+  <span class="code-keyword">return</span> <span class="code-string">"Ready to create amazing websites!"</span>;
+}</code></pre>
                             </div>
-                            
-                            <!-- Skills Matrix Section -->
-                            <div class="skills-section">
-                                <div class="terminal-prompt">
-                                    <span class="prompt-symbol">$</span>
-                                    <span class="prompt-command">system --scan-capabilities --format=matrix</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Informations personnelles -->
+                    <div class="about-info">
+                        <div class="info-card">
+                            <div class="card-header">
+                                <i class="fas fa-user-circle"></i>
+                                <span>PROFIL DÉVELOPPEUR</span>
+                            </div>
+                            <div class="card-content">
+                                <p class="about-description">
+                                    Passionné par le développement web depuis plusieurs années, je me spécialise dans la création 
+                                    de sites web modernes, performants et adaptés aux besoins spécifiques de chaque client. 
+                                    Fort de <strong>5 ans d'expérience militaire (2021-2026)</strong> qui m'ont apporté discipline, 
+                                    rigueur et leadership, mon approche combine créativité technique et rigueur professionnelle pour livrer des solutions 
+                                    digitales qui dépassent les attentes.
+                                </p>
+                                
+                                <div class="skills-showcase">
+                                    <h3>Compétences principales</h3>
+                                    <div class="skills-tags">
+                                        <span class="skill-tag frontend">HTML5</span>
+                                        <span class="skill-tag frontend">CSS3</span>
+                                        <span class="skill-tag frontend">JavaScript</span>
+                                        <span class="skill-tag frontend">React</span>
+                                        <span class="skill-tag frontend">Vue.js</span>
+                                        <span class="skill-tag backend">Node.js</span>
+                                        <span class="skill-tag backend">PHP</span>
+                                        <span class="skill-tag backend">MySQL</span>
+                                        <span class="skill-tag tools">Git</span>
+                                        <span class="skill-tag tools">Responsive Design</span>
+                                        <span class="skill-tag tools">SEO</span>
+                                        <span class="skill-tag tools">UX/UI</span>
+                                    </div>
                                 </div>
                                 
-                                <div class="skills-matrix">
-                                    <div class="matrix-category">
-                                        <div class="category-header">
-                                            <i class="fas fa-code"></i>
-                                            <span>FRONTEND</span>
-                                            <div class="category-level">
-                                                <div class="level-bar" data-level="95"></div>
-                                                <span class="level-text">95%</span>
-                                            </div>
+                                <div class="achievements">
+                                    <h3>Certifications & Réalisations</h3>
+                                    <div class="achievement-list">
+                                        <div class="achievement-item">
+                                            <i class="fas fa-trophy"></i>
+                                            <span>Expert en développement Frontend</span>
                                         </div>
-                                        <div class="tech-list">
-                                            <span class="tech-item html">HTML5</span>
-                                            <span class="tech-item css">CSS3</span>
-                                            <span class="tech-item js">JavaScript</span>
-                                            <span class="tech-item react">React</span>
-                                            <span class="tech-item vue">Vue.js</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="matrix-category">
-                                        <div class="category-header">
+                                        <div class="achievement-item">
                                             <i class="fas fa-server"></i>
-                                            <span>BACKEND</span>
-                                            <div class="category-level">
-                                                <div class="level-bar" data-level="88"></div>
-                                                <span class="level-text">88%</span>
-                                            </div>
+                                            <span>Maîtrise du développement Backend</span>
                                         </div>
-                                        <div class="tech-list">
-                                            <span class="tech-item node">Node.js</span>
-                                            <span class="tech-item php">PHP</span>
-                                            <span class="tech-item mysql">MySQL</span>
-                                            <span class="tech-item mongodb">MongoDB</span>
+                                        <div class="achievement-item">
+                                            <i class="fas fa-mobile-alt"></i>
+                                            <span>Spécialiste Responsive Design</span>
                                         </div>
-                                    </div>
-                                    
-                                    <div class="matrix-category">
-                                        <div class="category-header">
-                                            <i class="fas fa-tools"></i>
-                                            <span>OUTILS & MÉTHODOLOGIES</span>
-                                            <div class="category-level">
-                                                <div class="level-bar" data-level="92"></div>
-                                                <span class="level-text">92%</span>
-                                            </div>
+                                        <div class="achievement-item">
+                                            <i class="fas fa-medal"></i>
+                                            <span>Service militaire 2021-2026 (Leadership)</span>
                                         </div>
-                                        <div class="tech-list">
-                                            <span class="tech-item git">Git</span>
-                                            <span class="tech-item responsive">Responsive Design</span>
-                                            <span class="tech-item seo">SEO</span>
-                                            <span class="tech-item ux">UX/UI</span>
+                                        <div class="achievement-item">
+                                            <i class="fas fa-search"></i>
+                                            <span>Optimisation SEO avancée</span>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Military Experience Section -->
-                            <div class="military-section">
-                                <div class="terminal-prompt">
-                                    <span class="prompt-symbol">$</span>
-                                    <span class="prompt-command">grep -i "military_experience" /var/log/career.log</span>
                                 </div>
                                 
-                                <div class="military-output">
-                                    <div class="military-header">
-                                        <i class="fas fa-shield-alt"></i>
-                                        <span class="military-title">EXPÉRIENCE MILITAIRE (2021-2026)</span>
-                                        <span class="military-badge">5 ANS DE SERVICE</span>
-                                    </div>
-                                    
-                                    <div class="military-skills">
-                                        <div class="military-skill">
-                                            <i class="fas fa-users"></i>
-                                            <span>Leadership d'équipe & Management</span>
-                                        </div>
-                                        <div class="military-skill">
-                                            <i class="fas fa-crosshairs"></i>
-                                            <span>Rigueur & Précision technique</span>
-                                        </div>
-                                        <div class="military-skill">
-                                            <i class="fas fa-clock"></i>
-                                            <span>Gestion de projets sous pression</span>
-                                        </div>
-                                        <div class="military-skill">
-                                            <i class="fas fa-handshake"></i>
-                                            <span>Esprit d'équipe & Collaboration</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="military-impact">
-                                        <p class="impact-text">
-                                            "Cette expérience militaire enrichit mon approche du développement : 
-                                            <span class="highlight">méthodologie stricte</span>, 
-                                            <span class="highlight">respect des délais</span>, 
-                                            et <span class="highlight">capacité à gérer des projets complexes</span> 
-                                            avec la même discipline qu'une mission opérationnelle."
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- CV Download Section -->
-                            <div class="download-section">
-                                <div class="terminal-prompt">
-                                    <span class="prompt-symbol">$</span>
-                                    <span class="prompt-command">wget --secure-download cv_rayan_maillard.pdf</span>
-                                </div>
-                                
-                                <div class="download-output">
-                                    <div class="download-progress">
-                                        <div class="progress-bar">
-                                            <div class="progress-fill" data-progress="100"></div>
-                                        </div>
-                                        <span class="progress-text">Téléchargement disponible [100%]</span>
-                                    </div>
-                                    
-                                    <a href="cv-viewer.html" target="_blank" class="cv-terminal-btn">
-                                        <i class="fas fa-file-code"></i>
-                                        <span>ACCÉDER AU CV INTERACTIF</span>
-                                        <div class="btn-glow"></div>
+                                <div class="cv-download-section">
+                                    <a href="CV_Rayan_Maillard.pdf" download="CV_Rayan_Maillard.pdf" class="cv-download-btn">
+                                        <i class="fas fa-file-pdf"></i>
+                                        <span>Télécharger mon CV</span>
+                                        <i class="fas fa-download"></i>
                                     </a>
-                                </div>
-                            </div>
-                            
-                            <!-- System Status Footer -->
-                            <div class="system-footer">
-                                <div class="terminal-prompt">
-                                    <span class="prompt-symbol">$</span>
-                                    <span class="prompt-command">status --availability</span>
-                                </div>
-                                <div class="status-output">
-                                    <span class="status-line">
-                                        <i class="fas fa-check-circle"></i>
-                                        SYSTÈME OPÉRATIONNEL - Développeur disponible pour nouveaux projets
-                                    </span>
-                                    <span class="status-line">
-                                        <i class="fas fa-clock"></i>
-                                        Dernière mise à jour: <span class="timestamp" id="lastUpdate"></span>
-                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -721,7 +597,7 @@
                                         <div class="channel-address">Lun-Ven: 09:00-18:00 | Sam: 10:00-16:00</div>
                                         <div class="channel-desc">Fenêtre de communication active</div>
                                     </div>
-                                    <div class="channel-action inactive">
+                                    <div class="channel-action" id="planifier-btn">
                                         <i class="fas fa-calendar-check"></i>
                                         PLANIFIER
                                     </div>
@@ -737,7 +613,7 @@
                                         <div class="channel-address">< 24H GUARANTEED</div>
                                         <div class="channel-desc">Temps de réponse moyen: 4h</div>
                                     </div>
-                                    <div class="channel-action inactive">
+                                    <div class="channel-action" id="tracker-btn">
                                         <i class="fas fa-tachometer-alt"></i>
                                         TRACKER
                                     </div>

@@ -24,6 +24,7 @@ class PortfolioApp {
             this.setupCounterAnimations();
             this.setupAboutAnimations();
             this.setupEmailSystem();
+            this.setupPlanifierTracker();
             this.setupLazyLoading();
             this.setupPerformanceOptimizations();
             this.registerServiceWorker();
@@ -307,6 +308,443 @@ class PortfolioApp {
                 imageObserver.observe(img);
             });
         }
+    }
+
+    // Système de boutons PLANIFIER et TRACKER
+    setupPlanifierTracker() {
+        // Bouton PLANIFIER - Popup RDV
+        const planifierBtn = document.getElementById('planifier-btn');
+        if (planifierBtn) {
+            planifierBtn.addEventListener('click', () => this.showRDVPopup());
+        }
+
+        // Bouton TRACKER - Dashboard
+        const trackerBtn = document.getElementById('tracker-btn');
+        if (trackerBtn) {
+            trackerBtn.addEventListener('click', () => this.showTrackerDashboard());
+        }
+    }
+
+    // Popup Demande de RDV
+    showRDVPopup() {
+        if (!document.getElementById('rdv-popup')) {
+            this.createRDVPopup();
+        }
+        
+        const popup = document.getElementById('rdv-popup');
+        popup.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    createRDVPopup() {
+        const popup = document.createElement('div');
+        popup.id = 'rdv-popup';
+        popup.className = 'rdv-popup-overlay';
+        popup.innerHTML = `
+            <div class="rdv-popup">
+                <div class="popup-header">
+                    <div class="popup-title">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>DEMANDE DE RENDEZ-VOUS</span>
+                    </div>
+                    <button class="popup-close" id="rdv-close-btn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="popup-body">
+                    <form id="rdv-form" class="rdv-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="rdv-name">
+                                    <i class="fas fa-user"></i>
+                                    Nom & Prénom *
+                                </label>
+                                <input type="text" id="rdv-name" name="name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="rdv-email">
+                                    <i class="fas fa-envelope"></i>
+                                    Email *
+                                </label>
+                                <input type="email" id="rdv-email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="rdv-phone">
+                                    <i class="fas fa-phone"></i>
+                                    Téléphone
+                                </label>
+                                <input type="tel" id="rdv-phone" name="phone">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="rdv-company">
+                                    <i class="fas fa-building"></i>
+                                    Entreprise
+                                </label>
+                                <input type="text" id="rdv-company" name="company">
+                            </div>
+                            
+                            <div class="form-group full-width">
+                                <label for="rdv-project">
+                                    <i class="fas fa-rocket"></i>
+                                    Type de Projet *
+                                </label>
+                                <select id="rdv-project" name="project" required>
+                                    <option value="">Sélectionnez un type</option>
+                                    <option value="site-vitrine">Site Vitrine</option>
+                                    <option value="e-commerce">E-commerce</option>
+                                    <option value="application-web">Application Web</option>
+                                    <option value="refonte">Refonte Site Existant</option>
+                                    <option value="maintenance">Maintenance/Support</option>
+                                    <option value="autre">Autre</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group full-width">
+                                <label for="rdv-date">
+                                    <i class="fas fa-calendar"></i>
+                                    Créneau Souhaité *
+                                </label>
+                                <input type="datetime-local" id="rdv-date" name="date" required>
+                            </div>
+                            
+                            <div class="form-group full-width">
+                                <label for="rdv-budget">
+                                    <i class="fas fa-euro-sign"></i>
+                                    Budget Approximatif
+                                </label>
+                                <select id="rdv-budget" name="budget">
+                                    <option value="">Non défini</option>
+                                    <option value="500-1500">500€ - 1500€</option>
+                                    <option value="1500-3000">1500€ - 3000€</option>
+                                    <option value="3000-5000">3000€ - 5000€</option>
+                                    <option value="5000+">5000€ +</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group full-width">
+                                <label for="rdv-message">
+                                    <i class="fas fa-comment"></i>
+                                    Description du Projet
+                                </label>
+                                <textarea id="rdv-message" name="message" rows="4" 
+                                    placeholder="Décrivez votre projet, vos besoins, vos objectifs..."></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" class="btn-secondary" onclick="this.closeRDVPopup()">
+                                <i class="fas fa-times"></i>
+                                Annuler
+                            </button>
+                            <button type="submit" class="btn-primary">
+                                <i class="fas fa-paper-plane"></i>
+                                Envoyer la Demande
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(popup);
+
+        // Événements
+        popup.querySelector('#rdv-close-btn').addEventListener('click', () => this.closeRDVPopup());
+        popup.querySelector('#rdv-form').addEventListener('submit', (e) => this.handleRDVSubmit(e));
+        popup.addEventListener('click', (e) => {
+            if (e.target === popup) this.closeRDVPopup();
+        });
+
+        // Date minimale = aujourd'hui
+        const dateInput = popup.querySelector('#rdv-date');
+        const now = new Date();
+        now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+        dateInput.min = now.toISOString().slice(0, 16);
+    }
+
+    closeRDVPopup() {
+        const popup = document.getElementById('rdv-popup');
+        if (popup) {
+            popup.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+
+    handleRDVSubmit(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(e.target);
+        const data = Object.fromEntries(formData);
+        
+        // Validation
+        if (!data.name || !data.email || !data.project || !data.date) {
+            alert('Veuillez remplir tous les champs obligatoires (*)');
+            return;
+        }
+
+        // Formatage de la date
+        const date = new Date(data.date);
+        const dateStr = date.toLocaleDateString('fr-FR', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+
+        // Création email
+        const subject = `Demande de RDV - ${data.project} - ${data.name}`;
+        const body = `Nouvelle demande de rendez-vous !
+
+👤 CONTACT :
+• Nom : ${data.name}
+• Email : ${data.email}
+• Téléphone : ${data.phone || 'Non renseigné'}
+• Entreprise : ${data.company || 'Non renseigné'}
+
+🚀 PROJET :
+• Type : ${data.project}
+• Budget : ${data.budget || 'Non défini'}
+
+📅 CRÉNEAU DEMANDÉ :
+• ${dateStr}
+
+💬 DESCRIPTION :
+${data.message || 'Aucune description fournie'}
+
+---
+Demande envoyée depuis le portfolio - Section Planning
+`;
+
+        // Ouvrir Gmail avec les données
+        const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=rayanmaillard023@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        
+        window.open(gmailUrl, '_blank');
+        this.closeRDVPopup();
+        this.showFeedback('Demande de RDV transmise ! 📅');
+        
+        // Reset du formulaire
+        e.target.reset();
+    }
+
+    // Dashboard Tracker
+    showTrackerDashboard() {
+        if (!document.getElementById('tracker-popup')) {
+            this.createTrackerDashboard();
+        }
+        
+        const popup = document.getElementById('tracker-popup');
+        popup.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        
+        // Animer les statistiques
+        setTimeout(() => this.animateTrackerStats(), 500);
+    }
+
+    createTrackerDashboard() {
+        const popup = document.createElement('div');
+        popup.id = 'tracker-popup';
+        popup.className = 'tracker-popup-overlay';
+        popup.innerHTML = `
+            <div class="tracker-popup">
+                <div class="popup-header">
+                    <div class="popup-title">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>DASHBOARD - SUIVI PROJETS</span>
+                    </div>
+                    <button class="popup-close" id="tracker-close-btn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="popup-body">
+                    <!-- Statistiques Performance -->
+                    <div class="stats-section">
+                        <div class="section-title">
+                            <i class="fas fa-chart-line"></i>
+                            STATISTIQUES DE PERFORMANCE
+                        </div>
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <div class="stat-number" data-target="3.2">0</div>
+                                    <div class="stat-unit">heures</div>
+                                    <div class="stat-label">Temps Réponse Moyen</div>
+                                </div>
+                            </div>
+                            
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <div class="stat-number" data-target="98">0</div>
+                                    <div class="stat-unit">%</div>
+                                    <div class="stat-label">Projets Livrés</div>
+                                </div>
+                            </div>
+                            
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <div class="stat-number" data-target="47">0</div>
+                                    <div class="stat-unit">clients</div>
+                                    <div class="stat-label">Clients Satisfaits</div>
+                                </div>
+                            </div>
+                            
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <div class="stat-number" data-target="15">0</div>
+                                    <div class="stat-unit">jours</div>
+                                    <div class="stat-label">Délai Moyen</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Projets en Cours -->
+                    <div class="projects-section">
+                        <div class="section-title">
+                            <i class="fas fa-project-diagram"></i>
+                            PROJETS EN COURS
+                        </div>
+                        <div class="projects-list">
+                            <div class="project-item">
+                                <div class="project-info">
+                                    <div class="project-name">E-commerce BioShop</div>
+                                    <div class="project-client">Client: Marie D.</div>
+                                </div>
+                                <div class="project-status">
+                                    <div class="status-bar">
+                                        <div class="status-progress" style="width: 75%"></div>
+                                    </div>
+                                    <span class="status-text">75% - Développement</span>
+                                </div>
+                                <div class="project-date">
+                                    <i class="fas fa-calendar"></i>
+                                    Livraison: 15 Sep
+                                </div>
+                            </div>
+                            
+                            <div class="project-item">
+                                <div class="project-info">
+                                    <div class="project-name">Site Vitrine Avocat</div>
+                                    <div class="project-client">Client: Pierre M.</div>
+                                </div>
+                                <div class="project-status">
+                                    <div class="status-bar">
+                                        <div class="status-progress" style="width: 40%"></div>
+                                    </div>
+                                    <span class="status-text">40% - Design</span>
+                                </div>
+                                <div class="project-date">
+                                    <i class="fas fa-calendar"></i>
+                                    Livraison: 22 Sep
+                                </div>
+                            </div>
+                            
+                            <div class="project-item">
+                                <div class="project-info">
+                                    <div class="project-name">App Web Restaurant</div>
+                                    <div class="project-client">Client: Sophie L.</div>
+                                </div>
+                                <div class="project-status">
+                                    <div class="status-bar">
+                                        <div class="status-progress" style="width: 90%"></div>
+                                    </div>
+                                    <span class="status-text">90% - Tests</span>
+                                </div>
+                                <div class="project-date">
+                                    <i class="fas fa-calendar"></i>
+                                    Livraison: 10 Sep
+                                </div>
+                            </div>
+                            
+                            <div class="project-item">
+                                <div class="project-info">
+                                    <div class="project-name">Portfolio Artiste</div>
+                                    <div class="project-client">Client: Lucas B.</div>
+                                </div>
+                                <div class="project-status">
+                                    <div class="status-bar">
+                                        <div class="status-progress" style="width: 25%"></div>
+                                    </div>
+                                    <span class="status-text">25% - Planification</span>
+                                </div>
+                                <div class="project-date">
+                                    <i class="fas fa-calendar"></i>
+                                    Livraison: 30 Sep
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Status Système -->
+                    <div class="system-section">
+                        <div class="section-title">
+                            <i class="fas fa-server"></i>
+                            STATUS SYSTÈME
+                        </div>
+                        <div class="system-status">
+                            <div class="status-item">
+                                <div class="status-indicator online"></div>
+                                <span>Serveurs Opérationnels</span>
+                                <span class="status-value">100%</span>
+                            </div>
+                            <div class="status-item">
+                                <div class="status-indicator online"></div>
+                                <span>Temps de Réponse</span>
+                                <span class="status-value">< 200ms</span>
+                            </div>
+                            <div class="status-item">
+                                <div class="status-indicator online"></div>
+                                <span>Disponibilité</span>
+                                <span class="status-value">99.9%</span>
+                            </div>
+                            <div class="status-item">
+                                <div class="status-indicator online"></div>
+                                <span>Support Client</span>
+                                <span class="status-value">Actif</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(popup);
+
+        // Événements
+        popup.querySelector('#tracker-close-btn').addEventListener('click', () => this.closeTrackerDashboard());
+        popup.addEventListener('click', (e) => {
+            if (e.target === popup) this.closeTrackerDashboard();
+        });
+    }
+
+    closeTrackerDashboard() {
+        const popup = document.getElementById('tracker-popup');
+        if (popup) {
+            popup.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+
+    animateTrackerStats() {
+        const statNumbers = document.querySelectorAll('.tracker-popup .stat-number[data-target]');
+        statNumbers.forEach(stat => {
+            const target = parseFloat(stat.dataset.target);
+            this.animateCounter(stat, target);
+        });
     }
 
     // Système de popup email
