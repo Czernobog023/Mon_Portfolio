@@ -74,3 +74,13 @@ Server running on port 8080
 27/Aug/2025 08:53:25 - "GET /sw.js HTTP/1.1" 304 -
 27/Aug/2025 08:56:39 - "GET /css/animations.css HTTP/1.1" 304 -
 27/Aug/2025 08:56:41 - "GET /sw.js HTTP/1.1" 304 -
+Server running on port 8080
+27/Aug/2025 08:59:55 - "GET / HTTP/1.1" 200 -
+27/Aug/2025 08:59:55 - "GET /css/optimized.css HTTP/1.1" 200 -
+27/Aug/2025 08:59:55 - "GET /css/animations.css HTTP/1.1" 200 -
+27/Aug/2025 08:59:55 - "GET /js/optimized.js HTTP/1.1" 200 -
+27/Aug/2025 08:59:55 - "GET /favicon.ico HTTP/1.1" 200 -
+27/Aug/2025 08:59:55 - "GET /favicon.svg HTTP/1.1" 200 -
+27/Aug/2025 08:59:55 - "GET /sw.js HTTP/1.1" 200 -
+27/Aug/2025 08:59:55 - "GET /manifest.json HTTP/1.1" 200 -
+27/Aug/2025 08:59:55 - "GET /apple-touch-icon.png HTTP/1.1" 200 -

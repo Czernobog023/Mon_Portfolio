@@ -51,6 +51,9 @@ class PortfolioApp {
     }
 
     showSection(targetId) {
+        // Feedback visuel pour navigation
+        this.showFeedback(`Navigation vers ${targetId.replace('#', '').toUpperCase()}...`);
+        
         // Performance: Utilise transform au lieu de display pour éviter reflow
         this.cache.sections.forEach(section => {
             section.classList.remove('active');
@@ -58,12 +61,14 @@ class PortfolioApp {
 
         const targetSection = document.querySelector(targetId);
         if (targetSection) {
-            // Animation GPU-accelerated
-            targetSection.style.transform = 'translateX(-100%)';
+            // Animation GPU-accelerated avec effet fade
+            targetSection.style.opacity = '0';
+            targetSection.style.transform = 'translateY(20px)';
             targetSection.classList.add('active');
             
             requestAnimationFrame(() => {
-                targetSection.style.transform = 'translateX(0)';
+                targetSection.style.opacity = '1';
+                targetSection.style.transform = 'translateY(0)';
             });
         }
 
@@ -122,6 +127,9 @@ class PortfolioApp {
     }
 
     handleSideMenuAction(action) {
+        // Feedback visuel
+        this.showFeedback(`Chargement: ${action}...`);
+        
         switch(action) {
             case 'LICENCES DE CODE':
                 this.showSection('#about');
@@ -139,6 +147,25 @@ class PortfolioApp {
                 this.showSection('#contact');
                 break;
         }
+    }
+
+    // Affiche un message de feedback temporaire
+    showFeedback(message) {
+        // Crée ou met à jour le toast de feedback
+        let toast = document.querySelector('.feedback-toast');
+        if (!toast) {
+            toast = document.createElement('div');
+            toast.className = 'feedback-toast';
+            document.body.appendChild(toast);
+        }
+        
+        toast.textContent = message;
+        toast.classList.add('show');
+        
+        // Masque automatiquement après 2 secondes
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 2000);
     }
 
     // Lazy loading pour les images et contenus
