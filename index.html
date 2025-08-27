@@ -4,26 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rayan Maillard - Développeur Web | Portfolio Cyber Rétro</title>
-    <meta name="description" content="Rayan Maillard - Développeur web professionnel spécialisé dans la création de sites web modernes et performants. Portfolio style rétro gaming années 80-90.">
+    <meta name="description" content="Rayan Maillard - Développeur web full-stack professionnel. Sites web modernes, e-commerce, applications PWA. Portfolio rétro gaming. Devis gratuit disponible.">
+    
+    <!-- SEO et Open Graph -->
+    <meta property="og:title" content="Rayan Maillard - Développeur Web Full-Stack | Portfolio Cyber Rétro">
+    <meta property="og:description" content="Développeur web spécialisé dans la création de sites modernes et performants. Portfolio style rétro gaming avec projets réels.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://8080-i9tpbd7f5wjkbzxw4hrx4.e2b.dev">
+    <meta property="og:image" content="https://8080-i9tpbd7f5wjkbzxw4hrx4.e2b.dev/apple-touch-icon.png">
+    <meta property="og:site_name" content="Portfolio Rayan Maillard">
+    
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Rayan Maillard - Développeur Web Full-Stack">
+    <meta name="twitter:description" content="Portfolio professionnel avec thème rétro gaming. Découvrez mes projets et services de développement web.">
+    <meta name="twitter:image" content="https://8080-i9tpbd7f5wjkbzxw4hrx4.e2b.dev/apple-touch-icon.png">
+    
+    <!-- Favicon et Icons -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    
+    <!-- Manifest PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#00ffff">
+    
+    <!-- Preload des polices critiques -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap"></noscript>
     <meta name="keywords" content="développeur web, création site web, portfolio, rétro gaming, programmation, HTML, CSS, JavaScript">
     
-    <!-- Google Fonts - Polices rétro gaming -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=VT323:wght@400&family=Press+Start+2P&family=Share+Tech+Mono:wght@400&display=swap" rel="stylesheet">
+    <!-- Polices supplémentaires en lazy loading -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=VT323:wght@400&family=Press+Start+2P&family=Share+Tech+Mono:wght@400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=VT323:wght@400&family=Press+Start+2P&family=Share+Tech+Mono:wght@400&display=swap"></noscript>
     
     <!-- Font Awesome pour les icônes -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     
-    <!-- CSS Principal -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <!-- iOS Specific Fixes for Neon Effects -->
-    <link rel="stylesheet" href="css/ios-fix.css">
+    <!-- CSS Optimisé -->
+    <link rel="stylesheet" href="css/optimized.css">
+    <!-- CSS Non-critique en lazy loading -->
+    <link rel="preload" href="css/animations.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/animations.css"></noscript>
 </head>
 <body>
+    <!-- Lien d'évitement pour l'accessibilité -->
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+    
     <!-- Effets visuels rétro -->
-    <div class="scanlines"></div>
-    <div class="grid-overlay"></div>
+    <div class="scanlines" aria-hidden="true"></div>
+    <div class="grid-overlay" aria-hidden="true"></div>
     
     <!-- Header / Navigation -->
     <header class="header">
@@ -70,7 +100,7 @@
     </header>
 
     <!-- Main Content -->
-    <main class="main-content">
+    <main id="main-content" class="main-content" role="main">
         
         <!-- Section Accueil / Hero -->
         <section id="home" class="section hero-section active">
@@ -594,7 +624,7 @@
         </div>
     </footer>
 
-    <!-- JavaScript -->
-    <script src="js/main.js"></script>
+    <!-- JavaScript Optimisé -->
+    <script src="js/optimized.js" defer></script>
 </body>
 </html>

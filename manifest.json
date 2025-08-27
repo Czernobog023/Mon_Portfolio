@@ -1,0 +1,37 @@
+{
+  "name": "Portfolio Rayan Maillard - Développeur Web Full-Stack",
+  "short_name": "Portfolio Rayan",
+  "description": "Portfolio professionnel de Rayan Maillard avec thème rétro gaming",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#00ffff",
+  "orientation": "portrait-primary",
+  "categories": ["business", "portfolio"],
+  "lang": "fr",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}
