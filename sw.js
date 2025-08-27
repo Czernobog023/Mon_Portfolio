@@ -1,5 +1,5 @@
 // Service Worker pour Portfolio PWA
-const CACHE_NAME = 'portfolio-rayan-v1.0';
+const CACHE_NAME = 'portfolio-rayan-v2.0';
 const urlsToCache = [
     '/',
     '/css/optimized.css',

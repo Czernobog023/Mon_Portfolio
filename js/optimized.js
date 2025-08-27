@@ -1,6 +1,9 @@
-// PORTFOLIO OPTIMISÉ - JavaScript Performant
+// PORTFOLIO OPTIMISÉ - JavaScript Performant v2.0
+console.log('🚀 Portfolio JS Optimisé v2.0 - Chargé avec animations épiques!');
+
 class PortfolioApp {
     constructor() {
+        console.log('⚡ Initialisation PortfolioApp avec animations OVER 9000');
         this.initOnDOMReady();
     }
 
@@ -172,6 +175,7 @@ class PortfolioApp {
     // Animation des compteurs avec effet "OVER 9000!"
     setupCounterAnimations() {
         const counters = document.querySelectorAll('.stat-number');
+        console.log('🎮 Configuration animations compteurs:', counters.length, 'compteurs trouvés');
         
         if ('IntersectionObserver' in window) {
             const counterObserver = new IntersectionObserver((entries) => {
@@ -207,6 +211,7 @@ class PortfolioApp {
             
             if (isSpecial && current > 9000) {
                 // Effet "OVER 9000!" style Dragon Ball Z
+                console.log('🔥 OVER 9000 EFFECT ACTIVÉ!');
                 counter.textContent = "OVER 9000!";
                 counter.classList.add('over-9000');
                 this.showFeedback("IT'S OVER 9000! ⚡");
