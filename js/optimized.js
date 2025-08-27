@@ -22,6 +22,7 @@ class PortfolioApp {
             this.setupMobileMenu();
             this.setupSideMenu();
             this.setupCounterAnimations();
+            this.setupAboutAnimations();
             this.setupLazyLoading();
             this.setupPerformanceOptimizations();
             this.registerServiceWorker();
@@ -304,6 +305,64 @@ class PortfolioApp {
                 img.classList.add('lazy');
                 imageObserver.observe(img);
             });
+        }
+    }
+
+    // Animation de la section About Terminal
+    setupAboutAnimations() {
+        const aboutSection = document.getElementById('about');
+        if (!aboutSection) return;
+
+        // Observer d'intersection pour déclencher les animations
+        const aboutObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && entry.intersectionRatio > 0.1) {
+                    this.animateAboutSection();
+                    aboutObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        aboutObserver.observe(aboutSection);
+    }
+
+    animateAboutSection() {
+        // Animation des stats dans la section about
+        const aboutStats = document.querySelectorAll('.about-terminal .stat-value[data-target]');
+        aboutStats.forEach(stat => {
+            const target = parseInt(stat.dataset.target);
+            this.animateCounter(stat, target);
+        });
+
+        // Animation des barres de niveau
+        const levelBars = document.querySelectorAll('.level-bar[data-level]');
+        setTimeout(() => {
+            levelBars.forEach(bar => {
+                const level = bar.dataset.level;
+                bar.style.setProperty('--level', level + '%');
+            });
+        }, 500);
+
+        // Animation de la barre de téléchargement
+        const progressFill = document.querySelector('.progress-fill[data-progress]');
+        if (progressFill) {
+            setTimeout(() => {
+                progressFill.style.width = '100%';
+            }, 1000);
+        }
+
+        // Mettre à jour le timestamp
+        const timestamp = document.getElementById('lastUpdate');
+        if (timestamp) {
+            const now = new Date();
+            const timeString = now.toLocaleString('fr-FR', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+            timestamp.textContent = timeString;
         }
     }
 

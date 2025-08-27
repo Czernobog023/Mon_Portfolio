@@ -34,3 +34,7 @@
 2025-08-27 09:16:59,722 WARN stopped: portfolio-server (terminated by SIGTERM)
 2025-08-27 09:17:00,729 INFO spawned: 'portfolio-server' with pid 7803
 2025-08-27 09:17:01,731 INFO success: portfolio-server entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-08-27 09:29:06,249 INFO waiting for portfolio-server to stop
+2025-08-27 09:29:06,251 WARN stopped: portfolio-server (terminated by SIGTERM)
+2025-08-27 09:29:07,260 INFO spawned: 'portfolio-server' with pid 8774
+2025-08-27 09:29:08,262 INFO success: portfolio-server entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
