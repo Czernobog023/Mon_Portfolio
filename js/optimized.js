@@ -17,6 +17,7 @@ class PortfolioApp {
         requestAnimationFrame(() => {
             this.setupNavigation();
             this.setupMobileMenu();
+            this.setupSideMenu();
             this.setupLazyLoading();
             this.setupPerformanceOptimizations();
             this.registerServiceWorker();
@@ -39,8 +40,8 @@ class PortfolioApp {
             }, { passive: false });
         });
 
-        // Gestion du bouton contact hero
-        const heroContactBtn = document.querySelector('.hero-section .btn-secondary');
+        // Gestion spécifique du bouton contact hero (celui avec href="#contact")
+        const heroContactBtn = document.querySelector('.hero-section a[href="#contact"]');
         if (heroContactBtn) {
             heroContactBtn.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -98,6 +99,46 @@ class PortfolioApp {
                 navMenu.classList.remove('active');
             }
         }, { passive: true });
+    }
+
+    // Menu latéral cyber avec effets
+    setupSideMenu() {
+        const menuItems = document.querySelectorAll('.menu-item');
+        
+        menuItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                // Effet visuel de sélection
+                menuItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+                
+                // Actions selon l'élément cliqué
+                const text = item.querySelector('span').textContent;
+                this.handleSideMenuAction(text);
+            }, { passive: true });
+
+            // Animation d'apparition échelonnée
+            item.style.animationDelay = `${index * 0.1}s`;
+        });
+    }
+
+    handleSideMenuAction(action) {
+        switch(action) {
+            case 'LICENCES DE CODE':
+                this.showSection('#about');
+                break;
+            case 'RÉALISATIONS WEB':
+                window.open('projets.html', '_blank');
+                break;
+            case 'RAPPORTS':
+                window.open('services.html', '_blank');
+                break;
+            case 'PORTFOLIO':
+                this.showSection('#home');
+                break;
+            case 'PROFIL PRO':
+                this.showSection('#contact');
+                break;
+        }
     }
 
     // Lazy loading pour les images et contenus

@@ -16,3 +16,61 @@ Traceback (most recent call last):
   File "/usr/local/lib/python3.12/socketserver.py", line 478, in server_bind
     self.socket.bind(self.server_address)
 OSError: [Errno 98] Address already in use
+Server running on port 8080
+27/Aug/2025 08:18:09 - "GET / HTTP/1.1" 200 -
+27/Aug/2025 08:18:09 - "GET /css/animations.css HTTP/1.1" 200 -
+27/Aug/2025 08:18:09 - "GET /css/optimized.css HTTP/1.1" 200 -
+27/Aug/2025 08:18:09 - "GET /js/optimized.js HTTP/1.1" 200 -
+27/Aug/2025 08:18:09 - "GET /favicon.ico HTTP/1.1" 200 -
+27/Aug/2025 08:18:09 - "GET /sw.js HTTP/1.1" 200 -
+27/Aug/2025 08:18:09 - "GET /favicon.svg HTTP/1.1" 200 -
+27/Aug/2025 08:18:09 - "GET /apple-touch-icon.png HTTP/1.1" 200 -
+27/Aug/2025 08:18:09 - "GET /manifest.json HTTP/1.1" 200 -
+27/Aug/2025 08:51:47 - "GET / HTTP/1.1" 200 -
+27/Aug/2025 08:51:47 - "GET /css/optimized.css HTTP/1.1" 200 -
+27/Aug/2025 08:51:47 - "GET /css/animations.css HTTP/1.1" 200 -
+27/Aug/2025 08:51:47 - "GET /js/optimized.js HTTP/1.1" 200 -
+27/Aug/2025 08:51:48 - "GET /favicon.ico HTTP/1.1" 200 -
+27/Aug/2025 08:51:48 - "GET /sw.js HTTP/1.1" 200 -
+27/Aug/2025 08:51:48 - "GET /manifest.json HTTP/1.1" 200 -
+27/Aug/2025 08:51:48 - "GET /favicon.svg HTTP/1.1" 200 -
+27/Aug/2025 08:51:48 - "GET /apple-touch-icon.png HTTP/1.1" 200 -
+27/Aug/2025 08:51:48 - "GET / HTTP/1.1" 200 -
+27/Aug/2025 08:52:40 - "GET /services.html HTTP/1.1" 200 -
+27/Aug/2025 08:52:40 - "GET /css/style.css HTTP/1.1" 200 -
+27/Aug/2025 08:52:40 - "GET /css/responsive.css HTTP/1.1" 200 -
+27/Aug/2025 08:52:40 - "GET /js/main.js HTTP/1.1" 200 -
+27/Aug/2025 08:52:40 - "GET /css/ios-fix.css HTTP/1.1" 200 -
+27/Aug/2025 08:52:42 - "GET /sw.js HTTP/1.1" 304 -
+27/Aug/2025 08:52:48 - "GET /projets.html HTTP/1.1" 200 -
+27/Aug/2025 08:52:50 - "GET /sw.js HTTP/1.1" 304 -
+27/Aug/2025 08:52:50 - "GET /projects/legourmet/index.html HTTP/1.1" 200 -
+27/Aug/2025 08:52:51 - "GET /projects/legourmet/js/script.js HTTP/1.1" 200 -
+27/Aug/2025 08:52:51 - "GET /projects/legourmet/css/style.css HTTP/1.1" 200 -
+27/Aug/2025 08:52:51 - code 404, message File not found
+27/Aug/2025 08:52:51 - "GET /projects/legourmet/favicon.ico HTTP/1.1" 404 -
+27/Aug/2025 08:52:53 - "GET /sw.js HTTP/1.1" 304 -
+27/Aug/2025 08:53:00 - "GET /projects/fittracker/index.html HTTP/1.1" 200 -
+27/Aug/2025 08:53:00 - "GET /projects/fittracker/css/style.css?v=3 HTTP/1.1" 200 -
+27/Aug/2025 08:53:00 - code 404, message File not found
+27/Aug/2025 08:53:00 - "GET /projects/fittracker/icons/icon-192.png HTTP/1.1" 404 -
+27/Aug/2025 08:53:00 - "GET /projects/fittracker/css/gym-notebook.css?v=1 HTTP/1.1" 200 -
+27/Aug/2025 08:53:00 - "GET /projects/fittracker/js/workout-tracker.js?v=1 HTTP/1.1" 200 -
+27/Aug/2025 08:53:00 - "GET /projects/fittracker/js/user-manager.js?v=3 HTTP/1.1" 200 -
+27/Aug/2025 08:53:00 - "GET /projects/fittracker/js/init-fix.js?v=3 HTTP/1.1" 200 -
+27/Aug/2025 08:53:00 - "GET /projects/fittracker/js/app.js?v=3 HTTP/1.1" 200 -
+27/Aug/2025 08:53:00 - "GET /projects/fittracker/js/gym-notebook-ui.js?v=1 HTTP/1.1" 200 -
+27/Aug/2025 08:53:01 - "GET /projects/fittracker/sw.js HTTP/1.1" 200 -
+27/Aug/2025 08:53:01 - "GET /projects/fittracker/manifest.json HTTP/1.1" 200 -
+27/Aug/2025 08:53:01 - "GET /projects/fittracker/ HTTP/1.1" 200 -
+27/Aug/2025 08:53:01 - "GET /projects/fittracker/css/style.css HTTP/1.1" 200 -
+27/Aug/2025 08:53:01 - "GET /projects/fittracker/js/app.js HTTP/1.1" 200 -
+27/Aug/2025 08:53:01 - "GET /projects/fittracker/icons/icon-144.svg HTTP/1.1" 200 -
+27/Aug/2025 08:53:02 - "GET /sw.js HTTP/1.1" 304 -
+27/Aug/2025 08:53:03 - code 404, message File not found
+27/Aug/2025 08:53:03 - "GET /projects/fittracker/icons/icon-192.png HTTP/1.1" 404 -
+27/Aug/2025 08:53:05 - "GET /projects/fittracker/sw.js HTTP/1.1" 304 -
+27/Aug/2025 08:53:23 - "GET /index.html HTTP/1.1" 200 -
+27/Aug/2025 08:53:25 - "GET /sw.js HTTP/1.1" 304 -
+27/Aug/2025 08:56:39 - "GET /css/animations.css HTTP/1.1" 304 -
+27/Aug/2025 08:56:41 - "GET /sw.js HTTP/1.1" 304 -
