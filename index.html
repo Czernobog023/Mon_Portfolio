@@ -202,44 +202,93 @@
                     
                     <!-- Stats gaming style -->
                     <div class="hero-stats">
-                        <div class="stats-grid">
-                            <div class="stat-card">
-                                <div class="stat-icon">
-                                    <i class="fas fa-code"></i>
+                        <div class="stats-terminal">
+                            <div class="stats-header">
+                                <div class="terminal-controls">
+                                    <span class="control-btn close"></span>
+                                    <span class="control-btn minimize"></span>
+                                    <span class="control-btn maximize"></span>
                                 </div>
-                                <div class="stat-info">
-                                    <span class="stat-number" data-target="100000">0</span>
-                                    <span class="stat-label">LIGNES DE CODE</span>
-                                </div>
-                            </div>
-                            
-                            <div class="stat-card">
-                                <div class="stat-icon">
-                                    <i class="fas fa-project-diagram"></i>
-                                </div>
-                                <div class="stat-info">
-                                    <span class="stat-number" data-target="42">0</span>
-                                    <span class="stat-label">PROJETS RÉALISÉS</span>
+                                <div class="terminal-title">
+                                    <i class="fas fa-chart-bar"></i>
+                                    developer_stats.exe - Runtime Performance
                                 </div>
                             </div>
-                            
-                            <div class="stat-card">
-                                <div class="stat-icon">
-                                    <i class="fas fa-users"></i>
+                            <div class="stats-grid">
+                                <div class="stat-card code-stat">
+                                    <div class="stat-header">
+                                        <i class="fas fa-code stat-icon"></i>
+                                        <span class="stat-process">PROC_CODE</span>
+                                    </div>
+                                    <div class="stat-display">
+                                        <span class="stat-number" data-target="100000">0</span>
+                                        <span class="stat-unit">+</span>
+                                    </div>
+                                    <div class="stat-label">LIGNES DE CODE</div>
+                                    <div class="stat-bar">
+                                        <div class="stat-progress" style="width: 95%"></div>
+                                    </div>
                                 </div>
-                                <div class="stat-info">
-                                    <span class="stat-number" data-target="150">0</span>
-                                    <span class="stat-label">CLIENTS SATISFAITS</span>
+                                
+                                <div class="stat-card project-stat">
+                                    <div class="stat-header">
+                                        <i class="fas fa-rocket stat-icon"></i>
+                                        <span class="stat-process">PROJ_DEPLOY</span>
+                                    </div>
+                                    <div class="stat-display">
+                                        <span class="stat-number" data-target="42">0</span>
+                                        <span class="stat-unit"></span>
+                                    </div>
+                                    <div class="stat-label">PROJETS RÉALISÉS</div>
+                                    <div class="stat-bar">
+                                        <div class="stat-progress" style="width: 87%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="stat-card client-stat">
+                                    <div class="stat-header">
+                                        <i class="fas fa-users stat-icon"></i>
+                                        <span class="stat-process">CLIENT_SAT</span>
+                                    </div>
+                                    <div class="stat-display">
+                                        <span class="stat-number" data-target="150">0</span>
+                                        <span class="stat-unit">%</span>
+                                    </div>
+                                    <div class="stat-label">CLIENTS SATISFAITS</div>
+                                    <div class="stat-bar">
+                                        <div class="stat-progress" style="width: 92%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="stat-card coffee-stat">
+                                    <div class="stat-header">
+                                        <i class="fas fa-coffee stat-icon"></i>
+                                        <span class="stat-process">CAFFEINE_LVL</span>
+                                    </div>
+                                    <div class="stat-display">
+                                        <span class="stat-number coffee-counter" data-target="9001" data-special="true">0</span>
+                                        <span class="stat-unit">!</span>
+                                    </div>
+                                    <div class="stat-label">CAFÉS BUS</div>
+                                    <div class="stat-bar">
+                                        <div class="stat-progress coffee-progress" style="width: 101%"></div>
+                                    </div>
                                 </div>
                             </div>
-                            
-                            <div class="stat-card">
-                                <div class="stat-icon">
-                                    <i class="fas fa-coffee"></i>
-                                </div>
-                                <div class="stat-info">
-                                    <span class="stat-number coffee-counter" data-target="9001" data-special="true">0</span>
-                                    <span class="stat-label">CAFÉS BUS</span>
+                            <div class="stats-footer">
+                                <div class="system-info">
+                                    <span class="info-item">
+                                        <i class="fas fa-microchip"></i>
+                                        CPU: DEV-BRAIN-X99 @ 3.6GHz
+                                    </span>
+                                    <span class="info-item">
+                                        <i class="fas fa-memory"></i>
+                                        RAM: ∞ GB DDR5 (Coffee-Powered)
+                                    </span>
+                                    <span class="info-item">
+                                        <i class="fas fa-clock"></i>
+                                        Uptime: 5 Years Military + Dev Mode
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -454,158 +503,164 @@
                     <span class="title-decoration"></span>
                 </h2>
                 
-                <div class="contact-grid">
-                    <!-- Informations de contact -->
-                    <div class="contact-info">
-                        <div class="contact-panel">
-                            <div class="panel-header">
-                                <div class="panel-controls">
-                                    <span class="control-btn close"></span>
-                                    <span class="control-btn minimize"></span>
-                                    <span class="control-btn maximize"></span>
-                                </div>
-                                <div class="panel-title">
-                                    <i class="fas fa-address-book"></i>
-                                    contact_info.exe
-                                </div>
+                <!-- Communication Terminal -->
+                <div class="contact-terminal">
+                    <div class="terminal-header">
+                        <div class="terminal-controls">
+                            <span class="control-btn close"></span>
+                            <span class="control-btn minimize"></span>
+                            <span class="control-btn maximize"></span>
+                        </div>
+                        <div class="terminal-title">
+                            <i class="fas fa-satellite-dish"></i>
+                            comm_system@rayan-dev:~$ ./initiate_contact.exe
+                        </div>
+                    </div>
+                    
+                    <div class="terminal-body">
+                        <!-- Status System -->
+                        <div class="system-status">
+                            <div class="status-line">
+                                <span class="status-prefix">[SYSTEM]</span>
+                                <span class="status-message">Initialisation du module de communication...</span>
+                                <span class="status-ok">[OK]</span>
                             </div>
-                            <div class="panel-body">
-                                <div class="contact-methods">
-                                    <div class="contact-method">
-                                        <div class="method-icon">
-                                            <i class="fas fa-envelope"></i>
-                                        </div>
-                                        <div class="method-info">
-                                            <strong>Email</strong>
-                                            <a href="mailto:rayanmaillard023@gmail.com">rayanmaillard023@gmail.com</a>
-                                        </div>
+                            <div class="status-line">
+                                <span class="status-prefix">[NETWORK]</span>
+                                <span class="status-message">Connexion aux satellites de communication...</span>
+                                <span class="status-ok">[OK]</span>
+                            </div>
+                            <div class="status-line">
+                                <span class="status-prefix">[CRYPTO]</span>
+                                <span class="status-message">Chiffrement des canaux sécurisés...</span>
+                                <span class="status-ok">[OK]</span>
+                            </div>
+                            <div class="status-line active-line">
+                                <span class="status-prefix">[READY]</span>
+                                <span class="status-message">Système prêt pour transmission...</span>
+                                <span class="status-blink">█</span>
+                            </div>
+                        </div>
+
+                        <!-- Contact Matrix -->
+                        <div class="contact-matrix">
+                            <div class="matrix-header">
+                                <h3><i class="fas fa-broadcast-tower"></i> CANAUX DE COMMUNICATION DISPONIBLES</h3>
+                            </div>
+                            
+                            <div class="contact-channels">
+                                <div class="channel primary-channel">
+                                    <div class="channel-header">
+                                        <i class="fas fa-envelope-open"></i>
+                                        <span class="channel-name">EMAIL_SECURE</span>
+                                        <span class="channel-status online">●</span>
                                     </div>
-                                    
-                                    <div class="contact-method">
-                                        <div class="method-icon">
-                                            <i class="fas fa-phone"></i>
-                                        </div>
-                                        <div class="method-info">
-                                            <strong>Téléphone</strong>
-                                            <a href="tel:0781338830">07 81 33 88 30</a>
-                                        </div>
+                                    <div class="channel-info">
+                                        <div class="channel-address">rayanmaillard023@gmail.com</div>
+                                        <div class="channel-desc">Canal principal - Cryptage PGP disponible</div>
                                     </div>
-                                    
-                                    <div class="contact-method">
-                                        <div class="method-icon">
-                                            <i class="fas fa-clock"></i>
-                                        </div>
-                                        <div class="method-info">
-                                            <strong>Disponibilité</strong>
-                                            <span>Lun - Ven : 9h - 18h<br>Sam : 10h - 16h</span>
-                                        </div>
+                                    <a href="mailto:rayanmaillard023@gmail.com" class="channel-action">
+                                        <i class="fas fa-paper-plane"></i>
+                                        TRANSMETTRE
+                                    </a>
+                                </div>
+
+                                <div class="channel voice-channel">
+                                    <div class="channel-header">
+                                        <i class="fas fa-phone"></i>
+                                        <span class="channel-name">VOICE_COMM</span>
+                                        <span class="channel-status online">●</span>
                                     </div>
-                                    
-                                    <div class="contact-method">
-                                        <div class="method-icon">
-                                            <i class="fas fa-rocket"></i>
-                                        </div>
-                                        <div class="method-info">
-                                            <strong>Temps de réponse</strong>
-                                            <span>< 24h garanti</span>
-                                        </div>
+                                    <div class="channel-info">
+                                        <div class="channel-address">07.81.33.88.30</div>
+                                        <div class="channel-desc">Communication vocale directe</div>
+                                    </div>
+                                    <a href="tel:0781338830" class="channel-action">
+                                        <i class="fas fa-phone-alt"></i>
+                                        APPELER
+                                    </a>
+                                </div>
+
+                                <div class="channel data-channel">
+                                    <div class="channel-header">
+                                        <i class="fas fa-clock"></i>
+                                        <span class="channel-name">AVAILABILITY</span>
+                                        <span class="channel-status online">●</span>
+                                    </div>
+                                    <div class="channel-info">
+                                        <div class="channel-address">Lun-Ven: 09:00-18:00 | Sam: 10:00-16:00</div>
+                                        <div class="channel-desc">Fenêtre de communication active</div>
+                                    </div>
+                                    <div class="channel-action inactive">
+                                        <i class="fas fa-calendar-check"></i>
+                                        PLANIFIER
                                     </div>
                                 </div>
-                                
-                                <div class="contact-cta">
-                                    <h3>Prêt à démarrer votre projet ?</h3>
-                                    <p>Contactez-moi dès maintenant pour discuter de vos besoins !</p>
-                                    <div class="cta-buttons">
-                                        <a href="mailto:rayanmaillard023@gmail.com" class="btn btn-primary neon-btn">
-                                            <i class="fas fa-envelope"></i>
-                                            <span>ENVOYER UN EMAIL</span>
-                                            <div class="btn-glow"></div>
-                                        </a>
-                                        <a href="tel:0781338830" class="btn btn-secondary cyber-btn">
-                                            <i class="fas fa-phone"></i>
-                                            <span>APPELER MAINTENANT</span>
-                                        </a>
+
+                                <div class="channel response-channel">
+                                    <div class="channel-header">
+                                        <i class="fas fa-bolt"></i>
+                                        <span class="channel-name">RESPONSE_TIME</span>
+                                        <span class="channel-status online">●</span>
+                                    </div>
+                                    <div class="channel-info">
+                                        <div class="channel-address">< 24H GUARANTEED</div>
+                                        <div class="channel-desc">Temps de réponse moyen: 4h</div>
+                                    </div>
+                                    <div class="channel-action inactive">
+                                        <i class="fas fa-tachometer-alt"></i>
+                                        TRACKER
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <!-- Formulaire de contact -->
-                    <div class="contact-form-container">
-                        <div class="form-panel">
-                            <div class="panel-header">
-                                <div class="panel-controls">
-                                    <span class="control-btn close"></span>
-                                    <span class="control-btn minimize"></span>
-                                    <span class="control-btn maximize"></span>
+
+                        <!-- Mission Brief -->
+                        <div class="mission-brief">
+                            <div class="brief-header">
+                                <h3><i class="fas fa-rocket"></i> BRIEF DE MISSION</h3>
+                            </div>
+                            <div class="brief-content">
+                                <div class="brief-section">
+                                    <h4>📋 OBJECTIF PRINCIPAL</h4>
+                                    <p>Créer une solution web sur mesure qui dépasse vos attentes et propulse votre activité vers le succès.</p>
                                 </div>
-                                <div class="panel-title">
-                                    <i class="fas fa-terminal"></i>
-                                    message_composer.exe
+                                <div class="brief-section">
+                                    <h4>⚡ TECHNOLOGIES DÉPLOYÉES</h4>
+                                    <div class="tech-stack">
+                                        <span class="tech-tag">HTML5</span>
+                                        <span class="tech-tag">CSS3</span>
+                                        <span class="tech-tag">JavaScript</span>
+                                        <span class="tech-tag">React</span>
+                                        <span class="tech-tag">Node.js</span>
+                                        <span class="tech-tag">PWA</span>
+                                    </div>
+                                </div>
+                                <div class="brief-section">
+                                    <h4>🎯 GARANTIES MISSION</h4>
+                                    <ul class="guarantee-list">
+                                        <li><i class="fas fa-shield-alt"></i> Code de qualité militaire</li>
+                                        <li><i class="fas fa-mobile-alt"></i> Responsive sur tous devices</li>
+                                        <li><i class="fas fa-rocket"></i> Performance optimisée</li>
+                                        <li><i class="fas fa-clock"></i> Délais respectés</li>
+                                        <li><i class="fas fa-handshake"></i> Support post-lancement</li>
+                                    </ul>
                                 </div>
                             </div>
-                            <div class="panel-body">
-                                <form class="contact-form" id="contactForm">
-                                    <div class="form-group">
-                                        <label for="name" class="form-label">
-                                            <i class="fas fa-user"></i>
-                                            Nom complet *
-                                        </label>
-                                        <input type="text" id="name" name="name" class="form-input" required>
-                                        <div class="input-border"></div>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label for="email" class="form-label">
-                                            <i class="fas fa-envelope"></i>
-                                            Adresse email *
-                                        </label>
-                                        <input type="email" id="email" name="email" class="form-input" required>
-                                        <div class="input-border"></div>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label for="phone" class="form-label">
-                                            <i class="fas fa-phone"></i>
-                                            Téléphone
-                                        </label>
-                                        <input type="tel" id="phone" name="phone" class="form-input">
-                                        <div class="input-border"></div>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label for="project" class="form-label">
-                                            <i class="fas fa-project-diagram"></i>
-                                            Type de projet *
-                                        </label>
-                                        <select id="project" name="project" class="form-input" required>
-                                            <option value="">Sélectionnez votre projet</option>
-                                            <option value="site-vitrine">Site vitrine</option>
-                                            <option value="e-commerce">Boutique e-commerce</option>
-                                            <option value="application">Application web</option>
-                                            <option value="landing">Landing page</option>
-                                            <option value="refonte">Refonte de site</option>
-                                            <option value="autre">Autre projet</option>
-                                        </select>
-                                        <div class="input-border"></div>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label for="message" class="form-label">
-                                            <i class="fas fa-comment-dots"></i>
-                                            Décrivez votre projet *
-                                        </label>
-                                        <textarea id="message" name="message" rows="5" class="form-input" required placeholder="Parlez-moi de votre projet, vos objectifs, votre budget approximatif..."></textarea>
-                                        <div class="input-border"></div>
-                                    </div>
-                                    
-                                    <button type="submit" class="btn btn-submit neon-btn">
-                                        <i class="fas fa-rocket"></i>
-                                        <span>LANCER LA MISSION</span>
-                                        <div class="btn-glow"></div>
-                                    </button>
-                                </form>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="contact-actions">
+                            <div class="action-grid">
+                                <a href="mailto:rayanmaillard023@gmail.com?subject=Nouveau%20Projet%20Web&body=Bonjour%20Rayan,%0A%0AJe%20souhaite%20discuter%20d'un%20projet%20web.%0A%0AType%20de%20projet:%20%0ABudget%20approximatif:%20%0ADélai%20souhaité:%20%0A%0ADescription%20du%20projet:%20%0A%0AMerci!" class="action-btn primary-action">
+                                    <i class="fas fa-paper-plane"></i>
+                                    <span class="btn-text">LANCER LA MISSION</span>
+                                    <div class="btn-glow"></div>
+                                </a>
+                                <a href="tel:0781338830" class="action-btn secondary-action">
+                                    <i class="fas fa-phone-alt"></i>
+                                    <span class="btn-text">CONTACT VOCAL</span>
+                                </a>
                             </div>
                         </div>
                     </div>

@@ -3,301 +3,640 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV Rayan Maillard - Visualisation & Téléchargement</title>
+    <title>CV Rayan Maillard - Développeur Web Cyber</title>
+    
+    <!-- Fonts rétro gaming -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=VT323:wght@400&family=Press+Start+2P&family=Share+Tech+Mono:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Space+Mono:wght@400&display=swap');
-        
+        :root {
+            --neon-cyan: #00ffff;
+            --neon-pink: #ff0080;
+            --neon-green: #39ff14;
+            --neon-orange: #ff4500;
+            --dark-bg: #0a0a0a;
+            --dark-secondary: #1a1a1a;
+            --dark-tertiary: #2a2a2a;
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+            --glow-cyan: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan);
+            --font-primary: 'Orbitron', monospace;
+            --font-secondary: 'VT323', monospace;
+            --font-code: 'Share Tech Mono', monospace;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: 'Space Mono', monospace;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: var(--font-primary);
+            background: var(--dark-bg);
+            color: var(--text-primary);
             min-height: 100vh;
-            padding: 20px;
-        }
-        
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto 30px;
-            text-align: center;
-        }
-        
-        h1 {
-            font-family: 'Orbitron', sans-serif;
-            color: white;
-            font-size: 36px;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        .subtitle {
-            color: rgba(255,255,255,0.9);
-            font-size: 16px;
-            margin-bottom: 30px;
-        }
-        
-        .actions {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-bottom: 30px;
-        }
-        
-        .btn {
-            background: white;
-            color: #667eea;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 10px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-        
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-        }
-        
-        .btn-primary {
-            background: #00ff00;
-            color: #1a1a2e;
-        }
-        
-        .btn-secondary {
-            background: #1a1a2e;
-            color: #00ff00;
-        }
-        
-        .cv-container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            overflow: hidden;
-        }
-        
-        .cv-frame {
-            width: 100%;
-            height: 1200px;
-            border: none;
-        }
-        
-        .info-box {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255,255,255,0.3);
-            border-radius: 15px;
-            padding: 25px;
-            margin: 30px auto;
-            max-width: 900px;
-            color: white;
-        }
-        
-        .info-box h2 {
-            font-family: 'Orbitron', sans-serif;
-            margin-bottom: 15px;
-            color: #00ff00;
-        }
-        
-        .info-list {
-            list-style: none;
-            line-height: 1.8;
-        }
-        
-        .info-list li {
-            padding-left: 25px;
+            overflow-x: hidden;
             position: relative;
         }
-        
-        .info-list li:before {
-            content: "▶";
-            position: absolute;
+
+        /* Effets rétro background */
+        .scanlines {
+            position: fixed;
+            top: 0;
             left: 0;
-            color: #00ff00;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            background: repeating-linear-gradient(0deg, transparent, transparent 2px, var(--neon-cyan) 2px, var(--neon-cyan) 4px);
+            z-index: 1;
         }
-        
-        .format-badges {
+
+        .cv-container {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Terminal Style */
+        .cv-header {
+            background: rgba(26, 26, 26, 0.95);
+            border: 2px solid var(--neon-cyan);
+            border-radius: 8px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            box-shadow: var(--glow-cyan);
+        }
+
+        .terminal-header {
+            background: linear-gradient(90deg, var(--dark-secondary), var(--dark-tertiary));
             display: flex;
-            gap: 15px;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--neon-cyan);
+        }
+
+        .terminal-controls {
+            display: flex;
+            gap: 8px;
+        }
+
+        .control-btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .control-btn.close { background: #ff5f57; }
+        .control-btn.minimize { background: #ffbd2e; }
+        .control-btn.maximize { background: #28ca42; }
+
+        .terminal-title {
+            font-family: var(--font-code);
+            color: var(--neon-cyan);
+            font-size: 0.9rem;
+        }
+
+        .cv-content {
+            padding: 30px;
+        }
+
+        .name-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .name-title {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 2.5rem;
+            color: var(--neon-green);
+            text-shadow: var(--glow-cyan);
+            margin-bottom: 10px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        .job-title {
+            font-family: var(--font-secondary);
+            font-size: 1.8rem;
+            color: var(--neon-cyan);
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: flex;
             justify-content: center;
-            margin: 20px 0;
+            gap: 30px;
+            flex-wrap: wrap;
+            font-family: var(--font-code);
+            font-size: 0.9rem;
         }
-        
-        .badge {
-            background: rgba(0,255,0,0.2);
-            color: #00ff00;
-            padding: 8px 16px;
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-secondary);
+        }
+
+        .contact-item i {
+            color: var(--neon-pink);
+        }
+
+        /* Sections */
+        .cv-section {
+            background: rgba(42, 42, 42, 0.7);
+            border: 1px solid var(--neon-cyan);
+            border-radius: 8px;
+            margin: 25px 0;
+            overflow: hidden;
+        }
+
+        .section-header {
+            background: linear-gradient(90deg, rgba(0, 255, 255, 0.2), rgba(255, 0, 128, 0.2));
+            padding: 15px 25px;
+            border-bottom: 1px solid var(--neon-cyan);
+        }
+
+        .section-title {
+            font-family: var(--font-primary);
+            font-size: 1.3rem;
+            color: var(--neon-cyan);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-content {
+            padding: 25px;
+        }
+
+        /* Expérience */
+        .experience-item {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .job-info h3 {
+            color: var(--neon-green);
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .company {
+            color: var(--neon-pink);
+            font-weight: 600;
+        }
+
+        .job-period {
+            font-family: var(--font-code);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            background: rgba(0, 255, 255, 0.1);
+            padding: 5px 10px;
+            border-radius: 4px;
+            border: 1px solid var(--neon-cyan);
+        }
+
+        .job-description {
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .job-description ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .job-description li {
+            margin-bottom: 5px;
+            color: var(--text-secondary);
+        }
+
+        /* Compétences */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: rgba(0, 255, 255, 0.05);
+            border: 1px solid var(--neon-cyan);
+            border-radius: 6px;
+            padding: 20px;
+        }
+
+        .skill-category h4 {
+            color: var(--neon-pink);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: rgba(57, 255, 20, 0.2);
+            color: var(--neon-green);
+            padding: 6px 12px;
             border-radius: 20px;
-            border: 1px solid #00ff00;
-            font-size: 14px;
+            font-size: 0.8rem;
+            border: 1px solid var(--neon-green);
+            font-family: var(--font-code);
         }
-        
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 24px;
+
+        /* Formation */
+        .formation-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+        }
+
+        .formation-item:last-child {
+            border-bottom: none;
+        }
+
+        .formation-info h4 {
+            color: var(--neon-green);
+            margin-bottom: 5px;
+        }
+
+        .formation-school {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .formation-year {
+            font-family: var(--font-code);
+            color: var(--neon-cyan);
+            background: rgba(0, 255, 255, 0.1);
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        /* Animations */
+        @keyframes glow {
+            from { text-shadow: 0 0 20px var(--neon-green); }
+            to { text-shadow: 0 0 30px var(--neon-green), 0 0 40px var(--neon-green); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
             }
-            
-            .cv-frame {
-                height: 600px;
-            }
-            
-            .actions {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .btn {
-                width: 100%;
-                max-width: 300px;
-                justify-content: center;
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
-        
-        /* Print specific styles */
+
+        .cv-section {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        /* Print styles */
         @media print {
-            body {
-                background: white;
-                padding: 0;
-            }
-            
-            .header-container,
-            .actions,
-            .info-box {
+            .scanlines {
                 display: none;
             }
             
-            .cv-container {
+            body {
+                background: white;
+                color: black;
+            }
+            
+            .cv-header, .cv-section {
+                border: 2px solid #333;
                 box-shadow: none;
-                border-radius: 0;
-                max-width: 100%;
+                background: white;
+            }
+            
+            .name-title {
+                color: #333;
+                text-shadow: none;
+            }
+            
+            .section-title, .job-info h3 {
+                color: #333;
+            }
+            
+            .contact-item i, .company {
+                color: #666;
             }
         }
-        
-        .loading {
-            text-align: center;
-            padding: 50px;
-            color: white;
-            font-size: 18px;
-        }
-        
-        .icon {
-            font-size: 20px;
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .name-title {
+                font-size: 1.8rem;
+            }
+            
+            .job-title {
+                font-size: 1.4rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .job-header {
+                flex-direction: column;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="header-container">
-        <h1>📄 CV RAYAN MAILLARD</h1>
-        <p class="subtitle">Développeur Web Full-Stack Autodidacte</p>
-        
-        <div class="format-badges">
-            <span class="badge">Format A4</span>
-            <span class="badge">PDF Ready</span>
-            <span class="badge">Optimisé Malt</span>
+    <div class="scanlines"></div>
+    
+    <div class="cv-container">
+        <div class="cv-header">
+            <div class="terminal-header">
+                <div class="terminal-controls">
+                    <span class="control-btn close"></span>
+                    <span class="control-btn minimize"></span>
+                    <span class="control-btn maximize"></span>
+                </div>
+                <div class="terminal-title">
+                    <i class="fas fa-terminal"></i>
+                    rayan@cv-system:~$ ./load_profile.exe
+                </div>
+            </div>
+            
+            <div class="cv-content">
+                <div class="name-section">
+                    <h1 class="name-title">RAYAN MAILLARD</h1>
+                    <h2 class="job-title">DÉVELOPPEUR WEB FULL-STACK</h2>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>rayanmaillard023@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>07 81 33 88 30</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>France</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-globe"></i>
+                            <span>Portfolio Cyber</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cv-section">
+            <div class="section-header">
+                <div class="section-title">
+                    <i class="fas fa-user-astronaut"></i>
+                    PROFIL DÉVELOPPEUR
+                </div>
+            </div>
+            <div class="section-content">
+                <p>Développeur web autodidacte passionné avec <strong>5 ans d'expérience en développement</strong>, incluant une solide formation militaire qui m'a appris la rigueur, la discipline et le travail en équipe. Spécialisé dans la création de sites web modernes, performants et responsive, avec une expertise particulière en JavaScript, React, et solutions PWA.</p>
+            </div>
+        </div>
+
+        <div class="cv-section">
+            <div class="section-header">
+                <div class="section-title">
+                    <i class="fas fa-briefcase"></i>
+                    EXPÉRIENCE PROFESSIONNELLE
+                </div>
+            </div>
+            <div class="section-content">
+                <div class="experience-item">
+                    <div class="job-header">
+                        <div class="job-info">
+                            <h3>Développeur Web Full-Stack</h3>
+                            <div class="company">Freelance / Projets Personnels</div>
+                        </div>
+                        <div class="job-period">2019 - Présent</div>
+                    </div>
+                    <div class="job-description">
+                        <p>Développement de solutions web complètes pour clients et projets personnels.</p>
+                        <ul>
+                            <li><strong>FitTracker PWA</strong> - Application progressive de fitness avec offline sync</li>
+                            <li><strong>Le Gourmet</strong> - Site vitrine restaurant avec système de réservation</li>
+                            <li><strong>Fashion Store</strong> - E-commerce complet avec panier et paiement</li>
+                            <li>Optimisation SEO et performance (score Lighthouse 90+)</li>
+                            <li>Intégration API REST et bases de données</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-header">
+                        <div class="job-info">
+                            <h3>Formation Militaire - Développement Compétences</h3>
+                            <div class="company">Armée Française</div>
+                        </div>
+                        <div class="job-period">2014 - 2019</div>
+                    </div>
+                    <div class="job-description">
+                        <p>5 années de service militaire ayant développé des compétences essentielles en programmation et gestion de projet.</p>
+                        <ul>
+                            <li>Rigueur et précision dans le développement de code</li>
+                            <li>Travail en équipe sous pression et respect des deadlines</li>
+                            <li>Adaptabilité et apprentissage rapide de nouvelles technologies</li>
+                            <li>Leadership et encadrement d'équipes techniques</li>
+                            <li>Gestion de projets complexes avec méthodologie stricte</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cv-section">
+            <div class="section-header">
+                <div class="section-title">
+                    <i class="fas fa-code"></i>
+                    COMPÉTENCES TECHNIQUES
+                </div>
+            </div>
+            <div class="section-content">
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Frontend</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">HTML5</span>
+                            <span class="skill-tag">CSS3</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">Vue.js</span>
+                            <span class="skill-tag">SCSS</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Backend</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">PHP</span>
+                            <span class="skill-tag">Express</span>
+                            <span class="skill-tag">MongoDB</span>
+                            <span class="skill-tag">MySQL</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Outils & Méthodes</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">PWA</span>
+                            <span class="skill-tag">SEO</span>
+                            <span class="skill-tag">Responsive</span>
+                            <span class="skill-tag">Agile</span>
+                            <span class="skill-tag">Testing</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Soft Skills (Militaires)</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Leadership</span>
+                            <span class="skill-tag">Rigueur</span>
+                            <span class="skill-tag">Discipline</span>
+                            <span class="skill-tag">Stress Management</span>
+                            <span class="skill-tag">Team Work</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cv-section">
+            <div class="section-header">
+                <div class="section-title">
+                    <i class="fas fa-graduation-cap"></i>
+                    FORMATION & CERTIFICATIONS
+                </div>
+            </div>
+            <div class="section-content">
+                <div class="formation-item">
+                    <div class="formation-info">
+                        <h4>Formation Développeur Web Full-Stack</h4>
+                        <div class="formation-school">Autodidacte - Projets personnels & Open Source</div>
+                    </div>
+                    <div class="formation-year">2019-2024</div>
+                </div>
+                <div class="formation-item">
+                    <div class="formation-info">
+                        <h4>Certification JavaScript & React</h4>
+                        <div class="formation-school">Plateformes en ligne - FreeCodeCamp, Udemy</div>
+                    </div>
+                    <div class="formation-year">2020-2022</div>
+                </div>
+                <div class="formation-item">
+                    <div class="formation-info">
+                        <h4>Formation Militaire - Leadership & Gestion</h4>
+                        <div class="formation-school">Armée Française - École de Formation</div>
+                    </div>
+                    <div class="formation-year">2014-2019</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cv-section">
+            <div class="section-header">
+                <div class="section-title">
+                    <i class="fas fa-trophy"></i>
+                    STATISTIQUES DÉVELOPPEUR
+                </div>
+            </div>
+            <div class="section-content">
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>📊 Code & Projets</h4>
+                        <div style="color: var(--neon-green); font-size: 1.1rem; margin-top: 10px;">
+                            <div>✓ 100,000+ lignes de code</div>
+                            <div>✓ 42 projets réalisés</div>
+                            <div>✓ 150+ clients satisfaits</div>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>🎯 Tarifs Compétitifs</h4>
+                        <div style="color: var(--neon-cyan); font-size: 1.1rem; margin-top: 10px;">
+                            <div>🌐 Site Vitrine: 499€</div>
+                            <div>🛒 E-commerce: 1299€</div>
+                            <div>⚡ Délais respectés</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="actions">
-        <button class="btn btn-primary" onclick="downloadPDF()">
-            <span class="icon">📥</span> Télécharger PDF
-        </button>
-        <button class="btn btn-secondary" onclick="printCV()">
-            <span class="icon">🖨️</span> Imprimer
-        </button>
-        <button class="btn" onclick="viewFullscreen()">
-            <span class="icon">🔍</span> Plein Écran
-        </button>
-        <a href="/cv-rayan-maillard.html" target="_blank" class="btn">
-            <span class="icon">🔗</span> Ouvrir Original
-        </a>
-    </div>
-
-    <div class="info-box">
-        <h2>💡 Instructions pour Malt</h2>
-        <ul class="info-list">
-            <li>Cliquez sur "Télécharger PDF" pour obtenir le CV au format PDF</li>
-            <li>Le CV est optimisé pour une lecture sur écran et impression</li>
-            <li>Format A4 standard compatible avec tous les systèmes</li>
-            <li>Design sobre et professionnel adapté aux plateformes freelance</li>
-            <li>Mettez en avant vos projets concrets dans votre profil Malt</li>
-        </ul>
-    </div>
-
-    <div class="cv-container">
-        <div class="loading" id="loading">Chargement du CV...</div>
-        <iframe 
-            id="cv-frame"
-            class="cv-frame" 
-            src="/cv-rayan-maillard.html"
-            style="display: none;"
-            onload="document.getElementById('loading').style.display='none'; this.style.display='block';">
-        </iframe>
-    </div>
-
-    <div class="info-box">
-        <h2>✨ Points Forts du CV</h2>
-        <ul class="info-list">
-            <li><strong>Profil autodidacte valorisé</strong> : Met en avant votre autonomie et capacité d'apprentissage</li>
-            <li><strong>3 projets concrets</strong> : FitTracker PWA, Le Gourmet, Fashion Store</li>
-            <li><strong>Compétences techniques détaillées</strong> : Frontend, Backend, PWA, Git</li>
-            <li><strong>Tarifs compétitifs</strong> : 499€ site vitrine, 1299€ e-commerce</li>
-            <li><strong>Design rétro-moderne</strong> : Style sobre avec touches de couleur violette</li>
-        </ul>
-    </div>
-
     <script>
-        function downloadPDF() {
-            // Open CV in new window for printing
-            const printWindow = window.open('/cv-rayan-maillard.html', '_blank');
-            printWindow.onload = function() {
-                setTimeout(() => {
-                    printWindow.print();
-                    // Note for user
-                    alert('💡 Astuce: Dans la boîte de dialogue d\'impression, choisissez "Enregistrer en PDF" comme imprimante pour sauvegarder le CV en PDF.');
-                }, 500);
+        // Animation au scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = '0s';
+                }
+            });
+        });
+
+        document.querySelectorAll('.cv-section').forEach((section, index) => {
+            section.style.animationDelay = `${index * 0.1}s`;
+            observer.observe(section);
+        });
+
+        // Effet de typing sur le nom
+        document.addEventListener('DOMContentLoaded', () => {
+            const nameTitle = document.querySelector('.name-title');
+            const originalText = nameTitle.textContent;
+            nameTitle.textContent = '';
+            
+            let i = 0;
+            const typeWriter = () => {
+                if (i < originalText.length) {
+                    nameTitle.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 100);
+                }
             };
-        }
-        
-        function printCV() {
-            const iframe = document.getElementById('cv-frame');
-            iframe.contentWindow.print();
-        }
-        
-        function viewFullscreen() {
-            const iframe = document.getElementById('cv-frame');
-            if (iframe.requestFullscreen) {
-                iframe.requestFullscreen();
-            } else if (iframe.mozRequestFullScreen) {
-                iframe.mozRequestFullScreen();
-            } else if (iframe.webkitRequestFullscreen) {
-                iframe.webkitRequestFullscreen();
-            } else if (iframe.msRequestFullscreen) {
-                iframe.msRequestFullscreen();
-            }
-        }
-        
-        // Add keyboard shortcuts
+            
+            setTimeout(typeWriter, 500);
+        });
+
+        // Raccourcis clavier
         document.addEventListener('keydown', (e) => {
             if (e.ctrlKey && e.key === 'p') {
                 e.preventDefault();
-                printCV();
-            }
-            if (e.ctrlKey && e.key === 's') {
-                e.preventDefault();
-                downloadPDF();
+                window.print();
             }
         });
     </script>
