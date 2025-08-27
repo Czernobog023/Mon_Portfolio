@@ -1,0 +1,6 @@
+2025-08-27 13:47:31,933 INFO RPC interface 'supervisor' initialized
+2025-08-27 13:47:31,933 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2025-08-27 13:47:31,935 INFO daemonizing the supervisord process
+2025-08-27 13:47:31,936 INFO supervisord started with pid 29701
+2025-08-27 13:47:32,941 INFO spawned: 'fashionstore' with pid 29704
+2025-08-27 13:47:33,943 INFO success: fashionstore entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)

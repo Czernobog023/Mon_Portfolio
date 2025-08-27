@@ -1,0 +1,13 @@
+2025-08-27 13:47:13,097 INFO RPC interface 'supervisor' initialized
+2025-08-27 13:47:13,097 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2025-08-27 13:47:13,100 INFO daemonizing the supervisord process
+2025-08-27 13:47:13,100 INFO supervisord started with pid 29667
+2025-08-27 13:47:14,104 INFO spawned: 'legourmet' with pid 29670
+2025-08-27 13:47:14,210 WARN exited: legourmet (exit status 1; not expected)
+2025-08-27 13:47:15,214 INFO spawned: 'legourmet' with pid 29672
+2025-08-27 13:47:15,325 WARN exited: legourmet (exit status 1; not expected)
+2025-08-27 13:47:17,330 INFO spawned: 'legourmet' with pid 29675
+2025-08-27 13:47:17,428 WARN exited: legourmet (exit status 1; not expected)
+2025-08-27 13:47:20,435 INFO spawned: 'legourmet' with pid 29679
+2025-08-27 13:47:20,538 WARN exited: legourmet (exit status 1; not expected)
+2025-08-27 13:47:21,539 INFO gave up: legourmet entered FATAL state, too many start retries too quickly
