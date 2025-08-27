@@ -18,6 +18,7 @@ class PortfolioApp {
             this.setupNavigation();
             this.setupMobileMenu();
             this.setupSideMenu();
+            this.setupCounterAnimations();
             this.setupLazyLoading();
             this.setupPerformanceOptimizations();
             this.registerServiceWorker();
@@ -26,7 +27,7 @@ class PortfolioApp {
 
     // Navigation SPA optimisée
     setupNavigation() {
-        const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+        const navLinks = document.querySelectorAll('.nav-link[href^="#"], .hero-section a[href^="#"]');
         const sections = document.querySelectorAll('.section');
         
         // Cache DOM queries pour performance
@@ -166,6 +167,112 @@ class PortfolioApp {
         setTimeout(() => {
             toast.classList.remove('show');
         }, 2000);
+    }
+
+    // Animation des compteurs avec effet "OVER 9000!"
+    setupCounterAnimations() {
+        const counters = document.querySelectorAll('.stat-number');
+        
+        if ('IntersectionObserver' in window) {
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const counter = entry.target;
+                        this.animateCounter(counter);
+                        counterObserver.unobserve(counter);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            counters.forEach(counter => {
+                counterObserver.observe(counter);
+            });
+        }
+    }
+
+    animateCounter(counter) {
+        const target = parseInt(counter.dataset.target);
+        const isSpecial = counter.dataset.special === 'true';
+        const duration = isSpecial ? 3000 : 2000; // Plus long pour l'effet spécial
+        const start = 0;
+        const startTime = performance.now();
+
+        const updateCounter = (currentTime) => {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            
+            // Fonction d'easing pour effet plus dramatique
+            const easeOut = 1 - Math.pow(1 - progress, 3);
+            const current = Math.floor(start + (target * easeOut));
+            
+            if (isSpecial && current > 9000) {
+                // Effet "OVER 9000!" style Dragon Ball Z
+                counter.textContent = "OVER 9000!";
+                counter.classList.add('over-9000');
+                this.showFeedback("IT'S OVER 9000! ⚡");
+                
+                // Animation de secousse avec particules
+                const statCard = counter.parentElement.parentElement;
+                statCard.classList.add('power-up');
+                this.createPowerUpParticles(statCard);
+                
+                setTimeout(() => {
+                    statCard.classList.remove('power-up');
+                }, 1000);
+            } else {
+                counter.textContent = current.toLocaleString();
+            }
+            
+            if (progress < 1) {
+                requestAnimationFrame(updateCounter);
+            }
+        };
+
+        requestAnimationFrame(updateCounter);
+    }
+
+    // Créer des particules d'énergie pour l'effet "over 9000"
+    createPowerUpParticles(element) {
+        for (let i = 0; i < 20; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'power-particle';
+            
+            const rect = element.getBoundingClientRect();
+            const x = rect.left + rect.width / 2;
+            const y = rect.top + rect.height / 2;
+            
+            particle.style.left = x + 'px';
+            particle.style.top = y + 'px';
+            
+            document.body.appendChild(particle);
+            
+            // Animation des particules
+            const angle = (i / 20) * Math.PI * 2;
+            const velocity = 50 + Math.random() * 50;
+            const vx = Math.cos(angle) * velocity;
+            const vy = Math.sin(angle) * velocity;
+            
+            let posX = 0;
+            let posY = 0;
+            let opacity = 1;
+            
+            const animateParticle = () => {
+                posX += vx * 0.016; // 60fps
+                posY += vy * 0.016;
+                opacity -= 0.02;
+                
+                particle.style.transform = `translate(${posX}px, ${posY}px)`;
+                particle.style.opacity = opacity;
+                
+                if (opacity > 0) {
+                    requestAnimationFrame(animateParticle);
+                } else {
+                    particle.remove();
+                }
+            };
+            
+            requestAnimationFrame(animateParticle);
+        }
     }
 
     // Lazy loading pour les images et contenus
