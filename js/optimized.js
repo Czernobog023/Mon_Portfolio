@@ -23,6 +23,7 @@ class PortfolioApp {
             this.setupSideMenu();
             this.setupCounterAnimations();
             this.setupAboutAnimations();
+            this.setupEmailSystem();
             this.setupLazyLoading();
             this.setupPerformanceOptimizations();
             this.registerServiceWorker();
@@ -305,6 +306,167 @@ class PortfolioApp {
                 img.classList.add('lazy');
                 imageObserver.observe(img);
             });
+        }
+    }
+
+    // Système de popup email
+    setupEmailSystem() {
+        // Créer la popup email si elle n'existe pas
+        if (!document.getElementById('email-popup')) {
+            this.createEmailPopup();
+        }
+
+        // Attacher les événements aux boutons email
+        document.querySelectorAll('[data-email-context]').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const context = button.dataset.emailContext;
+                this.showEmailPopup(context);
+            });
+        });
+    }
+
+    createEmailPopup() {
+        const popup = document.createElement('div');
+        popup.id = 'email-popup';
+        popup.className = 'email-popup-overlay';
+        popup.innerHTML = `
+            <div class="email-popup">
+                <div class="popup-header">
+                    <div class="popup-title">
+                        <i class="fas fa-envelope"></i>
+                        <span>CONTACT EMAIL</span>
+                    </div>
+                    <button class="popup-close" id="popup-close-btn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="popup-body">
+                    <div class="email-info">
+                        <div class="email-address">rayanmaillard023@gmail.com</div>
+                        <div class="email-subject" id="popup-subject"></div>
+                    </div>
+                    <div class="email-options">
+                        <button class="email-option gmail-option" id="gmail-btn">
+                            <i class="fab fa-google"></i>
+                            <span>Ouvrir dans Gmail</span>
+                        </button>
+                        <button class="email-option outlook-option" id="outlook-btn">
+                            <i class="fas fa-envelope"></i>
+                            <span>Ouvrir dans Outlook</span>
+                        </button>
+                        <button class="email-option copy-option" id="copy-btn">
+                            <i class="fas fa-copy"></i>
+                            <span>Copier l'email</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(popup);
+
+        // Attacher les événements aux boutons de la popup
+        popup.querySelector('#popup-close-btn').addEventListener('click', () => this.closeEmailPopup());
+        popup.querySelector('#gmail-btn').addEventListener('click', () => this.openGmail());
+        popup.querySelector('#outlook-btn').addEventListener('click', () => this.openOutlook());
+        popup.querySelector('#copy-btn').addEventListener('click', () => this.copyEmail());
+        
+        // Fermer en cliquant sur l'overlay
+        popup.addEventListener('click', (e) => {
+            if (e.target === popup) {
+                this.closeEmailPopup();
+            }
+        });
+    }
+
+    showEmailPopup(context) {
+        const popup = document.getElementById('email-popup');
+        const subjectElement = document.getElementById('popup-subject');
+        
+        // Définir le sujet selon le contexte
+        const subjects = {
+            'contact': 'Contact Professionnel - Projet Web',
+            'footer': 'Demande d\'Information - Services Web',
+            'cv': 'Candidature - Contact CV',
+            'mission': 'Nouveau Projet Web - Mission',
+            'general': 'Contact Portfolio'
+        };
+
+        const subject = subjects[context] || subjects['general'];
+        subjectElement.textContent = `Sujet: ${subject}`;
+        
+        // Stocker le contexte pour utilisation dans les fonctions
+        popup.dataset.currentContext = context;
+        popup.dataset.currentSubject = subject;
+        
+        // Afficher la popup
+        popup.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    closeEmailPopup() {
+        const popup = document.getElementById('email-popup');
+        popup.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    openGmail() {
+        const popup = document.getElementById('email-popup');
+        const subject = popup.dataset.currentSubject;
+        const context = popup.dataset.currentContext;
+        
+        const bodies = {
+            'contact': 'Bonjour Rayan,%0A%0AJe vous contacte pour discuter d\'un projet web.%0A%0AType de projet : %0ABudget approximatif : %0ADélai souhaité : %0A%0ADescription : %0A%0ACordialement,',
+            'footer': 'Bonjour Rayan,%0A%0AJe vous contacte pour en savoir plus sur vos services web.%0A%0AJe suis intéressé(e) par : %0A%0AMon projet : %0A%0ACordialement,',
+            'cv': 'Bonjour Rayan,%0A%0AJ\'ai consulté votre CV et j\'aimerais discuter avec vous.%0A%0APoste : %0AEntreprise : %0A%0ACordialement,',
+            'mission': 'Bonjour Rayan,%0A%0AJe souhaite discuter d\'un projet web.%0A%0AType de projet: %0ABudget approximatif: %0ADélai souhaité: %0A%0ADescription du projet: %0A%0AMerci!',
+            'general': 'Bonjour Rayan,%0A%0A%0A%0ACordialement,'
+        };
+
+        const body = bodies[context] || bodies['general'];
+        const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=rayanmaillard023@gmail.com&su=${encodeURIComponent(subject)}&body=${body}`;
+        
+        window.open(gmailUrl, '_blank');
+        this.closeEmailPopup();
+        this.showFeedback('Gmail ouvert dans un nouvel onglet! 📧');
+    }
+
+    openOutlook() {
+        const popup = document.getElementById('email-popup');
+        const subject = popup.dataset.currentSubject;
+        const context = popup.dataset.currentContext;
+        
+        const bodies = {
+            'contact': 'Bonjour Rayan,%0A%0AJe vous contacte pour discuter d\'un projet web.%0A%0AType de projet : %0ABudget approximatif : %0ADélai souhaité : %0A%0ADescription : %0A%0ACordialement,',
+            'footer': 'Bonjour Rayan,%0A%0AJe vous contacte pour en savoir plus sur vos services web.%0A%0AJe suis intéressé(e) par : %0A%0AMon projet : %0A%0ACordialement,',
+            'cv': 'Bonjour Rayan,%0A%0AJ\'ai consulté votre CV et j\'aimerais discuter avec vous.%0A%0APoste : %0AEntreprise : %0A%0ACordialement,',
+            'mission': 'Bonjour Rayan,%0A%0AJe souhaite discuter d\'un projet web.%0A%0AType de projet: %0ABudget approximatif: %0ADélai souhaité: %0A%0ADescription du projet: %0A%0AMerci!',
+            'general': 'Bonjour Rayan,%0A%0A%0A%0ACordialement,'
+        };
+
+        const body = bodies[context] || bodies['general'];
+        const outlookUrl = `https://outlook.live.com/mail/0/deeplink/compose?to=rayanmaillard023@gmail.com&subject=${encodeURIComponent(subject)}&body=${body}`;
+        
+        window.open(outlookUrl, '_blank');
+        this.closeEmailPopup();
+        this.showFeedback('Outlook ouvert dans un nouvel onglet! 📧');
+    }
+
+    async copyEmail() {
+        try {
+            await navigator.clipboard.writeText('rayanmaillard023@gmail.com');
+            this.closeEmailPopup();
+            this.showFeedback('Email copié dans le presse-papier! 📋');
+        } catch (err) {
+            // Fallback pour navigateurs plus anciens
+            const textArea = document.createElement('textarea');
+            textArea.value = 'rayanmaillard023@gmail.com';
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            this.closeEmailPopup();
+            this.showFeedback('Email copié! 📋');
         }
     }
 
